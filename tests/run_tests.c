@@ -1,12 +1,13 @@
 #include "unity/unity.h"
 
-// Declare the tests implemented in test_state_machine.c
 void test_initial_state_is_OFF(void);
+void test_off_to_on_on_button_press(void);
 
 int main(void) {
     UNITY_BEGIN();
 
     RUN_TEST(test_initial_state_is_OFF);
+    RUN_TEST(test_off_to_on_on_button_press);
 
     return UNITY_END();
 }

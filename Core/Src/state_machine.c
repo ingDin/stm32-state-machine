@@ -9,3 +9,9 @@ void sm_init(void) {
 state_t sm_get_state(void) {
     return current_state;
 }
+
+void sm_handle_event(event_t event) {
+    if (current_state == STATE_OFF && event == EVENT_BTN_PRESS) {
+        current_state = STATE_ON;
+    }
+}
