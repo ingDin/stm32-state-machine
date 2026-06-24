@@ -1,8 +1,10 @@
 #include "../unity/unity.h"
+#include "../../Core/Inc/state_machine.h"
 
 void setUp(void) {}
 void tearDown(void) {}
 
-void test_framework_runs(void) {
-    TEST_ASSERT_TRUE(1);
+void test_initial_state_is_OFF(void) {
+    sm_init();
+    TEST_ASSERT_EQUAL(STATE_OFF, sm_get_state());
 }
