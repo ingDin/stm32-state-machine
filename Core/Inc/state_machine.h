@@ -3,7 +3,8 @@
 
 typedef enum {
     STATE_OFF,
-    STATE_ON
+    STATE_ON,
+    STATE_BLINK_SLOW
 } state_t;
 
 typedef enum {

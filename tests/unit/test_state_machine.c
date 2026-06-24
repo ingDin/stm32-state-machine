@@ -14,3 +14,10 @@ void test_off_to_on_on_button_press(void) {
     sm_handle_event(EVENT_BTN_PRESS);
     TEST_ASSERT_EQUAL(STATE_ON, sm_get_state());
 }
+
+void test_on_to_blink_slow_on_button_press(void) {
+    sm_init();
+    sm_handle_event(EVENT_BTN_PRESS); // OFF → ON
+    sm_handle_event(EVENT_BTN_PRESS); // ON → BLINK_SLOW
+    TEST_ASSERT_EQUAL(STATE_BLINK_SLOW, sm_get_state());
+}
