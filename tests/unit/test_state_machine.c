@@ -21,3 +21,11 @@ void test_on_to_blink_slow_on_button_press(void) {
     sm_handle_event(EVENT_BTN_PRESS); // ON → BLINK_SLOW
     TEST_ASSERT_EQUAL(STATE_BLINK_SLOW, sm_get_state());
 }
+
+void test_blink_slow_to_blink_fast_on_button_press(void) {
+    sm_init();
+    sm_handle_event(EVENT_BTN_PRESS); // OFF → ON
+    sm_handle_event(EVENT_BTN_PRESS); // ON → BLINK_SLOW
+    sm_handle_event(EVENT_BTN_PRESS); // BLINK_SLOW → BLINK_FAST
+    TEST_ASSERT_EQUAL(STATE_BLINK_FAST, sm_get_state());
+}

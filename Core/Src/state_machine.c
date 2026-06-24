@@ -17,4 +17,8 @@ void sm_handle_event(event_t event) {
     else if (current_state == STATE_ON && event == EVENT_BTN_PRESS) {
         current_state = STATE_BLINK_SLOW;
     }
+    else if (current_state == STATE_BLINK_SLOW && event == EVENT_BTN_PRESS) {
+    current_state = STATE_BLINK_FAST;
+}
+
 }

@@ -4,7 +4,8 @@
 typedef enum {
     STATE_OFF,
     STATE_ON,
-    STATE_BLINK_SLOW
+    STATE_BLINK_SLOW,
+    STATE_BLINK_FAST
 } state_t;
 
 typedef enum {
