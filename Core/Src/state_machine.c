@@ -1,3 +1,34 @@
+/**
+ * @file state_machine.c
+ * @brief LED control state machine with time‑driven and event‑driven behavior.
+ *
+ * This module implements a simple finite state machine (FSM) for controlling an
+ * LED on an embedded system. The FSM supports four states:
+ *
+ *   - STATE_OFF        : LED is off
+ *   - STATE_ON         : LED is on
+ *   - STATE_BLINK_SLOW : LED toggles at a slow interval
+ *   - STATE_BLINK_FAST : LED toggles at a fast interval
+ *
+ * The FSM reacts to:
+ *   - time progression (via sm_tick)
+ *   - external events (via sm_handle_event)
+ *
+ * The design separates:
+ *   - event‑driven transitions (button presses)
+ *   - time‑driven actions (blink intervals)
+ *
+ * Hardware dependencies:
+ *   - HAL_GetTick()            : provides system time in ms
+ *   - HAL_GPIO_TogglePin()     : toggles the LED pin
+ *
+ * These functions are declared as extern so the module can be tested using
+ * fake HAL implementations without modifying production code.
+ *
+ * This architecture enables deterministic unit testing using a fake HAL,
+ * while keeping the production code clean and hardware‑agnostic.
+ */
+ 
 #include "state_machine.h"
 #include <stdint.h>
 #include <stdbool.h>
