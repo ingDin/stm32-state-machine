@@ -23,6 +23,9 @@
 
 #include "../unity/unity.h"
 #include "../../Core/Inc/state_machine.h"
+#include "../fakes/fake_hal.h"
+
+
 
 void setUp(void) {}
 void tearDown(void) {}
@@ -101,7 +104,7 @@ void test_blink_slow_toggles_led_after_interval(void) {
     TEST_ASSERT_EQUAL(0, fake_hal_get_toggle_count());
 
     // Act (after interval expires)
-    fake_hal_set_tick(500); // simulate 500 ms passing
+    fake_hal_set_tick(1000); // simulate 1000 ms passing
     sm_tick();
 
     // Assert

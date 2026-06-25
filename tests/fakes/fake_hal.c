@@ -1,7 +1,5 @@
-#include <stdint.h>
-
 /**
- * @file mock_hal.c
+ * @file fake_hal.c
  * @brief Fake implementation of HAL_GetTick() for unit testing.
  *
  * This file provides a **FAKE** version of HAL_GetTick(), used when running
@@ -28,6 +26,13 @@
  * deterministic replacement for hardware-dependent functions.
  */
 
+#include <stdint.h>
+#include "fake_hal.h"
+
+// ---------------------------------------------------------
+// Fake tick implementation
+// ---------------------------------------------------------
+
 static uint32_t fake_tick = 0;
 
 uint32_t HAL_GetTick(void) {
@@ -36,4 +41,26 @@ uint32_t HAL_GetTick(void) {
 
 void fake_hal_set_tick(uint32_t t) {
     fake_tick = t;
+}
+
+// ---------------------------------------------------------
+// Fake LED toggle tracking
+// ---------------------------------------------------------
+
+static int fake_toggle_count = 0;
+
+// Reset fake HAL state (tick + toggle counter)
+void fake_hal_reset(void) {
+    fake_tick = 0;
+    fake_toggle_count = 0;
+}
+
+// Fake GPIO toggle function
+void HAL_GPIO_TogglePin(void* GPIOx, uint16_t GPIO_Pin) {
+    fake_toggle_count++;
+}
+
+// Getter for toggle count
+int fake_hal_get_toggle_count(void) {
+    return fake_toggle_count;
 }

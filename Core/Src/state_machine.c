@@ -1,6 +1,10 @@
 #include "state_machine.h"
 #include <stdint.h>
+#include <stdbool.h>
+
+// HAL dependencies (real in firmware, fake in tests)
 extern uint32_t HAL_GetTick(void);
+extern void HAL_GPIO_TogglePin(void* GPIOx, uint16_t GPIO_Pin);
 
 // ---------------------------------------------------------
 // INTERNAL STATE
@@ -31,7 +35,7 @@ static bool timer_expired(uint32_t interval) {
 
 static void action_blink(uint32_t interval) {
     if (timer_expired(interval)) {
-        led_state = !led_state;
+        HAL_GPIO_TogglePin(NULL, 0);
         last_toggle_time = HAL_GetTick();
     }
 }
@@ -97,5 +101,9 @@ state_t sm_get_state(void) {
 }
 
 void sm_update(void) {
+    actions[current_state]();
+}
+
+void sm_tick(void) {
     actions[current_state]();
 }
