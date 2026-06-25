@@ -13,7 +13,7 @@
  *   counter.
  * - It maintains internal state (`fake_tick`) that behaves similarly to the
  *   real system tick.
- * - Tests can **manually control time progression** using mock_hal_set_tick().
+ * - Tests can **manually control time progression** using fake_hal_set_tick().
  * - It enables deterministic, non-blocking timing tests (blink, debounce,
  *   timeouts) without requiring the actual hardware timer.
  *
@@ -34,6 +34,6 @@ uint32_t HAL_GetTick(void) {
     return fake_tick;
 }
 
-void mock_hal_set_tick(uint32_t t) {
+void fake_hal_set_tick(uint32_t t) {
     fake_tick = t;
 }

@@ -84,3 +84,27 @@ void test_blink_fast_to_off_on_button_press(void) {
     // Assert
     TEST_ASSERT_EQUAL(STATE_OFF, sm_get_state());
 }
+
+void test_blink_slow_toggles_led_after_interval(void) {
+    // Arrange
+    sm_init();
+    sm_handle_event(EVENT_BTN_PRESS); // OFF → ON
+    sm_handle_event(EVENT_BTN_PRESS); // ON → BLINK_SLOW
+
+    fake_hal_reset();     // reset tick + toggle counter
+    fake_hal_set_tick(0); // start at time 0
+
+    // Act (before interval expires)
+    sm_tick();
+
+    // Assert
+    TEST_ASSERT_EQUAL(0, fake_hal_get_toggle_count());
+
+    // Act (after interval expires)
+    fake_hal_set_tick(500); // simulate 500 ms passing
+    sm_tick();
+
+    // Assert
+    TEST_ASSERT_EQUAL(1, fake_hal_get_toggle_count());
+}
+

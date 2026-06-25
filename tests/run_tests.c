@@ -5,6 +5,7 @@ void test_off_to_on_on_button_press(void);
 void test_on_to_blink_slow_on_button_press(void);
 void test_blink_slow_to_blink_fast_on_button_press(void);
 void test_blink_fast_to_off_on_button_press(void);
+void test_blink_slow_toggles_led_after_interval(void);
 
 int main(void) {
     UNITY_BEGIN();
@@ -14,6 +15,7 @@ int main(void) {
     RUN_TEST(test_on_to_blink_slow_on_button_press);
     RUN_TEST(test_blink_slow_to_blink_fast_on_button_press);
     RUN_TEST(test_blink_fast_to_off_on_button_press);
+    RUN_TEST(test_blink_slow_toggles_led_after_interval);
 
     return UNITY_END();
 }
