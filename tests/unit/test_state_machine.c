@@ -1,32 +1,23 @@
 /**
  * @file test_state_machine.c
- * @brief Unit tests for the state machine module using the Unity framework.
+ * @brief Unity tests for the state machine module.
  *
- * This file contains a suite of tests that validate the behavior of the
- * state machine implemented in state_machine.c. The tests follow the
- * Arrange–Act–Assert (AAA) pattern and verify all state transitions
- * triggered by EVENT_BTN_PRESS:
+ * This suite verifies:
+ *   - all state transitions triggered by EVENT_BTN_PRESS
+ *     OFF → ON → BLINK_SLOW → BLINK_FAST → OFF
+ *   - blink timing behavior for slow/fast modes
+ *   - LED toggle timing based on HAL_GetTick()
+ *   - internal state timer reset on transitions
  *
- *   OFF → ON → BLINK_SLOW → BLINK_FAST → OFF
- *
- * The purpose of this test suite is to ensure deterministic and predictable
- * state transitions, supporting a TDD workflow for embedded applications.
- *
- * Dependencies:
- *   - Unity test framework
- *   - state_machine.h (public API of the state machine)
- *
- * Usage:
- *   These tests are executed via the project's test runner (e.g. Makefile
- *   target `make test`). All tests must pass before new features are added.
+ * Tests follow the AAA pattern and support a TDD workflow
+ * for the embedded state machine in state_machine.c.
  */
+
 
 #include "../unity/unity.h"
 #include "../../Core/Inc/state_machine.h"
 #include "../fakes/fake_hal.h"
 #include "test_state_machine.h"
-
-
 
 void setUp(void) {}
 void tearDown(void) {}

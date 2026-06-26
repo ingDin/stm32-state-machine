@@ -1,4 +1,16 @@
-#ifndef FAKE_HAL_H
+/**
+ * @file fake_hal.h
+ * @brief Interface for the fake HAL used in unit tests.
+ *
+ * Provides controlled test doubles for:
+ *   - HAL_GetTick()
+ *   - HAL_GPIO_TogglePin()
+ *
+ * Allows tests to simulate time progression and count LED toggles
+ * without relying on STM32 hardware.
+ */
+ 
+ #ifndef FAKE_HAL_H
 #define FAKE_HAL_H
 
 #include <stdint.h>

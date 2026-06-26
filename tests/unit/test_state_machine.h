@@ -1,4 +1,16 @@
-typedef struct {
+/**
+ * @file test_state_machine.h
+ * @brief Test case structures for the state machine unit tests.
+ *
+ * Defines small data containers used by the parametrized tests:
+ *   - state transition cases
+ *   - blink timing cases
+ *   - timer reset cases
+ *
+ * These structs support clean, table‑driven tests in test_state_machine.c.
+ */
+
+ typedef struct {
     const char* description;
     int num_presses;
     state_t expected_state;

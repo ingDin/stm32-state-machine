@@ -1,29 +1,13 @@
 /**
  * @file fake_hal.c
- * @brief Fake implementation of HAL_GetTick() for unit testing.
+ * @brief Minimal HAL simulation for unit testing.
  *
- * This file provides a **FAKE** version of HAL_GetTick(), used when running
- * unit tests on a host machine (e.g., MinGW on Windows) where the real STM32
- * HAL is not available.
+ * Provides deterministic replacements for:
+ *   - HAL_GetTick()
+ *   - HAL_GPIO_TogglePin()
  *
- * What makes this a FAKE:
- * - It implements a **working, simplified substitute** for the real HAL tick
- *   counter.
- * - It maintains internal state (`fake_tick`) that behaves similarly to the
- *   real system tick.
- * - Tests can **manually control time progression** using fake_hal_set_tick().
- * - It enables deterministic, non-blocking timing tests (blink, debounce,
- *   timeouts) without requiring the actual hardware timer.
- *
- * Why this is not a stub:
- * - A stub would return a fixed value. This fake allows time to advance.
- *
- * Why this is not a strict mock:
- * - It does not verify expectations or call counts.
- * - It only provides functional behavior needed by the state machine.
- *
- * This approach follows standard embedded TDD practices: provide a lightweight,
- * deterministic replacement for hardware-dependent functions.
+ * Used by the state machine tests to control time progression
+ * and count LED toggles without hardware dependencies.
  */
 
 #include <stdint.h>

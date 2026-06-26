@@ -1,4 +1,21 @@
-#include "state_machine.h"
+/**
+ * @file state_machine.c
+ * @brief Finite state machine for LED control.
+ *
+ * Implements a simple FSM with four states:
+ *   OFF → ON → BLINK_SLOW → BLINK_FAST → OFF
+ *
+ * Features:
+ *   - entry/exit actions
+ *   - per‑state periodic actions
+ *   - internal state timer (reset on transitions)
+ *   - blink timing based on HAL_GetTick()
+ *
+ * Designed for deterministic behavior and full unit‑test coverage.
+ */
+ 
+
+ #include "state_machine.h"
 #include <stdint.h>
 #include <stdbool.h>
 
