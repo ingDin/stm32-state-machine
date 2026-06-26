@@ -88,26 +88,62 @@ void test_blink_fast_to_off_on_button_press(void) {
     TEST_ASSERT_EQUAL(STATE_OFF, sm_get_state());
 }
 
-void test_blink_slow_toggles_led_after_interval(void) {
-    // Arrange
-    sm_init();
-    sm_handle_event(EVENT_BTN_PRESS); // OFF → ON
-    sm_handle_event(EVENT_BTN_PRESS); // ON → BLINK_SLOW
 
-    fake_hal_reset();     // reset tick + toggle counter
-    fake_hal_set_tick(0); // start at time 0
+typedef struct {
+    state_t target_state;
+    uint32_t interval;
+    const char* description;
+} blink_param_t;
 
-    // Act (before interval expires)
-    sm_tick();
+void test_blink_toggles_led_after_interval_parametrized(void)
+{
+    blink_param_t cases[] = {
+        { STATE_BLINK_SLOW, 1000, "BLINK_SLOW interval" },
+        { STATE_BLINK_FAST,  250, "BLINK_FAST interval" },
+    };
 
-    // Assert
-    TEST_ASSERT_EQUAL(0, fake_hal_get_toggle_count());
+    const int num_cases = sizeof(cases) / sizeof(cases[0]);
 
-    // Act (after interval expires)
-    fake_hal_set_tick(1000); // simulate 1000 ms passing
-    sm_tick();
+    for (int i = 0; i < num_cases; i++) {
 
-    // Assert
-    TEST_ASSERT_EQUAL(1, fake_hal_get_toggle_count());
+        // ---------------------------------------------------------
+        // FULL RESET — this is the critical part
+        // ---------------------------------------------------------
+        sm_init();          // reset state machine
+        fake_hal_reset();   // reset tick + toggle counter
+        fake_hal_set_tick(0);
+
+        // Enter the correct state
+        sm_handle_event(EVENT_BTN_PRESS); // OFF → ON
+        sm_handle_event(EVENT_BTN_PRESS); // ON → BLINK_SLOW
+
+        if (cases[i].target_state == STATE_BLINK_FAST) {
+            sm_handle_event(EVENT_BTN_PRESS); // BLINK_SLOW → BLINK_FAST
+        }
+
+        // ---------------------------------------------------------
+        // Before interval
+        // ---------------------------------------------------------
+        sm_tick();
+        TEST_ASSERT_EQUAL_MESSAGE(
+            0,
+            fake_hal_get_toggle_count(),
+            "LED must NOT toggle before interval"
+        );
+
+        // ---------------------------------------------------------
+        // At interval
+        // ---------------------------------------------------------
+        fake_hal_set_tick(cases[i].interval);
+        sm_tick();
+
+        TEST_ASSERT_EQUAL_MESSAGE(
+            1,
+            fake_hal_get_toggle_count(),
+            cases[i].description
+        );
+    }
 }
+
+
 
