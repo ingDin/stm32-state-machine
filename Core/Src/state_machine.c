@@ -12,6 +12,34 @@ static bool led_state = false;
 
 static bool guard_always_true(void) { return true; }
 
+/* COMMON ENTRY HELPERS */
+static void entry_common(void) {
+    state_timer = 0;
+    last_toggle_time = HAL_GetTick();
+}
+
+static void entry_led(bool on) {
+    led_state = on;
+    entry_common();
+}
+
+/* ENTRY ACTIONS */
+static void entry_off(void)        { entry_led(false); }
+static void entry_on(void)         { entry_led(true);  }
+static void entry_blink_slow(void) { entry_common();   }
+static void entry_blink_fast(void) { entry_common();   }
+
+/* EXIT ACTIONS (all no-op) */
+static void exit_noop(void) {}
+
+static action_fn_t exit_actions[STATE_COUNT] = {
+    [STATE_OFF]        = exit_noop,
+    [STATE_ON]         = exit_noop,
+    [STATE_BLINK_SLOW] = exit_noop,
+    [STATE_BLINK_FAST] = exit_noop
+};
+
+/* STATE ACTIONS */
 static void action_off(void) {
     led_state = false;
 }
@@ -33,6 +61,13 @@ static void action_blink(uint32_t interval) {
 
 static void action_blink_slow(void)  { action_blink(1000); }
 static void action_blink_fast(void)  { action_blink(200); }
+
+static action_fn_t entry_actions[STATE_COUNT] = {
+    [STATE_OFF]        = entry_off,
+    [STATE_ON]         = entry_on,
+    [STATE_BLINK_SLOW] = entry_blink_slow,
+    [STATE_BLINK_FAST] = entry_blink_fast
+};
 
 static action_fn_t actions[STATE_COUNT] = {
     [STATE_OFF]        = action_off,
@@ -63,17 +98,15 @@ static state_t next_state(state_t current, event_t event) {
 
 void sm_init(void) {
     current_state = STATE_OFF;
-    last_toggle_time = HAL_GetTick();
-    state_timer = 0;
-    led_state = false;
+    entry_actions[current_state]();
 }
 
 void sm_handle_event(event_t event) {
     state_t new_state = next_state(current_state, event);
     if (new_state != current_state) {
+        exit_actions[current_state]();
         current_state = new_state;
-        state_timer = 0;
-        last_toggle_time = HAL_GetTick();
+        entry_actions[current_state]();
     }
 }
 
