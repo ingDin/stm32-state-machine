@@ -31,63 +31,47 @@
 void setUp(void) {}
 void tearDown(void) {}
 
-void test_initial_state_is_OFF(void) {
-    // Arrange
-    sm_init();
+void test_state_transitions_parametrized(void)
+{
+    // ---------------------------------------------------------
+    // Arrange: define all state transition scenarios
+    // ---------------------------------------------------------
+    state_transition_case_t cases[] = {
+        { "Initial state must be OFF",                     0, STATE_OFF },
+        { "OFF → ON on first button press",                1, STATE_ON },
+        { "ON → BLINK_SLOW on second button press",        2, STATE_BLINK_SLOW },
+        { "BLINK_SLOW → BLINK_FAST on third button press", 3, STATE_BLINK_FAST },
+        { "BLINK_FAST → OFF on fourth button press",       4, STATE_OFF },
+    };
 
-    // Assert
-    TEST_ASSERT_EQUAL(STATE_OFF, sm_get_state());
+    const int num_cases = sizeof(cases) / sizeof(cases[0]);
+
+    for (int i = 0; i < num_cases; i++) {
+
+        // ---------------------------------------------------------
+        // Arrange
+        // ---------------------------------------------------------
+        sm_init();
+
+        // Apply N button presses
+        for (int p = 0; p < cases[i].num_presses; p++) {
+            sm_handle_event(EVENT_BTN_PRESS);
+        }
+
+        // ---------------------------------------------------------
+        // Act
+        state_t actual = sm_get_state();
+
+        // ---------------------------------------------------------
+        // Assert
+        TEST_ASSERT_EQUAL_MESSAGE(
+            cases[i].expected_state,
+            actual,
+            cases[i].description
+        );
+    }
 }
 
-void test_off_to_on_on_button_press(void) {
-    // Arrange
-    sm_init();
-
-    // Act
-    sm_handle_event(EVENT_BTN_PRESS);
-
-    // Assert
-    TEST_ASSERT_EQUAL(STATE_ON, sm_get_state());
-}
-
-void test_on_to_blink_slow_on_button_press(void) {
-    // Arrange
-    sm_init();
-
-    // Act
-    sm_handle_event(EVENT_BTN_PRESS); // OFF → ON
-    sm_handle_event(EVENT_BTN_PRESS); // ON → BLINK_SLOW
-
-    // Assert
-    TEST_ASSERT_EQUAL(STATE_BLINK_SLOW, sm_get_state());
-}
-
-void test_blink_slow_to_blink_fast_on_button_press(void) {
-    // Arrange
-    sm_init();
-
-    // Act
-    sm_handle_event(EVENT_BTN_PRESS); // OFF → ON
-    sm_handle_event(EVENT_BTN_PRESS); // ON → BLINK_SLOW
-    sm_handle_event(EVENT_BTN_PRESS); // BLINK_SLOW → BLINK_FAST
-
-    // Assert
-    TEST_ASSERT_EQUAL(STATE_BLINK_FAST, sm_get_state());
-}
-
-void test_blink_fast_to_off_on_button_press(void) {
-    // Arrange
-    sm_init();
-
-    // Act
-    sm_handle_event(EVENT_BTN_PRESS); // OFF → ON
-    sm_handle_event(EVENT_BTN_PRESS); // ON → BLINK_SLOW
-    sm_handle_event(EVENT_BTN_PRESS); // BLINK_SLOW → BLINK_FAST
-    sm_handle_event(EVENT_BTN_PRESS); // BLINK_FAST → OFF
-
-    // Assert
-    TEST_ASSERT_EQUAL(STATE_OFF, sm_get_state());
-}
 
 void test_blink_toggles_led_after_interval_parametrized(void)
 {
