@@ -189,3 +189,55 @@ void test_blink_timeout_behavior_parametrized(void)
         );
     }
 }
+
+void test_timer_resets_on_state_change_parametrized(void)
+{
+    timer_reset_case_t cases[] = {
+        { "OFF → ON resets timer",                     1, STATE_ON },
+        { "ON → BLINK_SLOW resets timer",              2, STATE_BLINK_SLOW },
+        { "BLINK_SLOW → BLINK_FAST resets timer",      3, STATE_BLINK_FAST },
+        { "BLINK_FAST → OFF resets timer",             4, STATE_OFF },
+    };
+
+    const int num_cases = sizeof(cases) / sizeof(cases[0]);
+
+    for (int i = 0; i < num_cases; i++) {
+
+        sm_init();
+        fake_hal_reset();
+        fake_hal_set_tick(0);
+
+        // Let the timer increment in the initial state
+        sm_tick();
+        TEST_ASSERT_TRUE(sm_get_timer() > 0);
+
+        // Apply required button presses
+        for (int p = 0; p < cases[i].num_presses_before_transition; p++) {
+            sm_handle_event(EVENT_BTN_PRESS);
+        }
+
+        // Verify state
+        TEST_ASSERT_EQUAL_MESSAGE(
+            cases[i].expected_state_after_transition,
+            sm_get_state(),
+            cases[i].description
+        );
+
+        // Timer must be reset
+        TEST_ASSERT_EQUAL_UINT32_MESSAGE(
+            0,
+            sm_get_timer(),
+            "Timer must reset on state transition"
+        );
+
+        // Timer must start counting again
+        fake_hal_set_tick(100);
+        sm_tick();
+
+        TEST_ASSERT_EQUAL_UINT32_MESSAGE(
+            1,
+            sm_get_timer(),
+            "Timer must restart from 0 after transition"
+        );
+    }
+}

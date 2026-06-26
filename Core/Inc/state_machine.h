@@ -32,5 +32,6 @@ void sm_handle_event(event_t event);
 state_t sm_get_state(void);
 void sm_update(void);
 void sm_tick(void);
+uint32_t sm_get_timer(void);
 
 #endif

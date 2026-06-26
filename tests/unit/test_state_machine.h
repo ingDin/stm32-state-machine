@@ -10,3 +10,9 @@ typedef struct {
     int expected_toggles;
     const char* description;
 } blink_case_t;
+
+typedef struct {
+    const char* description;
+    int num_presses_before_transition;
+    state_t expected_state_after_transition;
+} timer_reset_case_t;
