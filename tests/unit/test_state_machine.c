@@ -24,6 +24,7 @@
 #include "../unity/unity.h"
 #include "../../Core/Inc/state_machine.h"
 #include "../fakes/fake_hal.h"
+#include "test_state_machine.h"
 
 
 
@@ -88,18 +89,11 @@ void test_blink_fast_to_off_on_button_press(void) {
     TEST_ASSERT_EQUAL(STATE_OFF, sm_get_state());
 }
 
-
-typedef struct {
-    state_t target_state;
-    uint32_t interval;
-    const char* description;
-} blink_param_t;
-
 void test_blink_toggles_led_after_interval_parametrized(void)
 {
-    blink_param_t cases[] = {
-        { STATE_BLINK_SLOW, 1000, "BLINK_SLOW interval" },
-        { STATE_BLINK_FAST,  250, "BLINK_FAST interval" },
+    blink_case_t cases[] = {
+        { STATE_BLINK_SLOW, 1000, 0, "BLINK_SLOW interval" },
+        { STATE_BLINK_FAST,  250, 0, "BLINK_FAST interval" },
     };
 
     const int num_cases = sizeof(cases) / sizeof(cases[0]);
@@ -134,7 +128,7 @@ void test_blink_toggles_led_after_interval_parametrized(void)
         // ---------------------------------------------------------
         // At interval
         // ---------------------------------------------------------
-        fake_hal_set_tick(cases[i].interval);
+        fake_hal_set_tick(cases[i].tick);
         sm_tick();
 
         TEST_ASSERT_EQUAL_MESSAGE(
@@ -145,5 +139,69 @@ void test_blink_toggles_led_after_interval_parametrized(void)
     }
 }
 
+void test_blink_timeout_behavior_parametrized(void)
+{
+    // ---------------------------------------------------------
+    // Arrange: define test cases for both BLINK_SLOW and BLINK_FAST
+    // ---------------------------------------------------------
+    blink_case_t cases[] = {
+        // BLINK_SLOW (interval = 1000 ms)
+        { STATE_BLINK_SLOW,    0, 0, "BLINK_SLOW: Tick 0 → no toggle" },
+        { STATE_BLINK_SLOW,  999, 0, "BLINK_SLOW: Tick 999 → no toggle" },
+        { STATE_BLINK_SLOW, 1000, 1, "BLINK_SLOW: Tick 1000 → toggle once" },
+        { STATE_BLINK_SLOW, 1500, 1, "BLINK_SLOW: Tick 1500 → still one toggle" },
+        { STATE_BLINK_SLOW, 2000, 2, "BLINK_SLOW: Tick 2000 → toggle twice" },
 
+        // BLINK_FAST (interval = 200 ms)
+        { STATE_BLINK_FAST,    0, 0, "BLINK_FAST: Tick 0 → no toggle" },
+        { STATE_BLINK_FAST,  199, 0, "BLINK_FAST: Tick 199 → no toggle" },
+        { STATE_BLINK_FAST,  200, 1, "BLINK_FAST: Tick 200 → toggle once" },
+        { STATE_BLINK_FAST,  350, 1, "BLINK_FAST: Tick 350 → still one toggle" },
+        { STATE_BLINK_FAST,  400, 2, "BLINK_FAST: Tick 400 → toggle twice" },
+    };
 
+    const int num_cases = sizeof(cases) / sizeof(cases[0]);
+
+    for (int i = 0; i < num_cases; i++) {
+
+        // ---------------------------------------------------------
+        // Arrange: reset system and enter correct blink mode
+        // ---------------------------------------------------------
+        sm_init();
+        fake_hal_reset();
+
+        // OFF → ON → BLINK_SLOW
+        sm_handle_event(EVENT_BTN_PRESS);
+        sm_handle_event(EVENT_BTN_PRESS);
+
+        // BLINK_SLOW → BLINK_FAST (if needed)
+        if (cases[i].target_state == STATE_BLINK_FAST) {
+            sm_handle_event(EVENT_BTN_PRESS);
+        }
+
+        uint32_t interval = (cases[i].target_state == STATE_BLINK_SLOW) ? 1000 : 200;
+
+        // ---------------------------------------------------------
+        // Act: call sm_tick() once per interval boundary
+        // ---------------------------------------------------------
+        int ticks_to_process = cases[i].tick / interval;
+
+        for (int t = 1; t <= ticks_to_process; t++) {
+            fake_hal_set_tick(t * interval);
+            sm_tick();
+        }
+
+        // Final call at the exact tick of the test case
+        fake_hal_set_tick(cases[i].tick);
+        sm_tick();
+
+        // ---------------------------------------------------------
+        // Assert
+        // ---------------------------------------------------------
+        TEST_ASSERT_EQUAL_MESSAGE(
+            cases[i].expected_toggles,
+            fake_hal_get_toggle_count(),
+            cases[i].description
+        );
+    }
+}
