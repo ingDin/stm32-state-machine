@@ -14,7 +14,10 @@
  * Designed for deterministic behavior and full unit‑test coverage.
  */
 
- #include "state_machine.h"
+#include "state_machine.h"
+#include "hal_wrapper.h"
+
+
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -70,7 +73,7 @@ static bool timer_expired(uint32_t interval) {
 
 static void action_blink(uint32_t interval) {
     if (timer_expired(interval)) {
-        HAL_GPIO_TogglePin(NULL, 0);
+        hal_toggle_led();
         last_toggle_time = HAL_GetTick();
     }
 }

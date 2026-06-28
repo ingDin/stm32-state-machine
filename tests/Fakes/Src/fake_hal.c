@@ -12,6 +12,7 @@
 
 #include <stdint.h>
 #include "fake_hal.h"
+#include "hal_wrapper.h"
 
 // ---------------------------------------------------------
 // Fake tick implementation
@@ -40,7 +41,8 @@ void fake_hal_reset(void) {
 }
 
 // Fake GPIO toggle function
-void HAL_GPIO_TogglePin(void* GPIOx, uint16_t GPIO_Pin) {
+void hal_toggle_led(void)
+{
     fake_toggle_count++;
 }
 
