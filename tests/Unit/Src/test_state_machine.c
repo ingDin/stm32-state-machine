@@ -14,9 +14,9 @@
  */
 
 
-#include "../unity/unity.h"
-#include "../../Core/Inc/state_machine.h"
-#include "../fakes/fake_hal.h"
+#include "unity.h"
+#include "state_machine.h"
+#include "fake_hal.h"
 #include "test_state_machine.h"
 
 void setUp(void) {}

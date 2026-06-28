@@ -10,6 +10,11 @@
  * These structs support clean, table‑driven tests in test_state_machine.c.
  */
 
+
+#ifndef TEST_STATE_MACHINE_H
+#define TEST_STATE_MACHINE_H
+
+#endif
  typedef struct {
     const char* description;
     int num_presses;

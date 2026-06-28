@@ -13,7 +13,6 @@
  *
  * Designed for deterministic behavior and full unit‑test coverage.
  */
- 
 
  #include "state_machine.h"
 #include <stdint.h>

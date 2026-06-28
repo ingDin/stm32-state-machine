@@ -1,4 +1,4 @@
-#include "unity/unity.h"
+#include "unity.h"
 
 void test_state_transitions_parametrized(void);
 void test_blink_timeout_behavior_parametrized(void);
