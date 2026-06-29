@@ -32,11 +32,16 @@ jobs:
       - name: Generate coverage report
         run: |
           lcov --capture --directory build --output-file coverage.info
-          lcov --remove coverage.info "*/Unity/*" --output-file coverage.info --ignore-errors unused
           genhtml coverage.info --output-directory coverage
 
-      - name: Upload coverage report
+      - name: Extract coverage percentage
+        id: coverage
+        run: |
+          LINE_RATE=$(grep "lines......" coverage.info | awk '{print $2}' | sed 's/%//')
+          echo "coverage=$LINE_RATE" >> $GITHUB_OUTPUT
+
+      - name: Save coverage percentage artifact
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-report
-          path: coverage
+          name: coverage-percentage
+          path: coverage.info
