@@ -1,0 +1,40 @@
+name: Update Coverage Badge
+
+on:
+  workflow_run:
+    workflows: ["Run Unit Tests"]
+    types:
+      - completed
+
+jobs:
+  update-badge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download coverage artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-percentage
+
+      - name: Extract coverage percentage
+        id: extract
+        run: |
+          LINE_RATE=$(grep "lines......" coverage.info | awk '{print $2}')
+          echo "coverage=$LINE_RATE" >> $GITHUB_OUTPUT
+
+      - name: Update README badge
+        run: |
+          COVERAGE="${{ steps.extract.outputs.coverage }}"
+          BADGE="![Coverage](https://img.shields.io/badge/coverage-${COVERAGE}-brightgreen)"
+          sed -i "s|^![Coverage].*|$BADGE|" README.md
+
+      - name: Commit badge update
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add README.md
+          git commit -m "Update coverage badge to ${{ steps.extract.outputs.coverage }}"
+          git push
