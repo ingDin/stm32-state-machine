@@ -38,21 +38,14 @@ This keeps the code clean, testable, and easy to extend.
 
 ## 📁 Project Structure
 
-    stm32-state-machine/
-    ├── Core/
-    │   ├── Inc/
-    │   │   ├── app.h
-    │   │   ├── state_machine.h
-    │   │   ├── button.h
-    │   │   └── led.h
-    │   │
-    │   └── Src/
-    │       ├── app.c
-    │       ├── state_machine.c
-    │       ├── button.c
-    │       └── led.c
-    │
-    └── README.md
+    App
+    ├── Inc
+    │   ├── hal_wrapper.h
+    │   ├── state_machine.h
+    │   
+    └── Src
+        ├── hal_wrapper.c
+        ├── state_machine.c
 
 ---
 
@@ -221,15 +214,24 @@ This approach ensures the state machine evolves safely and remains fully testabl
 ### Test Directory Structure
 Tests mirror the module layout to keep responsibilities clear:
 
-    tests/
-    ├── unit/
-    │   ├── test_state_machine.c
-    │   ├── test_button.c
-    │   ├── test_led.c
-    │   └── test_app.c
-    └── integration/
-        ├── test_event_flow.c
-        └── test_state_transitions.c
+    Tests
+    ├── unit_tests.exe
+    │
+    ├── Fakes
+    │   └── Src
+    │       ├── fake_hal.c
+    │       └── fake_hal.h
+    │
+    ├── Unit
+    │   └── Src
+    │       ├── test_state_machine.c
+    │       └── test_state_machine.h
+    │
+    └── Unity
+        └── Src
+            ├── unity.c
+            └── unity.h
+
 
 
 ### Unit Test Suite (Current Focus)
