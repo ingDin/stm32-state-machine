@@ -12,6 +12,12 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../App/Inc
 )
 
+# Coverage flags
+if(CMAKE_COMPILER_IS_GNUCC)
+    add_compile_options(--coverage)
+    add_link_options(--coverage)
+endif()
+
 # Macro to create separate Unity test executables
 # All tests come from the SAME file: test_state_machine.c
 function(add_unity_test TEST_NAME TEST_ARG)

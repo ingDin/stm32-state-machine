@@ -10,16 +10,33 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install build tools
-        run: sudo apt-get update && sudo apt-get install -y cmake build-essential
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake build-essential lcov
 
-      - name: Configure CMake
-        run: cmake -S . -B build
+      - name: Configure CMake (with coverage flags)
+        run: |
+          cmake -S . -B build \
+            -DCMAKE_C_FLAGS="--coverage" \
+            -DCMAKE_EXE_LINKER_FLAGS="--coverage"
 
       - name: Build unit tests
         run: cmake --build build
 
       - name: Run Unit Tests
         run: ctest --test-dir build --output-on-failure
+
+      - name: Generate coverage report
+        run: |
+          lcov --capture --directory build --output-file coverage.info
+          lcov --remove coverage.info "*/Unity/*" --output-file coverage.info --ignore-errors unused
+          genhtml coverage.info --output-directory coverage
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage
