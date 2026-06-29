@@ -1,4 +1,6 @@
-# STM32 LED Control State Machine  
+# STM32 LED Control State Machine
+![Tests Passed](https://img.shields.io/github/actions/workflow/status/ingDin/stm32-state-machine/tests.yml?label=Tests%20Passed&logo=github&style=flat-square)
+
 Interrupt‑Driven Input • Non‑Blocking LED Logic • Modular Architecture
 
 ---
