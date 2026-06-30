@@ -34,6 +34,8 @@ typedef enum {
 
 typedef enum {
     EVENT_BTN_PRESS,
+    EVENT_TIMEOUT,
+    EVENT_BTN_RELEASE,
     EVENT_NONE
 } event_t;
 
@@ -50,7 +52,6 @@ typedef struct {
 void sm_init(void);
 void sm_handle_event(event_t event);
 state_t sm_get_state(void);
-void sm_update(void);
 void sm_tick(void);
 uint32_t sm_get_timer(void);
 

@@ -17,6 +17,7 @@
 #include "unity.h"
 #include "state_machine.h"
 #include "fake_hal.h"
+#include "fake_tguard.h"
 #include "test_state_machine.h"
 
 void setUp(void) {}
@@ -229,6 +230,96 @@ void test_timer_resets_on_state_change_parametrized(void)
             1,
             sm_get_timer(),
             "Timer must restart from 0 after transition"
+        );
+    }
+}
+
+void test_next_state_returns_current_when_no_transition_parametrized(void)
+{
+    no_transition_case_t cases[] = {
+        { "OFF + EVENT_TIMEOUT → remain OFF",              STATE_OFF,        EVENT_TIMEOUT },
+        { "ON + EVENT_TIMEOUT → remain ON",                STATE_ON,         EVENT_TIMEOUT },
+        { "BLINK_SLOW + EVENT_TIMEOUT → remain BLINK_SLOW", STATE_BLINK_SLOW, EVENT_TIMEOUT },
+        { "BLINK_FAST + EVENT_TIMEOUT → remain BLINK_FAST", STATE_BLINK_FAST, EVENT_TIMEOUT },
+
+        { "OFF + EVENT_BTN_RELEASE → remain OFF",              STATE_OFF,        EVENT_BTN_RELEASE },
+        { "ON + EVENT_BTN_RELEASE → remain ON",                STATE_ON,         EVENT_BTN_RELEASE },
+        { "BLINK_SLOW + EVENT_BTN_RELEASE → remain BLINK_SLOW", STATE_BLINK_SLOW, EVENT_BTN_RELEASE },
+        { "BLINK_FAST + EVENT_BTN_RELEASE → remain BLINK_FAST", STATE_BLINK_FAST, EVENT_BTN_RELEASE }
+    };
+
+    const int num_cases = sizeof(cases) / sizeof(cases[0]);
+
+    for (int i = 0; i < num_cases; i++) {
+
+        sm_init();
+
+        // ---------------------------------------------------------
+        // Move the FSM into the desired initial state
+        // ---------------------------------------------------------
+        switch (cases[i].initial_state) {
+            case STATE_ON:
+                sm_handle_event(EVENT_BTN_PRESS);
+                break;
+
+            case STATE_BLINK_SLOW:
+                sm_handle_event(EVENT_BTN_PRESS);
+                sm_handle_event(EVENT_BTN_PRESS);
+                break;
+
+            case STATE_BLINK_FAST:
+                sm_handle_event(EVENT_BTN_PRESS);
+                sm_handle_event(EVENT_BTN_PRESS);
+                sm_handle_event(EVENT_BTN_PRESS);
+                break;
+
+            default:
+                break; // STATE_OFF is already set by sm_init()
+        }
+
+        TEST_ASSERT_EQUAL_MESSAGE(
+            cases[i].initial_state,
+            sm_get_state(),
+            "FSM must be in the expected initial state"
+        );
+
+        // ---------------------------------------------------------
+        // Act: trigger an event that should NOT cause a transition
+        // ---------------------------------------------------------
+        sm_handle_event(cases[i].event_without_transition);
+
+        // ---------------------------------------------------------
+        // Assert: the state must remain unchanged
+        // ---------------------------------------------------------
+        TEST_ASSERT_EQUAL_MESSAGE(
+            cases[i].initial_state,
+            sm_get_state(),
+            cases[i].description
+        );
+    }
+}
+
+void test_guard_always_true_parametrized(void)
+{
+    guard_case_t cases[] = {
+        { false, STATE_OFF, "guard FALSE → remain OFF" },
+        { true,  STATE_ON,  "guard TRUE → transition to ON" }
+    };
+
+    int num_cases = sizeof(cases) / sizeof(cases[0]);
+
+    for (int i = 0; i < num_cases; i++)
+    {
+        sm_init();
+        fake_tguard_reset();
+        fake_tguard_set(cases[i].guard_value);
+
+        sm_handle_event(EVENT_BTN_PRESS);
+
+        TEST_ASSERT_EQUAL_MESSAGE(
+            cases[i].expected_state,
+            sm_get_state(),
+            cases[i].description
         );
     }
 }

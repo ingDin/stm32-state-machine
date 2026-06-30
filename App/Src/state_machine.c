@@ -16,6 +16,7 @@
 
 #include "state_machine.h"
 #include "hal_wrapper.h"
+#include "guards.h"
 
 
 #include <stdint.h>
@@ -28,8 +29,6 @@ static state_t current_state;
 static uint32_t last_toggle_time = 0;
 static uint32_t state_timer = 0;
 static bool led_state = false;
-
-static bool guard_always_true(void) { return true; }
 
 /* COMMON ENTRY HELPERS */
 static void entry_common(void) {
@@ -96,10 +95,10 @@ static action_fn_t actions[STATE_COUNT] = {
 };
 
 static const transition_t transitions[] = {
-    { STATE_OFF,        EVENT_BTN_PRESS, guard_always_true, STATE_ON },
-    { STATE_ON,         EVENT_BTN_PRESS, guard_always_true, STATE_BLINK_SLOW },
-    { STATE_BLINK_SLOW, EVENT_BTN_PRESS, guard_always_true, STATE_BLINK_FAST },
-    { STATE_BLINK_FAST, EVENT_BTN_PRESS, guard_always_true, STATE_OFF }
+    { STATE_OFF,        EVENT_BTN_PRESS, tguard, STATE_ON },
+    { STATE_ON,         EVENT_BTN_PRESS, tguard, STATE_BLINK_SLOW },
+    { STATE_BLINK_SLOW, EVENT_BTN_PRESS, tguard, STATE_BLINK_FAST },
+    { STATE_BLINK_FAST, EVENT_BTN_PRESS, tguard, STATE_OFF }
 };
 
 static const int transition_count =
@@ -135,10 +134,6 @@ state_t sm_get_state(void) {
 
 uint32_t sm_get_timer(void) {
     return state_timer;
-}
-
-void sm_update(void) {
-    actions[current_state]();
 }
 
 void sm_tick(void) {

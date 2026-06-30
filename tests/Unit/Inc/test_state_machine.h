@@ -14,8 +14,7 @@
 #ifndef TEST_STATE_MACHINE_H
 #define TEST_STATE_MACHINE_H
 
-#endif
- typedef struct {
+typedef struct {
     const char* description;
     int num_presses;
     state_t expected_state;
@@ -33,3 +32,17 @@ typedef struct {
     int num_presses_before_transition;
     state_t expected_state_after_transition;
 } timer_reset_case_t;
+
+typedef struct {
+    const char* description;
+    state_t initial_state;
+    event_t event_without_transition;
+} no_transition_case_t;
+
+typedef struct {
+    bool guard_value;
+    state_t expected_state;
+    const char *description;
+} guard_case_t;
+
+#endif
