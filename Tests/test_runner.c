@@ -29,22 +29,14 @@ int main(int argc, char **argv)
 
     const char *exe = argv[0];
 
-    // // DEBUG mode → run only ONE test
-    // if (argc == 2 && strcmp(argv[1], "debug") == 0) {
-    //     for (size_t i = 0; i < sizeof(tests)/sizeof(tests[0]); i++) {
-    //         if (strstr(exe, tests[i].match) != NULL) {
-    //             RUN_TEST(tests[i].fn);
-    //             return UNITY_END();
-    //         }
-    //     }
-    //     printf("ERROR: Unknown test executable: %s\n", exe);
-    //     return UNITY_END();
-    // }
-
-    // NORMAL mode → run ALL tests
+    // Run the test that matches the executable name
     for (size_t i = 0; i < sizeof(tests)/sizeof(tests[0]); i++) {
-        RUN_TEST(tests[i].fn);
+        if (strstr(exe, tests[i].match) != NULL) {
+            RUN_TEST(tests[i].fn);
+            return UNITY_END();
+        }
     }
 
+    printf("ERROR: Unknown test executable: %s\n", exe);
     return UNITY_END();
 }

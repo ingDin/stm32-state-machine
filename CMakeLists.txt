@@ -4,4 +4,6 @@ project(control_led C)
 enable_testing()
 
 add_subdirectory(App)
-add_subdirectory(tests)
+add_subdirectory(Tests)
+
+option(ENABLE_COVERAGE "Enable coverage reporting" OFF)

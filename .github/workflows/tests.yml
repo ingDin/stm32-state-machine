@@ -15,7 +15,7 @@ jobs:
       - name: Install build tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake build-essential lcov
+          sudo apt-get install -y cmake build-essential lcov gcovr
 
       - name: Configure CMake (with coverage flags)
         run: |
@@ -29,19 +29,26 @@ jobs:
       - name: Run Unit Tests
         run: ctest --test-dir build --output-on-failure
 
-      - name: Generate coverage report
+      - name: Generate coverage report with gcovr
         run: |
-          lcov --capture --directory build --output-file coverage.info
-          genhtml coverage.info --output-directory coverage
+          gcovr -r . \
+            --exclude 'Tests/Unity' \
+            --xml-pretty -o coverage.xml
+
+          gcovr -r . \
+            --exclude 'Tests/Unity' \
+            --html-details -o coverage.html
 
       - name: Extract coverage percentage
         id: coverage
         run: |
-          LINE_RATE=$(grep "lines......" coverage.info | awk '{print $2}' | sed 's/%//')
+          LINE_RATE=$(gcovr -r . --exclude 'Tests/Unity' --txt | grep "lines:" | awk '{print $2}' | sed 's/%//')
           echo "coverage=$LINE_RATE" >> $GITHUB_OUTPUT
 
-      - name: Save coverage percentage artifact
+      - name: Save coverage artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-percentage
-          path: coverage.info
+          name: coverage-report
+          path: |
+            coverage.xml
+            coverage.html
