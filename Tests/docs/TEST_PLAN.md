@@ -1,4 +1,4 @@
-# 🧪 **TEST PLAN – STM32 LED State Machine Project (English Version)**
+# **TEST PLAN – STM32 LED State Machine Project**
 
 ---
 

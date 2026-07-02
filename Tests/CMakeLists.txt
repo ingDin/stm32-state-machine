@@ -33,18 +33,34 @@ execute_process(
 string(REPLACE "\n" ";" UNITY_TEST_LIST "${UNITY_TEST_LIST}")
 
 # ============================================
+#  GLOB for Unity / Unit / Fakes
+# ============================================
+
+file(GLOB UNITY_SRC
+    "${CMAKE_CURRENT_SOURCE_DIR}/Unity/Src/*.c"
+)
+
+file(GLOB UNIT_SRC
+    "${CMAKE_CURRENT_SOURCE_DIR}/Unit/Src/*.c"
+)
+
+file(GLOB FAKES_SRC
+    "${CMAKE_CURRENT_SOURCE_DIR}/Fakes/Src/*.c"
+)
+
+# ============================================
 #  Generate executables for each test
 # ============================================
 
 foreach(EXE_NAME ${UNITY_TEST_LIST})
 
     add_executable(${EXE_NAME}
-        ${CMAKE_CURRENT_SOURCE_DIR}/Unity/Src/unity.c
+        ${UNITY_SRC}
+        ${UNIT_SRC}
+        ${FAKES_SRC}
         ${CMAKE_CURRENT_SOURCE_DIR}/test_runner.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/Unit/Src/test_state_machine.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/Fakes/Src/fake_hal.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/Fakes/Src/fake_tguard.c
         ${CMAKE_CURRENT_SOURCE_DIR}/../App/Src/state_machine.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/../App/Src/button.c
     )
 
     target_include_directories(${EXE_NAME} PUBLIC

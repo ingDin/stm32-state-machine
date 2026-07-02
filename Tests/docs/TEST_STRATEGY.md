@@ -1,4 +1,4 @@
-# 🧪 TEST_STRATEGY.md  
+# TEST_STRATEGY.md  
 STM32 LED State Machine – TDD Project
 
 ---

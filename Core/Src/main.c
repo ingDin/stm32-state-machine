@@ -203,9 +203,11 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     	/*
 		 * This ISR forwards the button event to the application layer.
 		 */
+      bool raw = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
+      button_isr_handler(raw);   // forward raw level to your button module
     }
-}
 
+}
 /* USER CODE END 4 */
 
 /**

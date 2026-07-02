@@ -20,9 +20,6 @@
 #include "fake_tguard.h"
 #include "test_state_machine.h"
 
-void setUp(void) {}
-void tearDown(void) {}
-
 void test_state_transitions_parametrized(void)
 {
     // ---------------------------------------------------------

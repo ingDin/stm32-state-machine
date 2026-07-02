@@ -7,6 +7,9 @@ void test_blink_timeout_behavior_parametrized(void);
 void test_timer_resets_on_state_change_parametrized(void);
 void test_next_state_returns_current_when_no_transition_parametrized(void);
 void test_guard_always_true_parametrized(void);
+void test_button_press_scenarios_parametrized(void);
+void test_button_release_scenarios_parametrized(void);
+void test_button_is_pressed_scenarios_parametrized(void);
 
 typedef void (*test_fn_t)(void);
 
@@ -20,7 +23,10 @@ static const test_entry_t tests[] = {
     { "test_blink_timeout",      test_blink_timeout_behavior_parametrized },
     { "test_timer_resets",       test_timer_resets_on_state_change_parametrized },
     { "test_next_state_returns", test_next_state_returns_current_when_no_transition_parametrized },
-    { "test_guard_always_true",  test_guard_always_true_parametrized }
+    { "test_guard_always_true",  test_guard_always_true_parametrized },
+    { "test_button_press",       test_button_press_scenarios_parametrized },
+    { "test_button_release",     test_button_release_scenarios_parametrized },
+    { "test_button_is_pressed",  test_button_is_pressed_scenarios_parametrized }
 };
 
 int main(int argc, char **argv)
