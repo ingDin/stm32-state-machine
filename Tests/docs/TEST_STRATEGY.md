@@ -46,7 +46,7 @@ STM32 LED State Machine – TDD Project
 
 ## 3.2 Testing Approach
 - Deterministic Fake HAL for ticks and GPIO toggles.
-- Parametrized tests for transitions and timing.
+- Parameterized tests for transitions and timing.
 - Black-box + white-box techniques combined.
 - Model-based testing using FSM diagram.
 
@@ -279,7 +279,7 @@ Code
 | T3 | BLINK_SLOW | BUTTON_PRESSED | BLINK_FAST | Increase speed |
 | T4 | BLINK_FAST | BUTTON_PRESSED | OFF | Turn LED OFF |
 
-**Parametrized Test Data:**
+**Parameterized Test Data:**
 {
 {"OFF → ON", OFF, BUTTON_PRESSED, ON},
 {"ON → BLINK_SLOW", ON, BUTTON_PRESSED, BLINK_SLOW},

@@ -20,7 +20,7 @@ for file in test_files:
         # Detect Unity test functions: void test_xxx(...)
         if stripped.startswith("void test_") and "(" in stripped:
             func_name = stripped.split("(")[0].replace("void", "").strip()
-            exe_name = func_name.replace("_parametrized", "")
+            exe_name = func_name.replace("_parameterized", "")
             tests.append(exe_name)
 
 # Output ONLY the executable names, one per line

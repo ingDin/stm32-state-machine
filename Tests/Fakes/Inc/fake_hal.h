@@ -20,4 +20,7 @@ void fake_hal_reset(void);
 void HAL_GPIO_TogglePin(void*, uint16_t);
 int fake_hal_get_toggle_count(void);
 
+uint32_t HAL_GetTick(void);
+void hal_toggle_led(void);
+
 #endif

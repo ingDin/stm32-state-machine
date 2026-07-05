@@ -2,7 +2,7 @@
  * @file test_state_machine.h
  * @brief Test case structures for the state machine unit tests.
  *
- * Defines small data containers used by the parametrized tests:
+ * Defines small data containers used by the parameterized tests:
  *   - state transition cases
  *   - blink timing cases
  *   - timer reset cases
@@ -10,39 +10,13 @@
  * These structs support clean, table‑driven tests in test_state_machine.c.
  */
 
-
 #ifndef TEST_STATE_MACHINE_H
 #define TEST_STATE_MACHINE_H
 
-typedef struct {
-    const char* description;
-    int num_presses;
-    state_t expected_state;
-} state_transition_case_t;
-
-typedef struct {
-    state_t target_state;
-    uint32_t tick;
-    int expected_toggles;
-    const char* description;
-} blink_case_t;
-
-typedef struct {
-    const char* description;
-    int num_presses_before_transition;
-    state_t expected_state_after_transition;
-} timer_reset_case_t;
-
-typedef struct {
-    const char* description;
-    state_t initial_state;
-    event_t event_without_transition;
-} no_transition_case_t;
-
-typedef struct {
-    bool guard_value;
-    state_t expected_state;
-    const char *description;
-} guard_case_t;
+void test_state_transitions_parameterized(void);
+void test_blink_timeout_behavior_parameterized(void);
+void test_timer_resets_on_state_change_parameterized(void);
+void test_next_state_returns_current_when_no_transition_parameterized(void);
+void test_guard_always_true_parameterized(void);
 
 #endif
