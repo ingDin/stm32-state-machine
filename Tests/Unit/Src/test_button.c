@@ -1,3 +1,11 @@
+/**
+ * @file test_button.c
+ * @brief Parameterized tests for debounced button events and state.
+ *
+ * Verifies press, release, and stable pressed-state behavior using raw
+ * input sequences processed through ISR and debounce logic.
+ */
+
 #include "unity.h"
 #include "button.h"
 #include "test_button.h"

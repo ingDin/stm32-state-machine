@@ -1,4 +1,13 @@
-#include "led.h"
+/**
+ * @file led.c
+ * @brief Periodic LED toggle module using HAL tick timing.
+ *
+ * Tracks elapsed time using HAL_GetTick() and toggles the LED every
+ * LED_PERIOD_MS milliseconds. Provides initialization, periodic tick
+ * processing, and access to the fake HAL toggle counter for testing.
+ */
+
+ #include "led.h"
 #include "hal_wrapper.h"
 #include "fake_hal.h"
 

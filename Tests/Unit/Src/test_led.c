@@ -1,3 +1,15 @@
+/**
+ * @file test_led.c
+ * @brief Parameterized Unity tests for the LED timing module.
+ *
+ * This test suite verifies two behaviors:
+ *   - led_init(): correctly resets internal state without toggling.
+ *   - led_tick(): toggles the LED every 500 ms based on the fake HAL tick.
+ *
+ * The tests use parameterized inputs to simulate different system tick values
+ * and ensure deterministic LED behavior under timing conditions.
+ */
+
 #include "unity.h"
 #include "led.h"
 #include "fake_hal.h"

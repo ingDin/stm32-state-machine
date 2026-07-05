@@ -4,6 +4,7 @@
 #include "test_led.h"
 #include "test_button.h"
 #include "test_state_machine.h"
+#include "test_app.h"
 
 typedef void (*test_fn_t)(void);
 
@@ -24,7 +25,14 @@ static const test_entry_t tests[] = {
     {"test_button_is_pressed", test_button_is_pressed_scenarios_parameterized},
     {"test_led_init", test_led_init_parameterized},
     {"test_led_tick", test_led_tick_parameterized},
+    {"test_app_tick_press", test_app_tick_press_parameterized},
+    {"test_app_tick_release", test_app_tick_release_parameterized},
+    {"test_app_init", test_app_init_parameterized},
+    {"test_app_tick_no_event", test_app_tick_no_event_parameterized},
+    {"test_app_tick_bounce", test_app_tick_bounce_parameterized},
+    {"test_app_tick_stable_no_new_event", test_app_tick_stable_no_new_event_parameterized},
 };
+
 
 int main(int argc, char **argv)
 {

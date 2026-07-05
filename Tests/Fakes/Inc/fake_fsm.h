@@ -7,4 +7,4 @@ void fake_fsm_reset(void);
 void fake_fsm_push_event(event_t e);
 event_t fake_fsm_last_event(void);
 
-#endif
+#endif // FAKE_FSM_H

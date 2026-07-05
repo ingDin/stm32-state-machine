@@ -8,4 +8,4 @@ void fake_tguard_reset(void);
 
 bool tguard(void);
 
-#endif
+#endif // FAKE_TGUARD_H

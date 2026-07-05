@@ -62,6 +62,7 @@ foreach(EXE_NAME ${UNITY_TEST_LIST})
         ${CMAKE_CURRENT_SOURCE_DIR}/../App/Src/state_machine.c
         ${CMAKE_CURRENT_SOURCE_DIR}/../App/Src/button.c
         ${CMAKE_CURRENT_SOURCE_DIR}/../App/Src/led.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/../App/Src/app.c
     )
 
     target_include_directories(${EXE_NAME} PUBLIC

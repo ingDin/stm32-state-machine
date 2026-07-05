@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "app.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -92,6 +93,9 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  app_init();
+  app_run();
+  #if 0
   while (1)
   {
     /* USER CODE END WHILE */
@@ -100,7 +104,9 @@ int main(void)
     HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
     HAL_Delay(2000);
   }
+
   /* USER CODE END 3 */
+  #endif
 }
 
 /**

@@ -5,4 +5,4 @@ void test_button_press_scenarios_parameterized(void);
 void test_button_release_scenarios_parameterized(void);
 void test_button_is_pressed_scenarios_parameterized(void);
 
-#endif
+#endif //TEST_BUTTON_H

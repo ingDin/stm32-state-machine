@@ -1,3 +1,11 @@
+/**
+ * @file button.c
+ * @brief Debounce logic and event generation for button input.
+ *
+ * Handles raw ISR updates, applies a 3‑tick debounce, emits press/release
+ * events, and exposes the stable pressed state.
+ */
+
 #include "button.h"
 #include "fake_fsm.h"
 
