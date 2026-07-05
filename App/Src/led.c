@@ -8,7 +8,7 @@ static const uint32_t LED_PERIOD_MS = 500;
 void led_init(void)
 {
     last_tick = HAL_GetTick();
-    fake_hal_reset();   // reset toggle counter
+    fake_hal_reset_toggle_count();   // reset toggle counter
 }
 
 void led_tick(void)

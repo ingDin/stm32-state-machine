@@ -37,6 +37,11 @@ static int fake_toggle_count = 0;
 // Reset fake HAL state (tick + toggle counter)
 void fake_hal_reset(void) {
     fake_tick = 0;
+    fake_hal_reset_toggle_count();
+}
+
+void fake_hal_reset_toggle_count(void)
+{
     fake_toggle_count = 0;
 }
 

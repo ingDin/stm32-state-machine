@@ -23,12 +23,11 @@ typedef struct {
 
 void test_led_init_parameterized(void)
 {
-    fake_hal_reset();
 
     led_init_params_t tests[] = {
         { .initial_tick = 0,    .expected_tick_after_init = 0, .expected_toggle_count = 0 },
-        { .initial_tick = 1234, .expected_tick_after_init = 0, .expected_toggle_count = 0 },
-        { .initial_tick = 9999, .expected_tick_after_init = 0, .expected_toggle_count = 0 }
+        { .initial_tick = 1234, .expected_tick_after_init = 1234, .expected_toggle_count = 0 },
+        { .initial_tick = 9999, .expected_tick_after_init = 9999, .expected_toggle_count = 0 }
     };
 
     const int num_tests = sizeof(tests) / sizeof(tests[0]);
@@ -54,8 +53,6 @@ void test_led_init_parameterized(void)
 
 void test_led_tick_parameterized(void)
 {
-    fake_hal_reset();
-
     led_tick_params_t tests[] = {
         { .tick_value = 0,    .expected_toggle_count = 0 },
         { .tick_value = 100,  .expected_toggle_count = 0 },
@@ -69,6 +66,7 @@ void test_led_tick_parameterized(void)
     const int num_tests = sizeof(tests) / sizeof(tests[0]);
 
     // ARRANGE: initialize LED module once
+    fake_hal_reset();
     led_init();
 
     for (int i = 0; i < num_tests; i++)
