@@ -84,7 +84,7 @@ Validates:
 
 ---
 
-## 6. UML Sequence Diagram (Mermaid)
+## 6. UML Sequence Diagram
 
 ```mermaid
 sequenceDiagram

@@ -124,7 +124,7 @@ On every state transition:
 
 ---
 
-# 4. Mermaid UML State Diagram
+# 4. UML State Diagram
 
 ```mermaid
 stateDiagram-v2

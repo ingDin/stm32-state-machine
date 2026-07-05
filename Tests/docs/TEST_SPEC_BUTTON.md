@@ -168,7 +168,7 @@ The module implements:
 
 ---
 
-# 5. Mermaid UML State Diagram
+# 5. UML State Diagram
 
 ```mermaid
 stateDiagram-v2
