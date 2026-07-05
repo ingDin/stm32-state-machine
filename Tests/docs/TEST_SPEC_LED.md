@@ -2,7 +2,7 @@
 
 ## 1. Overview
 This document defines the functional test specification for the LED timing module.  
-It is derived from the parameterized unit tests:
+From it derives the parameterized unit tests:
 - `test_led_init_parameterized`
 - `test_led_tick_parameterized`
 
