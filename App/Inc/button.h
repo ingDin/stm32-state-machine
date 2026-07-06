@@ -1,12 +1,15 @@
-// button.h
 #ifndef BUTTON_H
 #define BUTTON_H
-
 #include <stdbool.h>
+#include "state_machine.h"   // for event_t
+
+typedef void (*button_event_cb_t)(event_t event);
 
 void button_init(void);
-void button_isr_handler(int raw_level);   // called from ISR
-void button_tick(void);                    // called periodically (e.g., in sm_tick)
-bool button_is_pressed(void);              // stable state
+void button_isr_handler(int level);
+void button_tick(void);
+bool button_is_pressed(void);
 
+/* NEW: callback injection */
+void button_set_callback(button_event_cb_t cb);
 #endif

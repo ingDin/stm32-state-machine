@@ -7,9 +7,9 @@
  */
 
 #include "unity.h"
+#include "fake_fsm.h"
 #include "button.h"
 #include "test_button.h"
-#include "fake_fsm.h"
 
 typedef struct
 {
@@ -20,7 +20,11 @@ typedef struct
     int expected_pressed;
 } button_test_case_t;
 
-void setUp(void){}
+static void fake_sink(event_t event)
+{
+    fake_fsm_push_event(event);
+}
+void setUp(void){button_set_callback(fake_sink);}
 void tearDown(void){}
 
 static void run_sequence(const int *seq, int len)

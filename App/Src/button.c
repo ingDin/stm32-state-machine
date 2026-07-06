@@ -1,19 +1,20 @@
-/**
- * @file button.c
- * @brief Debounce logic and event generation for button input.
- *
- * Handles raw ISR updates, applies a 3‑tick debounce, emits press/release
- * events, and exposes the stable pressed state.
- */
-
 #include "button.h"
-#include "fake_fsm.h"
+#include "fake_fsm.h"     // pentru EVENT_BTN_PRESS / RELEASE
+#include <stddef.h>       // pentru NULL
 
 #define DEBOUNCE_TICKS 3
 
 static int raw_level = 0;
 static int stable_state = 0;
 static int debounce = 0;
+
+/* injected callback */
+static button_event_cb_t event_cb = NULL;
+
+void button_set_callback(button_event_cb_t cb)
+{
+    event_cb = cb;
+}
 
 void button_init(void)
 {
@@ -40,11 +41,13 @@ void button_tick(void)
             stable_state = raw_level;
             debounce = 0;
 
-            if (previous == 0 && stable_state == 1)
-                fake_fsm_push_event(EVENT_BTN_PRESS);
+            if (event_cb) {
+                if (previous == 0 && stable_state == 1)
+                    event_cb(EVENT_BTN_PRESS);
 
-            if (previous == 1 && stable_state == 0)
-                fake_fsm_push_event(EVENT_BTN_RELEASE);
+                if (previous == 1 && stable_state == 0)
+                    event_cb(EVENT_BTN_RELEASE);
+            }
         }
     }
     else {

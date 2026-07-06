@@ -15,6 +15,7 @@ void app_init(void)
 {
     fake_hal_reset();
     button_init();
+    button_set_callback(sm_handle_event);
     sm_init();
 }
 
