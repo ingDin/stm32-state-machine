@@ -1,0 +1,18 @@
+test_app_tick_press 1 0.199749
+test_app_tick_release 1 0.194025
+test_app_init 1 0.200715
+test_app_tick_no_event 1 0.195621
+test_app_tick_bounce 1 0.213926
+test_app_tick_stable_no_new_event 1 0.208415
+test_button_press_scenarios 1 0.213042
+test_button_release_scenarios 1 0.235543
+test_button_is_pressed_scenarios 1 0.219743
+test_led_init 1 0.229518
+test_led_tick 1 0.324293
+test_state_transitions 1 0.220884
+test_blink_toggles_led_after_interval 1 0.303057
+test_blink_timeout_behavior 1 0.252939
+test_timer_resets_on_state_change 1 0.262192
+test_next_state_returns_current_when_no_transition 1 0.27075
+test_guard_always_true 1 0.22403
+---

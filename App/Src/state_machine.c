@@ -23,7 +23,6 @@
 #include <stdbool.h>
 
 extern uint32_t HAL_GetTick(void);
-extern void HAL_GPIO_TogglePin(void* GPIOx, uint16_t GPIO_Pin);
 
 static state_t current_state;
 static uint32_t last_toggle_time = 0;

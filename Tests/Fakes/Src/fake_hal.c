@@ -4,7 +4,7 @@
  *
  * Provides deterministic replacements for:
  *   - HAL_GetTick()
- *   - HAL_GPIO_TogglePin()
+ *   - hal_toggle_led()
  *
  * Used by the state machine tests to control time progression
  * and count LED toggles without hardware dependencies.

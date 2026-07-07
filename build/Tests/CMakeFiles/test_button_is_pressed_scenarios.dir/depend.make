@@ -1,0 +1,2 @@
+# Empty dependencies file for test_button_is_pressed_scenarios.
+# This may be replaced when dependencies are built.

@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/cmake_install.cmake",
+		"D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/App/cmake_install.cmake",
+		"D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
