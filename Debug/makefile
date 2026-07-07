@@ -10,7 +10,10 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Startup/subdir.mk
--include Src/subdir.mk
+-include Drivers/UserButton/Src/subdir.mk
+-include Drivers/GPIO/Src/subdir.mk
+-include Drivers/Delay/Src/subdir.mk
+-include Core/Src/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)

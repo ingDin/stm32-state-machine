@@ -1,0 +1,2 @@
+../Drivers/GPIO/Src/led.c:6:6:led_init	8	static
+../Drivers/GPIO/Src/led.c:18:6:led_toggle	8	static

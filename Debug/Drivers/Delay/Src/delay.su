@@ -1,0 +1,2 @@
+../Drivers/Delay/Src/delay.c:10:6:delay_init	4	static
+../Drivers/Delay/Src/delay.c:26:6:delay_ms	24	static
