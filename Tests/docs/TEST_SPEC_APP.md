@@ -111,7 +111,7 @@ Validates:
 | Dirty button raw level | Must be reset by init |
 
 #### Expected Output
-- `HAL_GetTick() == 0`
+- `hal_get_tick() == 0`
 - `button_is_pressed() == false`
 
 ---

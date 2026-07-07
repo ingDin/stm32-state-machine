@@ -11,7 +11,7 @@ The test suite validates the following behaviors:
 - Full transition cycle:  
   **OFF → ON → BLINK_SLOW → BLINK_FAST → OFF**
 - Blink timing behavior for slow/fast modes
-- LED toggle timing based on `HAL_GetTick()`
+- LED toggle timing based on `hal_get_tick()`
 - Internal timer reset on state transitions
 - Guard‑controlled transitions
 - No transitions on irrelevant events

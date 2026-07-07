@@ -1,10 +1,10 @@
-Start testing: Jul 07 19:04 GTB Daylight Time
+Start testing: Jul 07 19:16 GTB Daylight Time
 ----------------------------------------------------------
 1/17 Testing: test_app_tick_press
 1/17 Test: test_app_tick_press
 Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_app_tick_press.exe"
 Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_app_tick_press" start time: Jul 07 19:04 GTB Daylight Time
+"test_app_tick_press" start time: Jul 07 19:16 GTB Daylight Time
 Output:
 ----------------------------------------------------------
 D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
@@ -13,10 +13,10 @@ D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests
 1 Tests 0 Failures 0 Ignored 
 OK
 <end of output>
-Test time =   0.20 sec
+Test time =   0.18 sec
 ----------------------------------------------------------
 Test Passed.
-"test_app_tick_press" end time: Jul 07 19:04 GTB Daylight Time
+"test_app_tick_press" end time: Jul 07 19:16 GTB Daylight Time
 "test_app_tick_press" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -24,7 +24,47 @@ Test Passed.
 2/17 Test: test_app_tick_release
 Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_app_tick_release.exe"
 Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_app_tick_release" start time: Jul 07 19:04 GTB Daylight Time
+"test_app_tick_release" start time: Jul 07 19:16 GTB Daylight Time
+Output:
+----------------------------------------------------------
+D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+<end of output>
+Test time =   0.21 sec
+----------------------------------------------------------
+Test Passed.
+"test_app_tick_release" end time: Jul 07 19:16 GTB Daylight Time
+"test_app_tick_release" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/17 Testing: test_app_init
+3/17 Test: test_app_init
+Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_app_init.exe"
+Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
+"test_app_init" start time: Jul 07 19:16 GTB Daylight Time
+Output:
+----------------------------------------------------------
+D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+<end of output>
+Test time =   0.22 sec
+----------------------------------------------------------
+Test Passed.
+"test_app_init" end time: Jul 07 19:16 GTB Daylight Time
+"test_app_init" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/17 Testing: test_app_tick_no_event
+4/17 Test: test_app_tick_no_event
+Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_app_tick_no_event.exe"
+Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
+"test_app_tick_no_event" start time: Jul 07 19:16 GTB Daylight Time
 Output:
 ----------------------------------------------------------
 D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
@@ -36,47 +76,7 @@ OK
 Test time =   0.19 sec
 ----------------------------------------------------------
 Test Passed.
-"test_app_tick_release" end time: Jul 07 19:04 GTB Daylight Time
-"test_app_tick_release" time elapsed: 00:00:00
-----------------------------------------------------------
-
-3/17 Testing: test_app_init
-3/17 Test: test_app_init
-Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_app_init.exe"
-Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_app_init" start time: Jul 07 19:04 GTB Daylight Time
-Output:
-----------------------------------------------------------
-D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
-
------------------------
-1 Tests 0 Failures 0 Ignored 
-OK
-<end of output>
-Test time =   0.20 sec
-----------------------------------------------------------
-Test Passed.
-"test_app_init" end time: Jul 07 19:04 GTB Daylight Time
-"test_app_init" time elapsed: 00:00:00
-----------------------------------------------------------
-
-4/17 Testing: test_app_tick_no_event
-4/17 Test: test_app_tick_no_event
-Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_app_tick_no_event.exe"
-Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_app_tick_no_event" start time: Jul 07 19:04 GTB Daylight Time
-Output:
-----------------------------------------------------------
-D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
-
------------------------
-1 Tests 0 Failures 0 Ignored 
-OK
-<end of output>
-Test time =   0.20 sec
-----------------------------------------------------------
-Test Passed.
-"test_app_tick_no_event" end time: Jul 07 19:04 GTB Daylight Time
+"test_app_tick_no_event" end time: Jul 07 19:16 GTB Daylight Time
 "test_app_tick_no_event" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -84,7 +84,7 @@ Test Passed.
 5/17 Test: test_app_tick_bounce
 Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_app_tick_bounce.exe"
 Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_app_tick_bounce" start time: Jul 07 19:04 GTB Daylight Time
+"test_app_tick_bounce" start time: Jul 07 19:16 GTB Daylight Time
 Output:
 ----------------------------------------------------------
 D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
@@ -96,7 +96,7 @@ OK
 Test time =   0.21 sec
 ----------------------------------------------------------
 Test Passed.
-"test_app_tick_bounce" end time: Jul 07 19:04 GTB Daylight Time
+"test_app_tick_bounce" end time: Jul 07 19:16 GTB Daylight Time
 "test_app_tick_bounce" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -104,7 +104,7 @@ Test Passed.
 6/17 Test: test_app_tick_stable_no_new_event
 Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_app_tick_stable_no_new_event.exe"
 Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_app_tick_stable_no_new_event" start time: Jul 07 19:04 GTB Daylight Time
+"test_app_tick_stable_no_new_event" start time: Jul 07 19:16 GTB Daylight Time
 Output:
 ----------------------------------------------------------
 D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
@@ -113,10 +113,10 @@ D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests
 1 Tests 0 Failures 0 Ignored 
 OK
 <end of output>
-Test time =   0.21 sec
+Test time =   0.19 sec
 ----------------------------------------------------------
 Test Passed.
-"test_app_tick_stable_no_new_event" end time: Jul 07 19:04 GTB Daylight Time
+"test_app_tick_stable_no_new_event" end time: Jul 07 19:16 GTB Daylight Time
 "test_app_tick_stable_no_new_event" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -124,27 +124,7 @@ Test Passed.
 7/17 Test: test_button_press_scenarios
 Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_button_press_scenarios.exe"
 Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_button_press_scenarios" start time: Jul 07 19:04 GTB Daylight Time
-Output:
-----------------------------------------------------------
-D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
-
------------------------
-1 Tests 0 Failures 0 Ignored 
-OK
-<end of output>
-Test time =   0.21 sec
-----------------------------------------------------------
-Test Passed.
-"test_button_press_scenarios" end time: Jul 07 19:04 GTB Daylight Time
-"test_button_press_scenarios" time elapsed: 00:00:00
-----------------------------------------------------------
-
-8/17 Testing: test_button_release_scenarios
-8/17 Test: test_button_release_scenarios
-Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_button_release_scenarios.exe"
-Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_button_release_scenarios" start time: Jul 07 19:04 GTB Daylight Time
+"test_button_press_scenarios" start time: Jul 07 19:16 GTB Daylight Time
 Output:
 ----------------------------------------------------------
 D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
@@ -156,35 +136,15 @@ OK
 Test time =   0.24 sec
 ----------------------------------------------------------
 Test Passed.
-"test_button_release_scenarios" end time: Jul 07 19:04 GTB Daylight Time
-"test_button_release_scenarios" time elapsed: 00:00:00
+"test_button_press_scenarios" end time: Jul 07 19:16 GTB Daylight Time
+"test_button_press_scenarios" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-9/17 Testing: test_button_is_pressed_scenarios
-9/17 Test: test_button_is_pressed_scenarios
-Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_button_is_pressed_scenarios.exe"
+8/17 Testing: test_button_release_scenarios
+8/17 Test: test_button_release_scenarios
+Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_button_release_scenarios.exe"
 Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_button_is_pressed_scenarios" start time: Jul 07 19:04 GTB Daylight Time
-Output:
-----------------------------------------------------------
-D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
-
------------------------
-1 Tests 0 Failures 0 Ignored 
-OK
-<end of output>
-Test time =   0.22 sec
-----------------------------------------------------------
-Test Passed.
-"test_button_is_pressed_scenarios" end time: Jul 07 19:04 GTB Daylight Time
-"test_button_is_pressed_scenarios" time elapsed: 00:00:00
-----------------------------------------------------------
-
-10/17 Testing: test_led_init
-10/17 Test: test_led_init
-Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_led_init.exe"
-Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_led_init" start time: Jul 07 19:04 GTB Daylight Time
+"test_button_release_scenarios" start time: Jul 07 19:16 GTB Daylight Time
 Output:
 ----------------------------------------------------------
 D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
@@ -196,15 +156,15 @@ OK
 Test time =   0.23 sec
 ----------------------------------------------------------
 Test Passed.
-"test_led_init" end time: Jul 07 19:04 GTB Daylight Time
-"test_led_init" time elapsed: 00:00:00
+"test_button_release_scenarios" end time: Jul 07 19:16 GTB Daylight Time
+"test_button_release_scenarios" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-11/17 Testing: test_led_tick
-11/17 Test: test_led_tick
-Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_led_tick.exe"
+9/17 Testing: test_button_is_pressed_scenarios
+9/17 Test: test_button_is_pressed_scenarios
+Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_button_is_pressed_scenarios.exe"
 Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_led_tick" start time: Jul 07 19:04 GTB Daylight Time
+"test_button_is_pressed_scenarios" start time: Jul 07 19:16 GTB Daylight Time
 Output:
 ----------------------------------------------------------
 D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
@@ -213,10 +173,50 @@ D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests
 1 Tests 0 Failures 0 Ignored 
 OK
 <end of output>
-Test time =   0.32 sec
+Test time =   0.28 sec
 ----------------------------------------------------------
 Test Passed.
-"test_led_tick" end time: Jul 07 19:04 GTB Daylight Time
+"test_button_is_pressed_scenarios" end time: Jul 07 19:16 GTB Daylight Time
+"test_button_is_pressed_scenarios" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/17 Testing: test_led_init
+10/17 Test: test_led_init
+Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_led_init.exe"
+Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
+"test_led_init" start time: Jul 07 19:16 GTB Daylight Time
+Output:
+----------------------------------------------------------
+D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+<end of output>
+Test time =   0.21 sec
+----------------------------------------------------------
+Test Passed.
+"test_led_init" end time: Jul 07 19:16 GTB Daylight Time
+"test_led_init" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/17 Testing: test_led_tick
+11/17 Test: test_led_tick
+Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_led_tick.exe"
+Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
+"test_led_tick" start time: Jul 07 19:16 GTB Daylight Time
+Output:
+----------------------------------------------------------
+D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+<end of output>
+Test time =   0.20 sec
+----------------------------------------------------------
+Test Passed.
+"test_led_tick" end time: Jul 07 19:16 GTB Daylight Time
 "test_led_tick" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -224,7 +224,7 @@ Test Passed.
 12/17 Test: test_state_transitions
 Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_state_transitions.exe"
 Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_state_transitions" start time: Jul 07 19:04 GTB Daylight Time
+"test_state_transitions" start time: Jul 07 19:16 GTB Daylight Time
 Output:
 ----------------------------------------------------------
 D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
@@ -236,7 +236,7 @@ OK
 Test time =   0.22 sec
 ----------------------------------------------------------
 Test Passed.
-"test_state_transitions" end time: Jul 07 19:04 GTB Daylight Time
+"test_state_transitions" end time: Jul 07 19:16 GTB Daylight Time
 "test_state_transitions" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -244,7 +244,7 @@ Test Passed.
 13/17 Test: test_blink_toggles_led_after_interval
 Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_blink_toggles_led_after_interval.exe"
 Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_blink_toggles_led_after_interval" start time: Jul 07 19:04 GTB Daylight Time
+"test_blink_toggles_led_after_interval" start time: Jul 07 19:16 GTB Daylight Time
 Output:
 ----------------------------------------------------------
 ERROR: Unknown test executable: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_blink_toggles_led_after_interval.exe
@@ -253,10 +253,10 @@ ERROR: Unknown test executable: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-mach
 0 Tests 0 Failures 0 Ignored 
 OK
 <end of output>
-Test time =   0.30 sec
+Test time =   0.24 sec
 ----------------------------------------------------------
 Test Passed.
-"test_blink_toggles_led_after_interval" end time: Jul 07 19:04 GTB Daylight Time
+"test_blink_toggles_led_after_interval" end time: Jul 07 19:16 GTB Daylight Time
 "test_blink_toggles_led_after_interval" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -264,7 +264,47 @@ Test Passed.
 14/17 Test: test_blink_timeout_behavior
 Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_blink_timeout_behavior.exe"
 Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_blink_timeout_behavior" start time: Jul 07 19:04 GTB Daylight Time
+"test_blink_timeout_behavior" start time: Jul 07 19:16 GTB Daylight Time
+Output:
+----------------------------------------------------------
+D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+<end of output>
+Test time =   0.24 sec
+----------------------------------------------------------
+Test Passed.
+"test_blink_timeout_behavior" end time: Jul 07 19:16 GTB Daylight Time
+"test_blink_timeout_behavior" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/17 Testing: test_timer_resets_on_state_change
+15/17 Test: test_timer_resets_on_state_change
+Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_timer_resets_on_state_change.exe"
+Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
+"test_timer_resets_on_state_change" start time: Jul 07 19:16 GTB Daylight Time
+Output:
+----------------------------------------------------------
+D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"test_timer_resets_on_state_change" end time: Jul 07 19:16 GTB Daylight Time
+"test_timer_resets_on_state_change" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/17 Testing: test_next_state_returns_current_when_no_transition
+16/17 Test: test_next_state_returns_current_when_no_transition
+Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_next_state_returns_current_when_no_transition.exe"
+Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
+"test_next_state_returns_current_when_no_transition" start time: Jul 07 19:16 GTB Daylight Time
 Output:
 ----------------------------------------------------------
 D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
@@ -276,47 +316,7 @@ OK
 Test time =   0.25 sec
 ----------------------------------------------------------
 Test Passed.
-"test_blink_timeout_behavior" end time: Jul 07 19:04 GTB Daylight Time
-"test_blink_timeout_behavior" time elapsed: 00:00:00
-----------------------------------------------------------
-
-15/17 Testing: test_timer_resets_on_state_change
-15/17 Test: test_timer_resets_on_state_change
-Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_timer_resets_on_state_change.exe"
-Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_timer_resets_on_state_change" start time: Jul 07 19:04 GTB Daylight Time
-Output:
-----------------------------------------------------------
-D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
-
------------------------
-1 Tests 0 Failures 0 Ignored 
-OK
-<end of output>
-Test time =   0.26 sec
-----------------------------------------------------------
-Test Passed.
-"test_timer_resets_on_state_change" end time: Jul 07 19:04 GTB Daylight Time
-"test_timer_resets_on_state_change" time elapsed: 00:00:00
-----------------------------------------------------------
-
-16/17 Testing: test_next_state_returns_current_when_no_transition
-16/17 Test: test_next_state_returns_current_when_no_transition
-Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_next_state_returns_current_when_no_transition.exe"
-Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_next_state_returns_current_when_no_transition" start time: Jul 07 19:04 GTB Daylight Time
-Output:
-----------------------------------------------------------
-D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
-
------------------------
-1 Tests 0 Failures 0 Ignored 
-OK
-<end of output>
-Test time =   0.27 sec
-----------------------------------------------------------
-Test Passed.
-"test_next_state_returns_current_when_no_transition" end time: Jul 07 19:04 GTB Daylight Time
+"test_next_state_returns_current_when_no_transition" end time: Jul 07 19:16 GTB Daylight Time
 "test_next_state_returns_current_when_no_transition" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -324,7 +324,7 @@ Test Passed.
 17/17 Test: test_guard_always_true
 Command: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests/test_guard_always_true.exe"
 Directory: D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/Tests
-"test_guard_always_true" start time: Jul 07 19:04 GTB Daylight Time
+"test_guard_always_true" start time: Jul 07 19:16 GTB Daylight Time
 Output:
 ----------------------------------------------------------
 D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests[i].fn:PASS
@@ -333,11 +333,11 @@ D:\STM32CubeIDE\workspace_2.1.1\stm32-state-machine\Tests\test_runner.c:48:tests
 1 Tests 0 Failures 0 Ignored 
 OK
 <end of output>
-Test time =   0.22 sec
+Test time =   0.23 sec
 ----------------------------------------------------------
 Test Passed.
-"test_guard_always_true" end time: Jul 07 19:04 GTB Daylight Time
+"test_guard_always_true" end time: Jul 07 19:16 GTB Daylight Time
 "test_guard_always_true" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Jul 07 19:04 GTB Daylight Time
+End testing: Jul 07 19:16 GTB Daylight Time

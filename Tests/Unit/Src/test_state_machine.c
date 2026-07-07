@@ -6,7 +6,7 @@
  *   - all state transitions triggered by EVENT_BTN_PRESS
  *     OFF → ON → BLINK_SLOW → BLINK_FAST → OFF
  *   - blink timing behavior for slow/fast modes
- *   - LED toggle timing based on HAL_GetTick()
+ *   - LED toggle timing based on hal_get_tick()
  *   - internal state timer reset on transitions
  *
  * Tests follow the AAA pattern and support a TDD workflow
@@ -161,18 +161,18 @@ void test_blink_timeout_behavior_parameterized(void)
     // ---------------------------------------------------------
     blink_case_t cases[] = {
         // BLINK_SLOW (interval = 1000 ms)
-        {STATE_BLINK_SLOW, 0,    0, "BLINK_SLOW: Tick 0 → no toggle"},
-        {STATE_BLINK_SLOW, 999,  0, "BLINK_SLOW: Tick 999 → no toggle"},
+        {STATE_BLINK_SLOW, 0, 0, "BLINK_SLOW: Tick 0 → no toggle"},
+        {STATE_BLINK_SLOW, 999, 0, "BLINK_SLOW: Tick 999 → no toggle"},
         {STATE_BLINK_SLOW, 1000, 1, "BLINK_SLOW: Tick 1000 → toggle once"},
         {STATE_BLINK_SLOW, 1500, 1, "BLINK_SLOW: Tick 1500 → still one toggle"},
         {STATE_BLINK_SLOW, 2000, 2, "BLINK_SLOW: Tick 2000 → toggle twice"},
 
         // BLINK_FAST (interval = 200 ms)
-        {STATE_BLINK_FAST, 0,    0, "BLINK_FAST: Tick 0 → no toggle"},
-        {STATE_BLINK_FAST, 199,  0, "BLINK_FAST: Tick 199 → no toggle"},
-        {STATE_BLINK_FAST, 200,  1, "BLINK_FAST: Tick 200 → toggle once"},
-        {STATE_BLINK_FAST, 350,  1, "BLINK_FAST: Tick 350 → still one toggle"},
-        {STATE_BLINK_FAST, 400,  2, "BLINK_FAST: Tick 400 → toggle twice"},
+        {STATE_BLINK_FAST, 0, 0, "BLINK_FAST: Tick 0 → no toggle"},
+        {STATE_BLINK_FAST, 199, 0, "BLINK_FAST: Tick 199 → no toggle"},
+        {STATE_BLINK_FAST, 200, 1, "BLINK_FAST: Tick 200 → toggle once"},
+        {STATE_BLINK_FAST, 350, 1, "BLINK_FAST: Tick 350 → still one toggle"},
+        {STATE_BLINK_FAST, 400, 2, "BLINK_FAST: Tick 400 → toggle twice"},
     };
 
     const int num_cases = sizeof(cases) / sizeof(cases[0]);
@@ -300,8 +300,7 @@ void test_next_state_returns_current_when_no_transition_parameterized(void)
         {"OFF + EVENT_BTN_RELEASE → remain OFF", STATE_OFF, EVENT_BTN_RELEASE},
         {"ON + EVENT_BTN_RELEASE → remain ON", STATE_ON, EVENT_BTN_RELEASE},
         {"BLINK_SLOW + EVENT_BTN_RELEASE → remain BLINK_SLOW", STATE_BLINK_SLOW, EVENT_BTN_RELEASE},
-        {"BLINK_FAST + EVENT_BTN_RELEASE → remain BLINK_FAST", STATE_BLINK_FAST, EVENT_BTN_RELEASE}
-    };
+        {"BLINK_FAST + EVENT_BTN_RELEASE → remain BLINK_FAST", STATE_BLINK_FAST, EVENT_BTN_RELEASE}};
 
     const int num_cases = sizeof(cases) / sizeof(cases[0]);
 
@@ -360,8 +359,7 @@ void test_guard_always_true_parameterized(void)
     // ---------------------------------------------------------
     guard_case_t cases[] = {
         {false, STATE_OFF, "guard FALSE → remain OFF"},
-        {true, STATE_ON, "guard TRUE → transition to ON"}
-    };
+        {true, STATE_ON, "guard TRUE → transition to ON"}};
 
     int num_cases = sizeof(cases) / sizeof(cases[0]);
 

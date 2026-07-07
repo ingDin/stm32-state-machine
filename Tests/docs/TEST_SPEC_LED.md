@@ -21,7 +21,7 @@ Timing is computed using:
 Code
 
 Where:
-- `now` = `HAL_GetTick()`
+- `now` = `hal_get_tick()`
 - `hal_toggle_led()` performs the actual toggle
 
 ### 2.2 Initialization Behavior
@@ -48,7 +48,7 @@ The fake HAL provides:
 | REQ‑LED‑TICK‑01       | LED must not toggle before 500 ms                |
 | REQ‑LED‑TICK‑02       | LED must toggle exactly at 500 ms                |
 | REQ‑LED‑TICK‑03       | LED must toggle at multiples of 500 ms           |
-| REQ‑LED‑HAL‑01        | Tick must use HAL_GetTick deterministically      |
+| REQ‑LED‑HAL‑01        | Tick must use hal_get_tick deterministically      |
 | REQ‑LED‑HAL‑02        | Toggle must call hal_toggle_led()                |
 
 ---
@@ -95,13 +95,13 @@ sequenceDiagram
     Test->>HAL: fake_hal_reset()
     Test->>HAL: fake_hal_set_tick(initial_tick)
     Test->>LED: led_init()
-    LED->>HAL: HAL_GetTick()
+    LED->>HAL: hal_get_tick()
     LED->>HAL: fake_hal_reset()
 
     loop For each tick value
         Test->>HAL: fake_hal_set_tick(tick)
         Test->>LED: led_tick()
-        LED->>HAL: HAL_GetTick()
+        LED->>HAL: hal_get_tick()
         alt tick - last_tick >= 500
             LED->>HAL: hal_toggle_led()
             HAL->>HAL: toggle_counter++

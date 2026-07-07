@@ -6,7 +6,7 @@
 - Validate correctness of the finite state machine:
   **OFF → ON → BLINK_SLOW → BLINK_FAST → OFF**
 - Verify non‑blocking LED logic (no HAL_Delay).
-- Confirm timing behavior based on `HAL_GetTick()`.
+- Confirm timing behavior based on `hal_get_tick()`.
 - Validate button event generation and debounce logic.
 - Ensure module isolation (button, led, state_machine, app).
 - Achieve full TDD coverage through unit + integration tests.

@@ -1466,8 +1466,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-rem25c"
-      binary: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-rem25c"
+      source: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-k2qbt3"
+      binary: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-k2qbt3"
     cmakeVariables:
       CMAKE_C_FLAGS: "--coverage"
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -1476,13 +1476,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-rem25c'
+        Change Dir: 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-k2qbt3'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_dc5dc/fast
-        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_dc5dc.dir\\build.make CMakeFiles/cmTC_dc5dc.dir/build
-        mingw32-make[1]: Entering directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-rem25c'
-        Building C object CMakeFiles/cmTC_dc5dc.dir/CMakeCCompilerABI.c.obj
-        C:\\msys64\\mingw64\\bin\\gcc.exe   --coverage    -v -o CMakeFiles\\cmTC_dc5dc.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c"
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_94264/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_94264.dir\\build.make CMakeFiles/cmTC_94264.dir/build
+        mingw32-make[1]: Entering directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-k2qbt3'
+        Building C object CMakeFiles/cmTC_94264.dir/CMakeCCompilerABI.c.obj
+        C:\\msys64\\mingw64\\bin\\gcc.exe   --coverage    -v -o CMakeFiles\\cmTC_94264.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c"
         Using built-in specs.
         COLLECT_GCC=C:\\msys64\\mingw64\\bin\\gcc.exe
         Target: x86_64-w64-mingw32
@@ -1490,8 +1490,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 15.2.0 (Rev14, Built by MSYS2 project) 
-        COLLECT_GCC_OPTIONS='-coverage' '-v' '-o' 'CMakeFiles\\cmTC_dc5dc.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_dc5dc.dir\\'
-         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_dc5dc.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -fprofile-arcs -ftest-coverage -o C:\\Users\\Ingrid\\AppData\\Local\\Temp\\cczbqxTw.s
+        COLLECT_GCC_OPTIONS='-coverage' '-v' '-o' 'CMakeFiles\\cmTC_94264.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_94264.dir\\'
+         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_94264.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -fprofile-arcs -ftest-coverage -o C:\\Users\\Ingrid\\AppData\\Local\\Temp\\cc8EAMxT.s
         GNU C23 (Rev14, Built by MSYS2 project) version 15.2.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 15.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.4.0, isl version isl-0.27-GMP
         
@@ -1510,11 +1510,11 @@ events:
          C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/include-fixed
         End of search list.
         Compiler executable checksum: f4560220967bb484270dc79ac66043ca
-        COLLECT_GCC_OPTIONS='-coverage' '-v' '-o' 'CMakeFiles\\cmTC_dc5dc.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_dc5dc.dir\\'
-         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_dc5dc.dir\\CMakeCCompilerABI.c.obj C:\\Users\\Ingrid\\AppData\\Local\\Temp\\cczbqxTw.s
-        mingw32-make[1]: *** [CMakeFiles\\cmTC_dc5dc.dir\\build.make:80: CMakeFiles/cmTC_dc5dc.dir/CMakeCCompilerABI.c.obj] Error 1
-        mingw32-make[1]: Leaving directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-rem25c'
-        mingw32-make: *** [Makefile:133: cmTC_dc5dc/fast] Error 2
+        COLLECT_GCC_OPTIONS='-coverage' '-v' '-o' 'CMakeFiles\\cmTC_94264.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_94264.dir\\'
+         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_94264.dir\\CMakeCCompilerABI.c.obj C:\\Users\\Ingrid\\AppData\\Local\\Temp\\cc8EAMxT.s
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_94264.dir\\build.make:80: CMakeFiles/cmTC_94264.dir/CMakeCCompilerABI.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-k2qbt3'
+        mingw32-make: *** [Makefile:133: cmTC_94264/fast] Error 2
         
       exitCode: 2
   -
@@ -1525,8 +1525,8 @@ events:
     checks:
       - "Check for working C compiler: C:/msys64/mingw64/bin/gcc.exe"
     directories:
-      source: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-93damz"
-      binary: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-93damz"
+      source: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-seelk5"
+      binary: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-seelk5"
     cmakeVariables:
       CMAKE_C_FLAGS: "--coverage"
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -1535,19 +1535,19 @@ events:
       variable: "CMAKE_C_COMPILER_WORKS"
       cached: true
       stdout: |
-        Change Dir: 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-93damz'
+        Change Dir: 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-seelk5'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_72427/fast
-        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_72427.dir\\build.make CMakeFiles/cmTC_72427.dir/build
-        mingw32-make[1]: Entering directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-93damz'
-        Building C object CMakeFiles/cmTC_72427.dir/testCCompiler.c.obj
-        C:\\msys64\\mingw64\\bin\\gcc.exe   --coverage  -o CMakeFiles\\cmTC_72427.dir\\testCCompiler.c.obj -c D:\\STM32CubeIDE\\workspace_2.1.1\\stm32-state-machine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-93damz\\testCCompiler.c
-        Linking C executable cmTC_72427.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_72427.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_72427.dir/objects.a
-        C:\\msys64\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_72427.dir/objects.a @CMakeFiles\\cmTC_72427.dir\\objects1.rsp
-        C:\\msys64\\mingw64\\bin\\gcc.exe --coverage  --coverage  -Wl,--whole-archive CMakeFiles\\cmTC_72427.dir/objects.a -Wl,--no-whole-archive -o cmTC_72427.exe -Wl,--out-implib,libcmTC_72427.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_72427.dir\\linkLibs.rsp
-        mingw32-make[1]: Leaving directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-93damz'
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_e953f/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_e953f.dir\\build.make CMakeFiles/cmTC_e953f.dir/build
+        mingw32-make[1]: Entering directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-seelk5'
+        Building C object CMakeFiles/cmTC_e953f.dir/testCCompiler.c.obj
+        C:\\msys64\\mingw64\\bin\\gcc.exe   --coverage  -o CMakeFiles\\cmTC_e953f.dir\\testCCompiler.c.obj -c D:\\STM32CubeIDE\\workspace_2.1.1\\stm32-state-machine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-seelk5\\testCCompiler.c
+        Linking C executable cmTC_e953f.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_e953f.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_e953f.dir/objects.a
+        C:\\msys64\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_e953f.dir/objects.a @CMakeFiles\\cmTC_e953f.dir\\objects1.rsp
+        C:\\msys64\\mingw64\\bin\\gcc.exe --coverage  --coverage  -Wl,--whole-archive CMakeFiles\\cmTC_e953f.dir/objects.a -Wl,--no-whole-archive -o cmTC_e953f.exe -Wl,--out-implib,libcmTC_e953f.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_e953f.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-seelk5'
         
       exitCode: 0
   -

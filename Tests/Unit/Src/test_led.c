@@ -18,13 +18,15 @@
 // Parameter structures
 // ---------------------------------------------------------
 
-typedef struct {
+typedef struct
+{
     uint32_t initial_tick;
     uint32_t expected_tick_after_init;
     int expected_toggle_count;
 } led_init_params_t;
 
-typedef struct {
+typedef struct
+{
     uint32_t tick_value;
     int expected_toggle_count;
 } led_tick_params_t;
@@ -37,10 +39,9 @@ void test_led_init_parameterized(void)
 {
 
     led_init_params_t tests[] = {
-        { .initial_tick = 0,    .expected_tick_after_init = 0, .expected_toggle_count = 0 },
-        { .initial_tick = 1234, .expected_tick_after_init = 1234, .expected_toggle_count = 0 },
-        { .initial_tick = 9999, .expected_tick_after_init = 9999, .expected_toggle_count = 0 }
-    };
+        {.initial_tick = 0, .expected_tick_after_init = 0, .expected_toggle_count = 0},
+        {.initial_tick = 1234, .expected_tick_after_init = 1234, .expected_toggle_count = 0},
+        {.initial_tick = 9999, .expected_tick_after_init = 9999, .expected_toggle_count = 0}};
 
     const int num_tests = sizeof(tests) / sizeof(tests[0]);
 
@@ -54,7 +55,7 @@ void test_led_init_parameterized(void)
         led_init();
 
         // ASSERT: verify tick reset and toggle counter
-        TEST_ASSERT_EQUAL_UINT32(tests[i].expected_tick_after_init, HAL_GetTick());
+        TEST_ASSERT_EQUAL_UINT32(tests[i].expected_tick_after_init, hal_get_tick());
         TEST_ASSERT_EQUAL_INT(tests[i].expected_toggle_count, led_get_toggle_count());
     }
 }
@@ -66,14 +67,13 @@ void test_led_init_parameterized(void)
 void test_led_tick_parameterized(void)
 {
     led_tick_params_t tests[] = {
-        { .tick_value = 0,    .expected_toggle_count = 0 },
-        { .tick_value = 100,  .expected_toggle_count = 0 },
-        { .tick_value = 499,  .expected_toggle_count = 0 },
-        { .tick_value = 500,  .expected_toggle_count = 1 },
-        { .tick_value = 750,  .expected_toggle_count = 1 },
-        { .tick_value = 1000, .expected_toggle_count = 2 },
-        { .tick_value = 1500, .expected_toggle_count = 3 }
-    };
+        {.tick_value = 0, .expected_toggle_count = 0},
+        {.tick_value = 100, .expected_toggle_count = 0},
+        {.tick_value = 499, .expected_toggle_count = 0},
+        {.tick_value = 500, .expected_toggle_count = 1},
+        {.tick_value = 750, .expected_toggle_count = 1},
+        {.tick_value = 1000, .expected_toggle_count = 2},
+        {.tick_value = 1500, .expected_toggle_count = 3}};
 
     const int num_tests = sizeof(tests) / sizeof(tests[0]);
 

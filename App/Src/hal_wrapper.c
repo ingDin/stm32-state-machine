@@ -9,9 +9,22 @@
 
 #include "hal_wrapper.h"
 
-#include <stm32l4xx_hal.h>
+// un tick software, incrementat din SysTick_Handler
+static volatile uint32_t tick_ms = 0;
+
+uint32_t hal_get_tick(void)
+{
+    return tick_ms;
+}
+
+void SysTick_Handler(void)
+{
+    tick_ms++;
+}
 
 void hal_toggle_led(void)
 {
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_13);
+    // aici scrii tu codul bare-metal
+    // exemplu pentru STM32F4:
+    //GPIOA->ODR ^= (1 << 5);
 }
