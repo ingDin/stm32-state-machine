@@ -9,11 +9,17 @@
 #include "app.h"
 #include "button.h"
 #include "state_machine.h"
+
+#include "config.h"
+#if DEVELOP
 #include "fake_hal.h"
+#endif
 
 void app_init(void)
 {
+#if DEVELOP
     fake_hal_reset();
+#endif
     button_init();
     button_set_callback(sm_handle_event);
     sm_init();

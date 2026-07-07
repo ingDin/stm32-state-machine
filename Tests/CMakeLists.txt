@@ -7,6 +7,8 @@ enable_testing()
 # Debug symbols
 add_compile_options(-g)
 
+option(DEVELOP "Enable development mode" ON)
+
 include_directories(
     Unity/Inc
     Unit/Inc

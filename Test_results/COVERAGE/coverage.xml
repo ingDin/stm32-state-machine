@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE coverage SYSTEM 'http://cobertura.sourceforge.net/xml/coverage-04.dtd'>
-<coverage line-rate="0.39627434377646065" branch-rate="0.178743961352657" lines-covered="468" lines-valid="1181" branches-covered="111" branches-valid="621" complexity="0.0" timestamp="1783440999" version="gcovr 8.6">
+<coverage line-rate="0.39627434377646065" branch-rate="0.178743961352657" lines-covered="468" lines-valid="1181" branches-covered="111" branches-valid="621" complexity="0.0" timestamp="1783441535" version="gcovr 8.6">
   <sources>
     <source>D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine</source>
   </sources>
@@ -11,42 +11,42 @@
           <methods>
             <method name="app_init" signature="" line-rate="1.0" branch-rate="1.0" complexity="0.0">
               <lines>
-                <line number="14" hits="10" branch="false"/>
-                <line number="16" hits="10" branch="false"/>
-                <line number="17" hits="10" branch="false"/>
                 <line number="18" hits="10" branch="false"/>
-                <line number="19" hits="10" branch="false"/>
-                <line number="20" hits="10" branch="false"/>
+                <line number="21" hits="10" branch="false"/>
+                <line number="23" hits="10" branch="false"/>
+                <line number="24" hits="10" branch="false"/>
+                <line number="25" hits="10" branch="false"/>
+                <line number="26" hits="10" branch="false"/>
               </lines>
             </method>
             <method name="app_tick" signature="" line-rate="1.0" branch-rate="1.0" complexity="0.0">
               <lines>
-                <line number="22" hits="88" branch="false"/>
-                <line number="24" hits="88" branch="false"/>
-                <line number="25" hits="88" branch="false"/>
-                <line number="26" hits="88" branch="false"/>
+                <line number="28" hits="88" branch="false"/>
+                <line number="30" hits="88" branch="false"/>
+                <line number="31" hits="88" branch="false"/>
+                <line number="32" hits="88" branch="false"/>
               </lines>
             </method>
             <method name="app_run" signature="" line-rate="0.0" branch-rate="1.0" complexity="0.0">
               <lines>
-                <line number="28" hits="0" branch="false"/>
-                <line number="32" hits="0" branch="false"/>
+                <line number="34" hits="0" branch="false"/>
+                <line number="38" hits="0" branch="false"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="14" hits="10" branch="false"/>
-            <line number="16" hits="10" branch="false"/>
-            <line number="17" hits="10" branch="false"/>
             <line number="18" hits="10" branch="false"/>
-            <line number="19" hits="10" branch="false"/>
-            <line number="20" hits="10" branch="false"/>
-            <line number="22" hits="88" branch="false"/>
-            <line number="24" hits="88" branch="false"/>
-            <line number="25" hits="88" branch="false"/>
-            <line number="26" hits="88" branch="false"/>
-            <line number="28" hits="0" branch="false"/>
-            <line number="32" hits="0" branch="false"/>
+            <line number="21" hits="10" branch="false"/>
+            <line number="23" hits="10" branch="false"/>
+            <line number="24" hits="10" branch="false"/>
+            <line number="25" hits="10" branch="false"/>
+            <line number="26" hits="10" branch="false"/>
+            <line number="28" hits="88" branch="false"/>
+            <line number="30" hits="88" branch="false"/>
+            <line number="31" hits="88" branch="false"/>
+            <line number="32" hits="88" branch="false"/>
+            <line number="34" hits="0" branch="false"/>
+            <line number="38" hits="0" branch="false"/>
           </lines>
         </class>
         <class name="button_c" filename="App/Src/button.c" line-rate="1.0" branch-rate="0.75" complexity="0.0">
@@ -197,60 +197,60 @@
           <methods>
             <method name="led_init" signature="" line-rate="1.0" branch-rate="1.0" complexity="0.0">
               <lines>
-                <line number="17" hits="4" branch="false"/>
-                <line number="19" hits="4" branch="false"/>
-                <line number="20" hits="4" branch="false"/>
                 <line number="21" hits="4" branch="false"/>
+                <line number="23" hits="4" branch="false"/>
+                <line number="25" hits="4" branch="false"/>
+                <line number="27" hits="4" branch="false"/>
               </lines>
             </method>
             <method name="led_tick" signature="" line-rate="1.0" branch-rate="1.0" complexity="0.0">
               <lines>
-                <line number="23" hits="7" branch="false"/>
-                <line number="25" hits="7" branch="false"/>
-                <line number="26" hits="7" branch="true" condition-coverage="100% (2/2)">
+                <line number="29" hits="7" branch="false"/>
+                <line number="31" hits="7" branch="false"/>
+                <line number="32" hits="7" branch="true" condition-coverage="100% (2/2)">
                   <conditions>
                     <condition number="0" type="jump" coverage="100%"/>
                   </conditions>
                 </line>
-                <line number="28" hits="3" branch="false"/>
-                <line number="29" hits="3" branch="false"/>
-                <line number="31" hits="7" branch="false"/>
+                <line number="34" hits="3" branch="false"/>
+                <line number="35" hits="3" branch="false"/>
+                <line number="37" hits="7" branch="false"/>
               </lines>
             </method>
             <method name="led_toggle" signature="" line-rate="1.0" branch-rate="1.0" complexity="0.0">
               <lines>
-                <line number="33" hits="3" branch="false"/>
-                <line number="35" hits="3" branch="false"/>
-                <line number="36" hits="3" branch="false"/>
+                <line number="39" hits="3" branch="false"/>
+                <line number="41" hits="3" branch="false"/>
+                <line number="42" hits="3" branch="false"/>
               </lines>
             </method>
             <method name="led_get_toggle_count" signature="" line-rate="1.0" branch-rate="1.0" complexity="0.0">
               <lines>
-                <line number="38" hits="10" branch="false"/>
-                <line number="40" hits="10" branch="false"/>
+                <line number="45" hits="10" branch="false"/>
+                <line number="48" hits="10" branch="false"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="17" hits="4" branch="false"/>
-            <line number="19" hits="4" branch="false"/>
-            <line number="20" hits="4" branch="false"/>
             <line number="21" hits="4" branch="false"/>
-            <line number="23" hits="7" branch="false"/>
-            <line number="25" hits="7" branch="false"/>
-            <line number="26" hits="7" branch="true" condition-coverage="100% (2/2)">
+            <line number="23" hits="4" branch="false"/>
+            <line number="25" hits="4" branch="false"/>
+            <line number="27" hits="4" branch="false"/>
+            <line number="29" hits="7" branch="false"/>
+            <line number="31" hits="7" branch="false"/>
+            <line number="32" hits="7" branch="true" condition-coverage="100% (2/2)">
               <conditions>
                 <condition number="0" type="jump" coverage="100%"/>
               </conditions>
             </line>
-            <line number="28" hits="3" branch="false"/>
-            <line number="29" hits="3" branch="false"/>
-            <line number="31" hits="7" branch="false"/>
-            <line number="33" hits="3" branch="false"/>
+            <line number="34" hits="3" branch="false"/>
             <line number="35" hits="3" branch="false"/>
-            <line number="36" hits="3" branch="false"/>
-            <line number="38" hits="10" branch="false"/>
-            <line number="40" hits="10" branch="false"/>
+            <line number="37" hits="7" branch="false"/>
+            <line number="39" hits="3" branch="false"/>
+            <line number="41" hits="3" branch="false"/>
+            <line number="42" hits="3" branch="false"/>
+            <line number="45" hits="10" branch="false"/>
+            <line number="48" hits="10" branch="false"/>
           </lines>
         </class>
         <class name="state_machine_c" filename="App/Src/state_machine.c" line-rate="1.0" branch-rate="1.0" complexity="0.0">

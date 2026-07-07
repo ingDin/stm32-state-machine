@@ -10,4 +10,5 @@ Tests/CMakeFiles/test_button_release_scenarios.dir/__/App/Src/led.c.obj: \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h \
  C:/msys64/mingw64/include/stddef.h \
  D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/App/Inc/hal_wrapper.h \
+ D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/App/Inc/config.h \
  D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/Tests/Fakes/Inc/fake_hal.h

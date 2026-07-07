@@ -13,4 +13,5 @@ Tests/CMakeFiles/test_led_init.dir/__/App/Src/app.c.obj: \
  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h \
  C:/msys64/mingw64/include/stddef.h \
  D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/App/Inc/state_machine.h \
+ D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/App/Inc/config.h \
  D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/Tests/Fakes/Inc/fake_hal.h

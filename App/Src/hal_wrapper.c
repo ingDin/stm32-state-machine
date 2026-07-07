@@ -24,7 +24,6 @@ void SysTick_Handler(void)
 
 void hal_toggle_led(void)
 {
-    // aici scrii tu codul bare-metal
-    // exemplu pentru STM32F4:
+    // TO DO
     //GPIOA->ODR ^= (1 << 5);
 }

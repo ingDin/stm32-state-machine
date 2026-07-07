@@ -213,6 +213,9 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Enable development mode
+DEVELOP:BOOL=ON
+
 //Enable coverage reporting
 ENABLE_COVERAGE:BOOL=ON
 
