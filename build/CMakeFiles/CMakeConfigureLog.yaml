@@ -27,6 +27,8 @@ events:
     names:
       - "mingw32-make.exe"
     candidate_directories:
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -47,6 +49,10 @@ events:
       - "/MinGW/bin/"
       - "/REGISTRY-NOTFOUND/MinGW/bin/"
     searched_directories:
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/mingw32-make.exe.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/mingw32-make.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/mingw32-make.exe.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/mingw32-make.exe"
       - "C:/Windows/System32/mingw32-make.exe.com"
       - "C:/Windows/System32/mingw32-make.exe"
       - "C:/Windows/mingw32-make.exe.com"
@@ -77,6 +83,8 @@ events:
     found: "C:/msys64/ucrt64/bin/mingw32-make.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -126,6 +134,8 @@ events:
     found: "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeCCompilerId.c.in"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -196,6 +206,8 @@ events:
       - "ar"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -216,6 +228,8 @@ events:
     found: "C:/msys64/mingw64/bin/ar.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -259,6 +273,8 @@ events:
       - "ranlib"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -279,6 +295,8 @@ events:
     found: "C:/msys64/mingw64/bin/ranlib.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -322,6 +340,8 @@ events:
       - "strip"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -342,6 +362,8 @@ events:
     found: "C:/msys64/mingw64/bin/strip.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -385,6 +407,8 @@ events:
       - "ld"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -405,6 +429,8 @@ events:
     found: "C:/msys64/mingw64/bin/ld.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -448,6 +474,8 @@ events:
       - "nm"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -468,6 +496,8 @@ events:
     found: "C:/msys64/mingw64/bin/nm.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -511,6 +541,8 @@ events:
       - "objdump"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -531,6 +563,8 @@ events:
     found: "C:/msys64/mingw64/bin/objdump.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -574,6 +608,8 @@ events:
       - "objcopy"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -594,6 +630,8 @@ events:
     found: "C:/msys64/mingw64/bin/objcopy.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -637,6 +675,8 @@ events:
       - "readelf"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -657,6 +697,8 @@ events:
     found: "C:/msys64/mingw64/bin/readelf.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -700,6 +742,8 @@ events:
       - "dlltool"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -720,6 +764,8 @@ events:
     found: "C:/msys64/mingw64/bin/dlltool.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -763,6 +809,8 @@ events:
       - "addr2line"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -783,6 +831,8 @@ events:
     found: "C:/msys64/mingw64/bin/addr2line.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -826,6 +876,8 @@ events:
       - "tapi"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -845,6 +897,12 @@ events:
       - "C:/msys64/mingw64/bin/tapi.com"
       - "C:/msys64/mingw64/bin/tapi.exe"
       - "C:/msys64/mingw64/bin/tapi"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/tapi.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/tapi.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/tapi"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/tapi.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/tapi.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/tapi"
       - "C:/Windows/System32/tapi.com"
       - "C:/Windows/System32/tapi.exe"
       - "C:/Windows/System32/tapi"
@@ -893,6 +951,8 @@ events:
     found: false
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -939,6 +999,8 @@ events:
       - "gcc-ar"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -958,6 +1020,12 @@ events:
       - "C:/msys64/mingw64/bin/gcc-ar-15.2.com"
       - "C:/msys64/mingw64/bin/gcc-ar-15.2.exe"
       - "C:/msys64/mingw64/bin/gcc-ar-15.2"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.2.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.2.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.2"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar-15.2.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar-15.2.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar-15.2"
       - "C:/Windows/System32/gcc-ar-15.2.com"
       - "C:/Windows/System32/gcc-ar-15.2.exe"
       - "C:/Windows/System32/gcc-ar-15.2"
@@ -1006,6 +1074,12 @@ events:
       - "C:/msys64/mingw64/bin/gcc-ar-15.com"
       - "C:/msys64/mingw64/bin/gcc-ar-15.exe"
       - "C:/msys64/mingw64/bin/gcc-ar-15"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar-15"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar-15.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar-15.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar-15"
       - "C:/Windows/System32/gcc-ar-15.com"
       - "C:/Windows/System32/gcc-ar-15.exe"
       - "C:/Windows/System32/gcc-ar-15"
@@ -1054,6 +1128,12 @@ events:
       - "C:/msys64/mingw64/bin/gcc-ar15.com"
       - "C:/msys64/mingw64/bin/gcc-ar15.exe"
       - "C:/msys64/mingw64/bin/gcc-ar15"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar15.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar15.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ar15"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar15.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar15.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ar15"
       - "C:/Windows/System32/gcc-ar15.com"
       - "C:/Windows/System32/gcc-ar15.exe"
       - "C:/Windows/System32/gcc-ar15"
@@ -1103,6 +1183,8 @@ events:
     found: "C:/msys64/mingw64/bin/gcc-ar.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -1149,6 +1231,8 @@ events:
       - "gcc-ranlib"
     candidate_directories:
       - "C:/msys64/mingw64/bin/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -1168,6 +1252,12 @@ events:
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.2.com"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.2.exe"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.2"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.2.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.2.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.2"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib-15.2.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib-15.2.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib-15.2"
       - "C:/Windows/System32/gcc-ranlib-15.2.com"
       - "C:/Windows/System32/gcc-ranlib-15.2.exe"
       - "C:/Windows/System32/gcc-ranlib-15.2"
@@ -1216,6 +1306,12 @@ events:
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.com"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15.exe"
       - "C:/msys64/mingw64/bin/gcc-ranlib-15"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib-15"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib-15.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib-15.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib-15"
       - "C:/Windows/System32/gcc-ranlib-15.com"
       - "C:/Windows/System32/gcc-ranlib-15.exe"
       - "C:/Windows/System32/gcc-ranlib-15"
@@ -1264,6 +1360,12 @@ events:
       - "C:/msys64/mingw64/bin/gcc-ranlib15.com"
       - "C:/msys64/mingw64/bin/gcc-ranlib15.exe"
       - "C:/msys64/mingw64/bin/gcc-ranlib15"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib15.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib15.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcc-ranlib15"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib15.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib15.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcc-ranlib15"
       - "C:/Windows/System32/gcc-ranlib15.com"
       - "C:/Windows/System32/gcc-ranlib15.exe"
       - "C:/Windows/System32/gcc-ranlib15"
@@ -1313,6 +1415,8 @@ events:
     found: "C:/msys64/mingw64/bin/gcc-ranlib.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -1358,6 +1462,8 @@ events:
       - "windres"
       - "windres"
     candidate_directories:
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -1386,6 +1492,12 @@ events:
       - "C:/Program Files (x86)/control_led/sbin/"
       - "C:/Program Files (x86)/control_led/"
     searched_directories:
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/windres.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/windres.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/windres"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/windres.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/windres.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/windres"
       - "C:/Windows/System32/windres.com"
       - "C:/Windows/System32/windres.exe"
       - "C:/Windows/System32/windres"
@@ -1429,6 +1541,8 @@ events:
     found: "C:/msys64/ucrt64/bin/windres.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"
@@ -1466,8 +1580,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-qserfz"
-      binary: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-qserfz"
+      source: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-p5ie11"
+      binary: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-p5ie11"
     cmakeVariables:
       CMAKE_C_FLAGS: "--coverage"
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -1476,13 +1590,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-qserfz'
+        Change Dir: 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-p5ie11'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_11500/fast
-        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_11500.dir\\build.make CMakeFiles/cmTC_11500.dir/build
-        mingw32-make[1]: Entering directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-qserfz'
-        Building C object CMakeFiles/cmTC_11500.dir/CMakeCCompilerABI.c.obj
-        C:\\msys64\\mingw64\\bin\\gcc.exe   --coverage    -v -o CMakeFiles\\cmTC_11500.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c"
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_7e17e/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_7e17e.dir\\build.make CMakeFiles/cmTC_7e17e.dir/build
+        mingw32-make[1]: Entering directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-p5ie11'
+        Building C object CMakeFiles/cmTC_7e17e.dir/CMakeCCompilerABI.c.obj
+        C:\\msys64\\mingw64\\bin\\gcc.exe   --coverage    -v -o CMakeFiles\\cmTC_7e17e.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c"
         Using built-in specs.
         COLLECT_GCC=C:\\msys64\\mingw64\\bin\\gcc.exe
         Target: x86_64-w64-mingw32
@@ -1490,8 +1604,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 15.2.0 (Rev14, Built by MSYS2 project) 
-        COLLECT_GCC_OPTIONS='-coverage' '-v' '-o' 'CMakeFiles\\cmTC_11500.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_11500.dir\\'
-         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_11500.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -fprofile-arcs -ftest-coverage -o C:\\Users\\Ingrid\\AppData\\Local\\Temp\\ccaRmy28.s
+        COLLECT_GCC_OPTIONS='-coverage' '-v' '-o' 'CMakeFiles\\cmTC_7e17e.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7e17e.dir\\'
+         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.3\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_7e17e.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=nocona -version -fprofile-arcs -ftest-coverage -o C:\\Users\\Ingrid\\AppData\\Local\\Temp\\cc4XLV9E.s
         GNU C23 (Rev14, Built by MSYS2 project) version 15.2.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 15.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.4.0, isl version isl-0.27-GMP
         
@@ -1510,11 +1624,11 @@ events:
          C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/include-fixed
         End of search list.
         Compiler executable checksum: f4560220967bb484270dc79ac66043ca
-        COLLECT_GCC_OPTIONS='-coverage' '-v' '-o' 'CMakeFiles\\cmTC_11500.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_11500.dir\\'
-         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_11500.dir\\CMakeCCompilerABI.c.obj C:\\Users\\Ingrid\\AppData\\Local\\Temp\\ccaRmy28.s
-        mingw32-make[1]: *** [CMakeFiles\\cmTC_11500.dir\\build.make:80: CMakeFiles/cmTC_11500.dir/CMakeCCompilerABI.c.obj] Error 1
-        mingw32-make[1]: Leaving directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-qserfz'
-        mingw32-make: *** [Makefile:133: cmTC_11500/fast] Error 2
+        COLLECT_GCC_OPTIONS='-coverage' '-v' '-o' 'CMakeFiles\\cmTC_7e17e.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=nocona' '-dumpdir' 'CMakeFiles\\cmTC_7e17e.dir\\'
+         C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_7e17e.dir\\CMakeCCompilerABI.c.obj C:\\Users\\Ingrid\\AppData\\Local\\Temp\\cc4XLV9E.s
+        mingw32-make[1]: *** [CMakeFiles\\cmTC_7e17e.dir\\build.make:80: CMakeFiles/cmTC_7e17e.dir/CMakeCCompilerABI.c.obj] Error 1
+        mingw32-make[1]: Leaving directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-p5ie11'
+        mingw32-make: *** [Makefile:133: cmTC_7e17e/fast] Error 2
         
       exitCode: 2
   -
@@ -1525,8 +1639,8 @@ events:
     checks:
       - "Check for working C compiler: C:/msys64/mingw64/bin/gcc.exe"
     directories:
-      source: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-wzx199"
-      binary: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-wzx199"
+      source: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-3cv9si"
+      binary: "D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-3cv9si"
     cmakeVariables:
       CMAKE_C_FLAGS: "--coverage"
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -1535,19 +1649,19 @@ events:
       variable: "CMAKE_C_COMPILER_WORKS"
       cached: true
       stdout: |
-        Change Dir: 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-wzx199'
+        Change Dir: 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-3cv9si'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_6f464/fast
-        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_6f464.dir\\build.make CMakeFiles/cmTC_6f464.dir/build
-        mingw32-make[1]: Entering directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-wzx199'
-        Building C object CMakeFiles/cmTC_6f464.dir/testCCompiler.c.obj
-        C:\\msys64\\mingw64\\bin\\gcc.exe   --coverage  -o CMakeFiles\\cmTC_6f464.dir\\testCCompiler.c.obj -c D:\\STM32CubeIDE\\workspace_2.1.1\\stm32-state-machine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-wzx199\\testCCompiler.c
-        Linking C executable cmTC_6f464.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_6f464.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_6f464.dir/objects.a
-        C:\\msys64\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_6f464.dir/objects.a @CMakeFiles\\cmTC_6f464.dir\\objects1.rsp
-        C:\\msys64\\mingw64\\bin\\gcc.exe --coverage  --coverage  -Wl,--whole-archive CMakeFiles\\cmTC_6f464.dir/objects.a -Wl,--no-whole-archive -o cmTC_6f464.exe -Wl,--out-implib,libcmTC_6f464.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_6f464.dir\\linkLibs.rsp
-        mingw32-make[1]: Leaving directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-wzx199'
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/msys64/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_f28ef/fast
+        C:/msys64/ucrt64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_f28ef.dir\\build.make CMakeFiles/cmTC_f28ef.dir/build
+        mingw32-make[1]: Entering directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-3cv9si'
+        Building C object CMakeFiles/cmTC_f28ef.dir/testCCompiler.c.obj
+        C:\\msys64\\mingw64\\bin\\gcc.exe   --coverage  -o CMakeFiles\\cmTC_f28ef.dir\\testCCompiler.c.obj -c D:\\STM32CubeIDE\\workspace_2.1.1\\stm32-state-machine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3cv9si\\testCCompiler.c
+        Linking C executable cmTC_f28ef.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_f28ef.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_f28ef.dir/objects.a
+        C:\\msys64\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_f28ef.dir/objects.a @CMakeFiles\\cmTC_f28ef.dir\\objects1.rsp
+        C:\\msys64\\mingw64\\bin\\gcc.exe --coverage  --coverage  -Wl,--whole-archive CMakeFiles\\cmTC_f28ef.dir/objects.a -Wl,--no-whole-archive -o cmTC_f28ef.exe -Wl,--out-implib,libcmTC_f28ef.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_f28ef.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine/build/CMakeFiles/CMakeScratch/TryCompile-3cv9si'
         
       exitCode: 0
   -
@@ -1568,6 +1682,8 @@ events:
     names:
       - "gcovr"
     candidate_directories:
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "C:/Windows/System32/"
       - "C:/Windows/"
       - "C:/Windows/System32/wbem/"
@@ -1596,6 +1712,12 @@ events:
       - "C:/Program Files (x86)/control_led/sbin/"
       - "C:/Program Files (x86)/control_led/"
     searched_directories:
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcovr.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcovr.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/gcovr"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcovr.com"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcovr.exe"
+      - "C:/Users/Ingrid/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/gcovr"
       - "C:/Windows/System32/gcovr.com"
       - "C:/Windows/System32/gcovr.exe"
       - "C:/Windows/System32/gcovr"
@@ -1624,6 +1746,8 @@ events:
     found: "C:/Users/Ingrid/AppData/Local/Programs/Python/Python313/Scripts/gcovr.exe"
     search_context:
       ENV{PATH}:
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
+        - "c:\\Users\\Ingrid\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
         - "C:\\WINDOWS\\system32"
         - "C:\\WINDOWS"
         - "C:\\WINDOWS\\System32\\Wbem"

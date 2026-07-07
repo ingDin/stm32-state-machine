@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE coverage SYSTEM 'http://cobertura.sourceforge.net/xml/coverage-04.dtd'>
-<coverage line-rate="0.39627434377646065" branch-rate="0.178743961352657" lines-covered="468" lines-valid="1181" branches-covered="111" branches-valid="621" complexity="0.0" timestamp="1783441535" version="gcovr 8.6">
+<coverage line-rate="0.39627434377646065" branch-rate="0.178743961352657" lines-covered="468" lines-valid="1181" branches-covered="111" branches-valid="621" complexity="0.0" timestamp="1783443180" version="gcovr 8.6">
   <sources>
     <source>D:/STM32CubeIDE/workspace_2.1.1/stm32-state-machine</source>
   </sources>
