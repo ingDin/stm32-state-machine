@@ -41,14 +41,24 @@ This keeps the code clean, testable, and easy to extend.
 
 ## 📁 Project Structure
 
-    App
-    ├── Inc
-    │   ├── hal_wrapper.h
-    │   ├── state_machine.h
-    │   
-    └── Src
-        ├── hal_wrapper.c
-        ├── state_machine.c
+    APP  
+    │  
+    ├── **Inc/**  
+    │   ├── app.h  
+    │   ├── button.h  
+    │   ├── config.h  
+    │   ├── guards.h  
+    │   ├── hal_wrapper.h  
+    │   ├── led.h  
+    │   └── state_machine.h  
+    │  
+    └── **Src/**  
+        ├── app.c  
+        ├── button.c  
+        ├── guards.c  
+        ├── hal_wrapper.c  
+        ├── led.c  
+        └── state_machine.c
 
 ---
 
@@ -217,25 +227,52 @@ This approach ensures the state machine evolves safely and remains fully testabl
 ### Test Directory Structure
 Tests mirror the module layout to keep responsibilities clear:
 
-    Tests
-    ├── unit_tests.exe
-    │
-    ├── Fakes
-    │   └── Src
-    │       ├── fake_hal.c
-    │       └── fake_hal.h
-    │
-    ├── Unit
-    │   └── Src
-    │       ├── test_state_machine.c
-    │       └── test_state_machine.h
-    │
-    └── Unity
-        └── Src
-            ├── unity.c
-            └── unity.h
+    UNIT_TESTS  
+    │  
+    ├── extract_tests.py  
+    ├── test_runner.c  
+    │  
+    ├── **docs/**  
+    │   ├── TEST_PLAN.md  
+    │   ├── TEST_SPEC_APP.md  
+    │   ├── TEST_SPEC_BUTTON.md  
+    │   ├── TEST_SPEC_LED.md  
+    │   ├── TEST_SPEC_STATE_MACHINE.md  
+    │   └── TEST_STRATEGY.md  
+    │  
+    ├── **Fakes/**  
+    │   ├── **Inc/**  
+    │   │   ├── fake_fsm.h  
+    │   │   ├── fake_hal.h  
+    │   │   └── fake_tguard.h  
+    │   │  
+    │   └── **Src/**  
+    │       ├── fake_fsm.c  
+    │       ├── fake_hal.c  
+    │       └── fake_tguard.c  
+    │  
+    ├── **Unit/**  
+    │   ├── **Inc/**  
+    │   │   ├── test_app.h  
+    │   │   ├── test_button.h  
+    │   │   ├── test_led.h  
+    │   │   └── test_state_machine.h  
+    │   │  
+    │   └── **Src/**  
+    │       ├── test_app.c  
+    │       ├── test_button.c  
+    │       ├── test_led.c  
+    │       └── test_state_machine.c  
+    │  
+    └── **Unity/**  
+        ├── **Inc/**  
+        │   ├── unity.h  
+        │   └── unity_internals.h  
+        │  
+        └── **Src/**  
+            └── unity.c
 
-
+___
 
 ### Unit Test Suite (Current Focus)
 The initial suite validates each module **in isolation**:
