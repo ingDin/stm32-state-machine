@@ -1,0 +1,32 @@
+# Build folders
+build/
+Debug/
+Release/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# STM32CubeIDE generated
+.settings/
+.metadata/
+*.launch
+
+# Object files
+*.o
+*.obj
+
+# Binaries
+*.elf
+*.bin
+*.hex
+*.map
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
