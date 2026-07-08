@@ -1,5 +1,5 @@
 #include "stm32f4xx.h"
-#include "led.h"
+#include "gpio.h"
 
 #include <stdio.h>
 
@@ -15,7 +15,7 @@ void led_init(void)
     GPIOD_MODER |=  (1 << (12 * 2));
 }
 
-void led_toggle(void)
+void led_write(void)
 {
     printf("LED PD12 toggle!\n");
 

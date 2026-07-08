@@ -16,23 +16,44 @@
  ******************************************************************************
  */
 
-#include <stdint.h>
+#include <stdio.h>
 
-#include "led.h"
-#include "delay.h"
+#include "gpio.h"
+#include "time.h"
 #include "user_button.h"
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
-  #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+#warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
 
+extern volatile int button_pressed;
 
 int main(void)
 {
-	led_init();
-	delay_init();
-	user_button_init();
-    /* Loop forever */
-	for(;;){
-	}
+    // Initialize SysTick (1ms tick)
+    time_init();
+
+    // Initialize LED PD12
+    led_init();
+
+    // Initialize user button PA0 + EXTI0
+    user_button_init();
+
+    printf("System ready!\n");
+
+    while (1)
+    {
+        if (button_pressed)
+        {
+            button_pressed = 0;   // reset flag
+
+            // Blink LED once using toggle
+            led_write();          // ON
+            delay_ms(200);
+            led_write();          // OFF
+            delay_ms(200);
+
+            printf("LED blinked!\n");
+        }
+    }
 }

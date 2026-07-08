@@ -8,6 +8,7 @@
  */
 
 #include "hal_wrapper.h"
+#include "gpio.c"
 
 // un tick software, incrementat din SysTick_Handler
 static volatile uint32_t tick_ms = 0;
@@ -17,13 +18,7 @@ uint32_t hal_get_tick(void)
     return tick_ms;
 }
 
-void SysTick_Handler(void)
-{
-    tick_ms++;
-}
-
 void hal_toggle_led(void)
 {
-    // TO DO
-    //GPIOA->ODR ^= (1 << 5);
+    led_write();
 }
