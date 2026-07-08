@@ -1,0 +1,52 @@
+# Build folders (local only, never in Git)
+build/
+Debug/
+Release/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# STM32CubeIDE generated
+.settings/
+.metadata/
+*.launch
+*.project
+*.cproject
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Object files
+*.o
+*.obj
+
+# Binaries (MCU outputs)
+*.elf
+*.bin
+*.hex
+*.map
+
+# Test results
+Test_results/
+SWV_export/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# IDE-specific junk
+.vscode/
+.idea/
+
+# OS-specific junk
+Thumbs.db
+.DS_Store

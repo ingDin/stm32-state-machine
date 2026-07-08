@@ -1,0 +1,10 @@
+#ifndef TEST_STATE_MACHINE_H
+#define TEST_STATE_MACHINE_H
+
+void test_state_transitions_parameterized(void);
+void test_blink_timeout_behavior_parameterized(void);
+void test_timer_resets_on_state_change_parameterized(void);
+void test_next_state_returns_current_when_no_transition_parameterized(void);
+void test_guard_always_true_parameterized(void);
+
+#endif // TEST_STATE_MACHINE_H

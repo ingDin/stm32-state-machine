@@ -1,0 +1,54 @@
+name: Run Unit Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake build-essential lcov gcovr
+
+      - name: Configure CMake (with coverage flags)
+        run: |
+          cmake -S . -B build \
+            -DCMAKE_C_FLAGS="--coverage" \
+            -DCMAKE_EXE_LINKER_FLAGS="--coverage"
+
+      - name: Build unit tests
+        run: cmake --build build
+
+      - name: Run Unit Tests
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Generate coverage report with gcovr
+        run: |
+          gcovr -r . \
+            --exclude 'Tests/Unity' \
+            --xml-pretty -o coverage.xml
+
+          gcovr -r . \
+            --exclude 'Tests/Unity' \
+            --html-details -o coverage.html
+
+      - name: Extract coverage percentage
+        id: coverage
+        run: |
+          LINE_RATE=$(gcovr -r . --exclude 'Tests/Unity' --txt | grep "lines:" | awk '{print $2}' | sed 's/%//')
+          echo "coverage=$LINE_RATE" >> $GITHUB_OUTPUT
+
+      - name: Save coverage artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: |
+            coverage.xml
+            coverage.html
