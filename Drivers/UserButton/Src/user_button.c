@@ -4,7 +4,7 @@
 
 void user_button_init(void)
 {
-    printf("User button init (B1: PA0 / EXTI0)\n");
+    printf("INFO: User button init (B1: PA0 / EXTI0)\n");
 
     /* Enable clock for GPIOA */
     RCC_AHB1ENR |= (1 << 0);

@@ -3,9 +3,9 @@
 
 #include <stdio.h>
 
-void led_init(void)
+void gpio_init(void)
 {
-    printf("LED PD12 init!\n");
+    printf("INFO: LED12 activated\n");
 
     // Enable clock for GPIOD
     RCC_AHB1ENR |= (1 << 3);
@@ -15,10 +15,26 @@ void led_init(void)
     GPIOD_MODER |=  (1 << (12 * 2));
 }
 
-void led_write(void)
+void gpio_write(int state)
 {
-    printf("LED PD12 toggle!\n");
+    if (state)
+    {
+        printf("INFO: LED12 set HIGH\n");
+        GPIOD_ODR |=  (1 << 12);   // LED12 ON
+    }
+    else
+    {
+        printf("INFO: LED12 set LOW\n");
+        GPIOD_ODR &= ~(1 << 12);   // LED12 OFF
+    }
+}
+
+
+void gpio_toggle(void)
+{
+    printf("INFO: LED12 activated\n");
 
     // Toggle PD12
     GPIOD_ODR ^= (1 << 12);
 }
+

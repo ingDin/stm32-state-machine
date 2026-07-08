@@ -1,6 +1,8 @@
 #include "stm32f4xx.h"
 #include "time.h"
 
+#include <stdint.h>
+
 volatile uint32_t tick_count = 0;
 
 /*

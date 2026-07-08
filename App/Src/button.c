@@ -1,6 +1,13 @@
 #include "button.h"
+
+#include "config.h"
+#if DEVELOP
 #include "fake_fsm.h"     // pentru EVENT_BTN_PRESS / RELEASE
+#endif
+
 #include <stddef.h>       // pentru NULL
+
+
 
 #define DEBOUNCE_TICKS 3
 

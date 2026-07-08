@@ -6,11 +6,11 @@
 #define PERIPH_BASE           0x40000000U
 #define AHB1PERIPH_BASE       (PERIPH_BASE + 0x00020000U)
 
-/* GPIO */
-#define GPIOD_BASE            (AHB1PERIPH_BASE + 0x0C00U)
+/* GPIO BASE ADDRESSES */
 #define GPIOA_BASE            (AHB1PERIPH_BASE + 0x0000U)
+#define GPIOD_BASE            (AHB1PERIPH_BASE + 0x0C00U)
 
-/* RCC */
+/* RCC BASE */
 #define RCC_BASE              (AHB1PERIPH_BASE + 0x3800U)
 
 /* -------------------- RCC REGISTERS -------------------- */
@@ -20,13 +20,21 @@
 
 /* -------------------- GPIO REGISTERS -------------------- */
 
+/* GPIOA */
+#define GPIOA_MODER           (*(volatile unsigned long *)(GPIOA_BASE + 0x00))
+#define GPIOA_OTYPER          (*(volatile unsigned long *)(GPIOA_BASE + 0x04))
+#define GPIOA_OSPEEDR         (*(volatile unsigned long *)(GPIOA_BASE + 0x08))
+#define GPIOA_PUPDR           (*(volatile unsigned long *)(GPIOA_BASE + 0x0C))
+#define GPIOA_IDR             (*(volatile unsigned long *)(GPIOA_BASE + 0x10))   // INPUT DATA
+#define GPIOA_ODR             (*(volatile unsigned long *)(GPIOA_BASE + 0x14))
+
+/* GPIOD */
 #define GPIOD_MODER           (*(volatile unsigned long *)(GPIOD_BASE + 0x00))
 #define GPIOD_OTYPER          (*(volatile unsigned long *)(GPIOD_BASE + 0x04))
 #define GPIOD_OSPEEDR         (*(volatile unsigned long *)(GPIOD_BASE + 0x08))
 #define GPIOD_PUPDR           (*(volatile unsigned long *)(GPIOD_BASE + 0x0C))
+#define GPIOD_IDR             (*(volatile unsigned long *)(GPIOD_BASE + 0x10))   // INPUT DATA
 #define GPIOD_ODR             (*(volatile unsigned long *)(GPIOD_BASE + 0x14))
-
-#define GPIOA_MODER           (*(volatile unsigned long *)(GPIOA_BASE + 0x00))
 
 /* -------------------- SYSTICK BASE -------------------- */
 

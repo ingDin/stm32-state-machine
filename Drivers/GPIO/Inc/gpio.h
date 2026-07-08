@@ -1,7 +1,8 @@
 #ifndef LED_H
 #define LED_H
 
-void led_init(void);
-void led_write(void);
+void gpio_init(void);
+void gpio_toggle(void);
+void gpio_write(int state);
 
 #endif

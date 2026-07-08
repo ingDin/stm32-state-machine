@@ -32,6 +32,7 @@ __pycache__/
 
 # Test results
 Test_results/
+SWV_export/
 
 # Logs
 *.log

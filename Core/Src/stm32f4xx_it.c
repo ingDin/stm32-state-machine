@@ -1,15 +1,19 @@
 #include <stdio.h>
 
 #include "stm32f4xx.h"
+#include "button.h"
 
-volatile int button_pressed = 0;
 
 void EXTI0_IRQHandler(void)
 {
-    if (EXTI_PR & 1)
-    {
-    	printf("B1 pressed (EXTI0)!\n");
-        EXTI_PR = 1;
-        button_pressed = 1;
-    }
+	printf("DEBUG: Expected interrupt triggered\n");
+    EXTI_IMR &= ~(1 << 0);   // disable EXTI0 temporarily
+
+    EXTI_PR = (1 << 0);      // clear interrupt flag
+
+    unsigned long raw_state = (GPIOA_IDR >> 0) & 1;
+
+    button_isr_handler(raw_state);
+
+    EXTI_IMR |= (1 << 0);    // re-enable EXTI0
 }

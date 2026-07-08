@@ -8,17 +8,23 @@
  */
 
 #include "hal_wrapper.h"
-#include "gpio.c"
+#include "gpio.h"
+#include "time.h"
 
 // un tick software, incrementat din SysTick_Handler
 static volatile uint32_t tick_ms = 0;
 
 uint32_t hal_get_tick(void)
 {
-    return tick_ms;
+    return get_tick_count();
 }
 
 void hal_toggle_led(void)
 {
-    led_write();
+    gpio_toggle();
+}
+
+void hal_write_led(int state)
+{
+	gpio_write(state);
 }

@@ -59,3 +59,8 @@ int fake_hal_get_toggle_count(void)
 {
     return fake_toggle_count;
 }
+
+void hal_write_led(int state)
+{
+    // no-action
+}

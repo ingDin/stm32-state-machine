@@ -56,7 +56,7 @@ void test_led_init_parameterized(void)
 
         // ASSERT: verify tick reset and toggle counter
         TEST_ASSERT_EQUAL_UINT32(tests[i].expected_tick_after_init, hal_get_tick());
-        TEST_ASSERT_EQUAL_INT(tests[i].expected_toggle_count, led_get_toggle_count());
+        TEST_ASSERT_EQUAL_INT(tests[i].expected_toggle_count, fake_hal_get_toggle_count());
     }
 }
 
@@ -90,6 +90,6 @@ void test_led_tick_parameterized(void)
         led_tick();
 
         // ASSERT: verify expected toggle count
-        TEST_ASSERT_EQUAL_INT(tests[i].expected_toggle_count, led_get_toggle_count());
+        TEST_ASSERT_EQUAL_INT(tests[i].expected_toggle_count, fake_hal_get_toggle_count());
     }
 }

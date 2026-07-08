@@ -41,10 +41,3 @@ void led_toggle(void)
     hal_toggle_led();
 }
 
-
-int led_get_toggle_count(void)
-{
-#if DEVELOP
-    return fake_hal_get_toggle_count();
-#endif
-}

@@ -20,6 +20,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 extern uint32_t hal_get_tick(void);
 
@@ -42,10 +43,20 @@ static void entry_led(bool on)
 }
 
 /* ENTRY ACTIONS */
-static void entry_off(void) { entry_led(false); }
-static void entry_on(void) { entry_led(true); }
-static void entry_blink_slow(void) { entry_common(); }
-static void entry_blink_fast(void) { entry_common(); }
+static void entry_off(void) {
+	printf("DEBUG: entry_off\n");
+	entry_led(false);
+}
+static void entry_on(void) {
+	entry_led(true);
+	printf("DEBUG: entry_on\n");
+}
+static void entry_blink_slow(void) {
+	entry_common();
+	printf("DEBUG: entry_blink_slow\n");}
+static void entry_blink_fast(void) {
+	entry_common();
+	printf("DEBUG: entry_blink_slow\n");}
 
 /* EXIT ACTIONS (all no-op) */
 static void exit_noop(void) {}
@@ -57,15 +68,23 @@ static action_fn_t exit_actions[STATE_COUNT] = {
     [STATE_BLINK_FAST] = exit_noop};
 
 /* STATE ACTIONS */
+
+static void action_set(bool state)
+{
+    led_state = state;
+    hal_write_led(led_state);
+}
+
 static void action_off(void)
 {
-    led_state = false;
+    action_set(false);
 }
 
 static void action_on(void)
 {
-    led_state = true;
+    action_set(true);
 }
+
 
 static bool timer_expired(uint32_t interval)
 {
