@@ -1,4 +1,4 @@
-# Build folders
+# Build folders (local only, never in Git)
 build/
 Debug/
 Release/
@@ -13,16 +13,25 @@ Makefile
 .settings/
 .metadata/
 *.launch
+*.project
+*.cproject
+
+# Python cache
+__pycache__/
+*.pyc
 
 # Object files
 *.o
 *.obj
 
-# Binaries
+# Binaries (MCU outputs)
 *.elf
 *.bin
 *.hex
 *.map
+
+# Test results
+Test_results/
 
 # Logs
 *.log
@@ -30,3 +39,13 @@ Makefile
 # Temporary files
 *.tmp
 *.bak
+*.swp
+*.swo
+
+# IDE-specific junk
+.vscode/
+.idea/
+
+# OS-specific junk
+Thumbs.db
+.DS_Store

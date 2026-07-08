@@ -1,8 +1,0 @@
-"./Core/Src/main.o"
-"./Core/Src/stm32f4xx_it.o"
-"./Core/Src/syscalls.o"
-"./Core/Src/sysmem.o"
-"./Drivers/Delay/Src/delay.o"
-"./Drivers/GPIO/Src/led.o"
-"./Drivers/UserButton/Src/user_button.o"
-"./Startup/startup_stm32f407vgtx.o"

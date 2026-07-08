@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\test_blink_toggles_led_after_interval.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\test_blink_toggles_led_after_interval.dir/objects.a @CMakeFiles\test_blink_toggles_led_after_interval.dir\objects1.rsp
-C:\msys64\mingw64\bin\gcc.exe --coverage --coverage --coverage -Wl,--whole-archive CMakeFiles\test_blink_toggles_led_after_interval.dir/objects.a -Wl,--no-whole-archive -o test_blink_toggles_led_after_interval.exe -Wl,--out-implib,libtest_blink_toggles_led_after_interval.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\test_blink_toggles_led_after_interval.dir\linkLibs.rsp

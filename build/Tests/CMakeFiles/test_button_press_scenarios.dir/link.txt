@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\test_button_press_scenarios.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\test_button_press_scenarios.dir/objects.a @CMakeFiles\test_button_press_scenarios.dir\objects1.rsp
-C:\msys64\mingw64\bin\gcc.exe --coverage --coverage --coverage -Wl,--whole-archive CMakeFiles\test_button_press_scenarios.dir/objects.a -Wl,--no-whole-archive -o test_button_press_scenarios.exe -Wl,--out-implib,libtest_button_press_scenarios.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\test_button_press_scenarios.dir\linkLibs.rsp

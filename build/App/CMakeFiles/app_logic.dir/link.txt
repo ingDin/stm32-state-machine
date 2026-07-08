@@ -1,2 +1,0 @@
-C:\msys64\mingw64\bin\ar.exe qc libapp_logic.a CMakeFiles/app_logic.dir/Src/state_machine.c.obj CMakeFiles/app_logic.dir/Src/guards.c.obj
-C:\msys64\mingw64\bin\ranlib.exe libapp_logic.a
