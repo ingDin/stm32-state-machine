@@ -4,55 +4,41 @@ project(UnitTests C)
 
 enable_testing()
 
-# Debug symbols
 add_compile_options(-g)
 
 option(DEVELOP "Enable development mode" ON)
 
 include_directories(
-    Unity/Inc
-    Unit/Inc
-    Fakes/Inc
-    ../App/Inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Unity/Inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/Inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Fakes/Inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../App/Inc
 )
 
-# Coverage flags (GNU only)
 if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
     add_compile_options(--coverage)
     add_link_options(--coverage)
 endif()
 
-# ============================================
-#  Extract Unity tests automatically
-# ============================================
-
 execute_process(
-    COMMAND python ${CMAKE_SOURCE_DIR}/Tests/extract_tests.py
-            ${CMAKE_SOURCE_DIR}/Tests/Unit/Src
+    COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/extract_tests.py
+            ${CMAKE_CURRENT_SOURCE_DIR}/Src
     OUTPUT_VARIABLE UNITY_TEST_LIST
 )
 
 string(REPLACE "\n" ";" UNITY_TEST_LIST "${UNITY_TEST_LIST}")
 
-# ============================================
-#  GLOB for Unity / Unit / Fakes
-# ============================================
-
 file(GLOB UNITY_SRC
-    "${CMAKE_CURRENT_SOURCE_DIR}/Unity/Src/*.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../Unity/Src/*.c"
 )
 
 file(GLOB UNIT_SRC
-    "${CMAKE_CURRENT_SOURCE_DIR}/Unit/Src/*.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Src/*.c"
 )
 
 file(GLOB FAKES_SRC
-    "${CMAKE_CURRENT_SOURCE_DIR}/Fakes/Src/*.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../Fakes/Src/*.c"
 )
-
-# ============================================
-#  Generate executables for each test
-# ============================================
 
 foreach(EXE_NAME ${UNITY_TEST_LIST})
 
@@ -61,26 +47,22 @@ foreach(EXE_NAME ${UNITY_TEST_LIST})
         ${UNIT_SRC}
         ${FAKES_SRC}
         ${CMAKE_CURRENT_SOURCE_DIR}/test_runner.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/../App/Src/state_machine.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/../App/Src/button.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/../App/Src/led.c
-        ${CMAKE_CURRENT_SOURCE_DIR}/../App/Src/app.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../App/Src/state_machine.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../App/Src/button.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../App/Src/led.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../App/Src/app.c
     )
 
     target_include_directories(${EXE_NAME} PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/Unity/Inc
-        ${CMAKE_CURRENT_SOURCE_DIR}/Unit/Inc
-        ${CMAKE_CURRENT_SOURCE_DIR}/Fakes/Inc
-        ${CMAKE_CURRENT_SOURCE_DIR}/../App/Inc
+        ${CMAKE_CURRENT_SOURCE_DIR}/../Unity/Inc
+        ${CMAKE_CURRENT_SOURCE_DIR}/Inc
+        ${CMAKE_CURRENT_SOURCE_DIR}/../Fakes/Inc
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../App/Inc
     )
 
     add_test(NAME ${EXE_NAME} COMMAND ${EXE_NAME})
 
 endforeach()
-
-# ============================================
-#  Save output to file (one test per line)
-# ============================================
 
 file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/Test_results/TEST)
 
@@ -88,13 +70,11 @@ string(REPLACE "\r\n" "\n" UNITY_TEST_LIST "${UNITY_TEST_LIST}")
 string(REPLACE "\r" "\n" UNITY_TEST_LIST "${UNITY_TEST_LIST}")
 
 file(WRITE ${CMAKE_SOURCE_DIR}/Test_results/TEST/test_list.txt "")
+file(APPEND ${CMAKE_SOURCE_DIR}/Test_results/TEST/test_list.txt
+     "Unit tests found:\n")
 foreach(TEST_NAME ${UNITY_TEST_LIST})
-    file(APPEND ${CMAKE_SOURCE_DIR}/Test_results/TEST/test_list.txt "${TEST_NAME}\n")
+    file(APPEND ${CMAKE_SOURCE_DIR}/Test_results/TEST/test_list.txt "- ${TEST_NAME}\n")
 endforeach()
-
-# ============================================
-#  Coverage generation using gcovr
-# ============================================
 
 find_program(GCOVR gcovr)
 if(NOT GCOVR)
@@ -109,7 +89,6 @@ add_custom_target(coverage_clean
     COMMAND ${CMAKE_COMMAND} -E rm -rf ${COVERAGE_DIR}
     COMMAND ${CMAKE_COMMAND} -E make_directory ${COVERAGE_DIR}
     COMMAND ${CMAKE_COMMAND} -E make_directory ${COVERAGE_HTML}
-    COMMENT "Cleaning coverage output folders..."
 )
 
 add_custom_target(coverage_xml
@@ -117,9 +96,13 @@ add_custom_target(coverage_xml
     COMMAND ${GCOVR}
         -r ${CMAKE_SOURCE_DIR}
         --object-directory ${CMAKE_BINARY_DIR}
+        --exclude "${CMAKE_BINARY_DIR}/Tests/Integration"
+        --exclude "${CMAKE_BINARY_DIR}/Tests/Integration/*"
+        --exclude "${CMAKE_SOURCE_DIR}/Tests/Integration"
+        --exclude "${CMAKE_SOURCE_DIR}/Tests/Integration/*"
+        --gcov-ignore-errors=no_working_dir_found
         --xml-pretty
         -o ${COVERAGE_DIR}/coverage.xml
-    COMMENT "Generating XML coverage report..."
 )
 
 add_custom_target(coverage_html
@@ -127,12 +110,15 @@ add_custom_target(coverage_html
     COMMAND ${GCOVR}
         -r ${CMAKE_SOURCE_DIR}
         --object-directory ${CMAKE_BINARY_DIR}
+        --exclude "${CMAKE_BINARY_DIR}/Tests/Integration"
+        --exclude "${CMAKE_BINARY_DIR}/Tests/Integration/*"
+        --exclude "${CMAKE_SOURCE_DIR}/Tests/Integration"
+        --exclude "${CMAKE_SOURCE_DIR}/Tests/Integration/*"
+        --gcov-ignore-errors=no_working_dir_found
         --html --html-details
         -o ${COVERAGE_HTML}/index.html
-    COMMENT "Generating HTML coverage report..."
 )
 
 add_custom_target(coverage
     DEPENDS coverage_xml coverage_html
-    COMMENT "Coverage generation complete."
 )
