@@ -1,54 +1,67 @@
-name: Run Unit Tests
+name: Windows CI
 
 on:
   push:
   pull_request:
 
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
+  unit-tests:
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install build tools
+      - name: Install MinGW + Python + gcovr
         run: |
-          sudo apt-get update
-          sudo apt-get install -y cmake build-essential lcov gcovr
+          choco install mingw --yes
+          python -m pip install --upgrade pip
+          pip install gcovr
 
-      - name: Configure CMake (with coverage flags)
+      - name: Configure CMake for UNIT tests (GCC)
+        env:
+          CC: gcc
+          CXX: g++
+        run: cmake -S Tests/Unit -B build_unit -G "MinGW Makefiles"
+
+      - name: Build UNIT tests
+        run: cmake --build build_unit
+
+      - name: Run UNIT tests
+        run: ctest --test-dir build_unit --output-on-failure
+
+      - name: Generate Coverage (gcovr)
         run: |
-          cmake -S . -B build \
-            -DCMAKE_C_FLAGS="--coverage" \
-            -DCMAKE_EXE_LINKER_FLAGS="--coverage"
+          gcovr -r . --object-directory build_unit --exclude "Tests/Integration" --exclude "Tests/Integration/*" --xml-pretty -o coverage.xml
+          gcovr -r . --object-directory build_unit --exclude "Tests/Integration" --exclude "Tests/Integration/*" --html-details -o coverage.html
 
-      - name: Build unit tests
-        run: cmake --build build
-
-      - name: Run Unit Tests
-        run: ctest --test-dir build --output-on-failure
-
-      - name: Generate coverage report with gcovr
-        run: |
-          gcovr -r . \
-            --exclude 'Tests/Unity' \
-            --xml-pretty -o coverage.xml
-
-          gcovr -r . \
-            --exclude 'Tests/Unity' \
-            --html-details -o coverage.html
-
-      - name: Extract coverage percentage
-        id: coverage
-        run: |
-          LINE_RATE=$(gcovr -r . --exclude 'Tests/Unity' --txt | grep "lines:" | awk '{print $2}' | sed 's/%//')
-          echo "coverage=$LINE_RATE" >> $GITHUB_OUTPUT
-
-      - name: Save coverage artifacts
+      - name: Upload Coverage
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-report
+          name: coverage
           path: |
             coverage.xml
             coverage.html
+
+  integration-tests:
+    runs-on: windows-latest
+    needs: unit-tests
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Python & pytest
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Configure CMake for INTEGRATION tests (MSVC)
+        run: cmake -S Tests/Integration -B build_integration
+
+      - name: Build Integration Tests (DLL)
+        run: cmake --build build_integration --config Release
+
+      - name: Run Integration Tests
+        working-directory: Tests/Integration
+        run: pytest -vv
