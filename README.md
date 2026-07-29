@@ -18,9 +18,10 @@ Interrupt‑Driven Input • Non‑Blocking LED Logic • Modular Architecture
 ## System Components
 
 ### Hardware Configuration
-- Configured **PC13** as external interrupt (**EXTI13**) on falling edge for the user button  
-- Enabled **NVIC interrupt line EXTI15_10_IRQn**  
-- Configured **PB13** as output for the user LED  
+
+- Configured **PA0** as external interrupt (**EXTI0**) for the user button  
+- Enabled NVIC interrupt line **EXTI0_IRQn**  
+- Configured **PD12** as output for the user LED
 
 ---
 
@@ -81,7 +82,7 @@ This keeps the code clean, testable, and easy to extend.
 - Ensures transitions remain predictable and testable  
 
 ### **button module**
-- Configures PC13 as EXTI13 input on falling edge  
+- Configures PA0 as EXTI0 input on falling edge  
 - Implements HAL_GPIO_EXTI_Callback to capture button events  
 - Handles debouncing and event filtering  
 - Exposes clean events to the state machine (e.g., BTN_PRESS)  
@@ -89,7 +90,7 @@ This keeps the code clean, testable, and easy to extend.
 - Ensures button handling is reliable and modular  
 
 ### **led module**
-- Controls PB13 LED output (ON, OFF, toggle)  
+- Controls PD12 LED output (ON, OFF, toggle)  
 - Implements non‑blocking timing for blinking  
 - Abstracts hardware access behind simple functions  
 - Allows the state machine to request LED behavior without delays  
