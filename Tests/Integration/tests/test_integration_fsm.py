@@ -3,28 +3,25 @@ def test_press_triggers_fsm(sm):
     Integration Test: Button press should transition the real FSM
     from STATE_OFF to STATE_ON.
 
-    This test validates the full application pipeline:
-        - the button ISR updates the raw input level
-        - app_tick() performs debounce processing
-        - after three consecutive ticks, the stable state changes
-        - the registered callback (sm_handle_event) receives EVENT_BTN_PRESS
-        - the real FSM transitions from OFF → ON
-
-    Note:
-        Integration tests use the real FSM, not the fake_fsm stub.
-        Therefore, the correct assertion is sm_get_state(), not fake_fsm_last_event().
+    Pipeline:
+        ISR updates raw level
+        debounce stabilizes after 3 ticks
+        EVENT_BTN_PRESS is emitted
+        FSM transitions OFF → ON
     """
 
-    # Initialize the application (sets callback to sm_handle_event)
     sm.app_init()
 
-    # Simulate a button press (raw_level = 1)
+    # Helper for debounce ticks
+    def ticks(n=3):
+        for _ in range(n):
+            sm.app_tick()
+
+    # Simulate a button press
     sm.button_isr_handler(1)
 
-    # Debounce requires three consecutive ticks
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
+    # Debounce
+    ticks()
 
-    # After debounce completes, the FSM should be in STATE_ON (value 1)
+    # FSM should now be in STATE_ON
     assert sm.sm_get_state() == 1

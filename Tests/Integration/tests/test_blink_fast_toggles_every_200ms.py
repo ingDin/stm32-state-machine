@@ -6,37 +6,35 @@ def test_blink_fast_toggles_every_200ms(sm):
 
     sm.app_init()
 
-    # First press → OFF → ON
-    sm.button_isr_handler(1)
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
+    # Helper to run debounce ticks
+    def ticks(n=3):
+        for _ in range(n):
+            sm.app_tick()
 
-    # Release
+    # OFF → ON
+    sm.button_isr_handler(1)
+    ticks()
+    assert sm.sm_get_state() == 1
+
+    # RELEASE
     sm.button_isr_handler(0)
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
+    ticks()
 
-    # Second press → ON → BLINK_SLOW
+    # ON → BLINK_SLOW
     sm.button_isr_handler(1)
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
+    ticks()
+    assert sm.sm_get_state() == 2
 
-    # Release
+    # RELEASE
     sm.button_isr_handler(0)
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
+    ticks()
 
-    # Third press → BLINK_SLOW → BLINK_FAST
+    # BLINK_SLOW → BLINK_FAST
     sm.button_isr_handler(1)
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
+    ticks()
     assert sm.sm_get_state() == 3  # BLINK_FAST
 
+    # Timing checks
     sm.fake_hal_set_tick(0)
     sm.app_tick()
     assert sm.fake_hal_get_toggle_count() == 0

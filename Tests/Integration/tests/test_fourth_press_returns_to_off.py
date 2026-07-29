@@ -9,46 +9,39 @@ def test_fourth_press_returns_to_off(sm):
 
     sm.app_init()
 
+    # Helper for debounce ticks
+    def ticks(n=3):
+        for _ in range(n):
+            sm.app_tick()
+
     # First press → OFF → ON
     sm.button_isr_handler(1)
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
+    ticks()
+    assert sm.sm_get_state() == 1
 
     # Release
     sm.button_isr_handler(0)
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
+    ticks()
 
     # Second press → ON → BLINK_SLOW
     sm.button_isr_handler(1)
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
+    ticks()
+    assert sm.sm_get_state() == 2
 
     # Release
     sm.button_isr_handler(0)
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
+    ticks()
 
     # Third press → BLINK_SLOW → BLINK_FAST
     sm.button_isr_handler(1)
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
+    ticks()
+    assert sm.sm_get_state() == 3
 
     # Release
     sm.button_isr_handler(0)
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
+    ticks()
 
     # Fourth press → BLINK_FAST → OFF
     sm.button_isr_handler(1)
-    sm.app_tick()
-    sm.app_tick()
-    sm.app_tick()
-
+    ticks()
     assert sm.sm_get_state() == 0  # STATE_OFF
