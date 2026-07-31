@@ -1,21 +1,19 @@
 #include "button.h"
 
-#include "config.h"
-#if DEVELOP
-#include "fake_fsm.h"     // pentru EVENT_BTN_PRESS / RELEASE
+#if !defined(TEST)
+#include "stm32f4xx.h"
 #endif
 
-#include <stddef.h>       // pentru NULL
-
-
+#include <stddef.h>
 
 #define DEBOUNCE_TICKS 3
 
-static int raw_level = 0;
-static int stable_state = 0;
-static int debounce = 0;
+#if defined(TEST)
+button_state_t btn = {0}; // visible to fake_button_isr.c
+#else
+static button_state_t btn = {0}; // hidden in production
+#endif
 
-/* injected callback */
 static button_event_cb_t event_cb = NULL;
 
 void button_set_callback(button_event_cb_t cb)
@@ -25,44 +23,58 @@ void button_set_callback(button_event_cb_t cb)
 
 void button_init(void)
 {
-    raw_level = 0;
-    stable_state = 0;
-    debounce = 0;
+    btn.raw_level = 0;
+    btn.stable_state = 0;
+    btn.debounce = 0;
+    btn.event_flag = 0;
 }
 
-void button_isr_handler(int level)
+void button_isr_handler(void)
 {
-    raw_level = level;
+    btn.event_flag = 1;
 }
 
 void button_tick(void)
 {
-    if (raw_level != stable_state) {
+    if (btn.event_flag)
+    {
+        btn.event_flag = 0;
+#if !defined(TEST)
+        btn.raw_level = (GPIOA_IDR >> 0) & 1;
+#endif
+        /* In TEST mode, raw_level is set by fake_button_isr() */
+    }
 
-        if (debounce < DEBOUNCE_TICKS)
-            debounce++;
+    if (btn.raw_level != btn.stable_state)
+    {
 
-        if (debounce >= DEBOUNCE_TICKS) {
+        if (btn.debounce < DEBOUNCE_TICKS)
+            btn.debounce++;
 
-            int previous = stable_state;
-            stable_state = raw_level;
-            debounce = 0;
+        if (btn.debounce >= DEBOUNCE_TICKS)
+        {
 
-            if (event_cb) {
-                if (previous == 0 && stable_state == 1)
+            int previous = btn.stable_state;
+            btn.stable_state = btn.raw_level;
+            btn.debounce = 0;
+
+            if (event_cb)
+            {
+                if (previous == 0 && btn.stable_state == 1)
                     event_cb(EVENT_BTN_PRESS);
 
-                if (previous == 1 && stable_state == 0)
+                if (previous == 1 && btn.stable_state == 0)
                     event_cb(EVENT_BTN_RELEASE);
             }
         }
     }
-    else {
-        debounce = 0;
+    else
+    {
+        btn.debounce = 0;
     }
 }
 
 bool button_is_pressed(void)
 {
-    return stable_state == 1;
+    return btn.stable_state == 1;
 }

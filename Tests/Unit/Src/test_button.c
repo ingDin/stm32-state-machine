@@ -8,6 +8,7 @@
 
 #include "unity.h"
 #include "fake_fsm.h"
+#include "fake_button_isr.h"
 #include "button.h"
 #include "test_button.h"
 
@@ -32,7 +33,7 @@ static void run_sequence(const int *seq, int len)
     // ACT helper: feed raw ISR values + tick processing
     for (int i = 0; i < len; i++)
     {
-        button_isr_handler(seq[i]);
+        fake_button_isr(seq[i]);
         button_tick();
     }
 }

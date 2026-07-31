@@ -56,7 +56,7 @@ static void entry_blink_slow(void) {
 	printf("DEBUG: entry_blink_slow\n");}
 static void entry_blink_fast(void) {
 	entry_common();
-	printf("DEBUG: entry_blink_slow\n");}
+	printf("DEBUG: entry_blink_fast\n");}
 
 /* EXIT ACTIONS (all no-op) */
 static void exit_noop(void) {}

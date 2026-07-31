@@ -6,14 +6,9 @@
 
 void EXTI0_IRQHandler(void)
 {
-	printf("DEBUG: Expected interrupt triggered\n");
-    EXTI_IMR &= ~(1 << 0);   // disable EXTI0 temporarily
+    // Clear the interrupt pending flag for EXTI line 0
+    EXTI_PR = (1 << 0);
 
-    EXTI_PR = (1 << 0);      // clear interrupt flag
-
-    unsigned long raw_state = (GPIOA_IDR >> 0) & 1;
-
-    button_isr_handler(raw_state);
-
-    EXTI_IMR |= (1 << 0);    // re-enable EXTI0
+    // Notify the button module that an interrupt occurred
+    button_isr_handler();
 }

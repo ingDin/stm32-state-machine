@@ -18,19 +18,19 @@ def test_blink_slow_toggles_every_second(sm):
             sm.app_tick()
 
     # First press → OFF → ON
-    sm.button_isr_handler(1)
+    sm.fake_button_isr(1)
     ticks()
     assert sm.sm_get_state() == 1
 
     # Release
-    sm.button_isr_handler(0)
+    sm.fake_button_isr(0)
     ticks()
 
     # Reset tick BEFORE entering BLINK_SLOW
     sm.fake_hal_set_tick(0)
 
     # Second press → ON → BLINK_SLOW
-    sm.button_isr_handler(1)
+    sm.fake_button_isr(1)
     ticks()
     assert sm.sm_get_state() == 2  # BLINK_SLOW
 

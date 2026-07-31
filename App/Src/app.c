@@ -10,14 +10,13 @@
 #include "button.h"
 #include "state_machine.h"
 
-#include "config.h"
-#if DEVELOP
+#if defined(TEST)
 #include "fake_hal.h"
 #endif
 
 void app_init(void)
 {
-#if DEVELOP
+#if defined(TEST)
     fake_hal_reset();
 #endif
     button_init();
@@ -27,8 +26,8 @@ void app_init(void)
 
 void app_tick(void)
 {
-    button_tick();   // debounce + push events into fake_fsm
-    sm_tick();       // FSM periodic actions
+    button_tick(); // debounce + push events into fake_fsm
+    sm_tick();     // FSM periodic actions
 }
 
 void app_run(void)

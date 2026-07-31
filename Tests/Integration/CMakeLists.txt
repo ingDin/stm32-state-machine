@@ -4,9 +4,11 @@ project(IntegrationTests C)
 enable_testing()
 
 # ---------------------------------------------------------
-# Enable DEVELOP mode
+# Enable TEST mode (for DLL)
 # ---------------------------------------------------------
-add_compile_definitions(DEVELOP=1)
+# IMPORTANT: define TEST=1 on the target, not globally
+# so that button.c, fake_button_isr.c, fake_hal.c etc. all see it.
+# ---------------------------------------------------------
 
 # ---------------------------------------------------------
 # Build shared library for Python integration tests
@@ -18,14 +20,17 @@ add_library(stm32_sm SHARED
     ../../App/Src/app.c
 )
 
+# TEST=1 must be applied to the target, not globally
+target_compile_definitions(stm32_sm PUBLIC TEST=1)
+
 # ---------------------------------------------------------
-# In DEVELOP mode, use FAKE HAL + FAKE FSM + FAKE TGUARD
+# In TEST mode, use ALL FAKE SOURCES automatically
 # ---------------------------------------------------------
-target_sources(stm32_sm PRIVATE
-    ../Fakes/Src/fake_hal.c
-    ../Fakes/Src/fake_fsm.c
-    ../Fakes/Src/fake_tguard.c
+file(GLOB FAKE_SOURCES
+    "${CMAKE_CURRENT_SOURCE_DIR}/../Fakes/Src/*.c"
 )
+
+target_sources(stm32_sm PRIVATE ${FAKE_SOURCES})
 
 # ---------------------------------------------------------
 # Include directories
@@ -57,6 +62,7 @@ string(REPLACE "\n" ";" PYTEST_LIST "${PYTEST_RAW}")
 
 # Filter only valid pytest test names
 set(PYTEST_FILTERED "")
+
 foreach(LINE ${PYTEST_LIST})
     if(LINE MATCHES ".*\\.py::.*")
         list(APPEND PYTEST_FILTERED "${LINE}")
@@ -68,23 +74,21 @@ endforeach()
 # ---------------------------------------------------------
 file(APPEND ${CMAKE_SOURCE_DIR}/Test_results/TEST/test_list.txt "\n")
 file(APPEND ${CMAKE_SOURCE_DIR}/Test_results/TEST/test_list.txt
-     "Integration tests found:\n")
+    "Integration tests found:\n")
 
 # ---------------------------------------------------------
 # Add each pytest test individually
 # ---------------------------------------------------------
 foreach(PYTEST_NAME ${PYTEST_FILTERED})
-
     # Extract only the test name after ::
     string(REGEX REPLACE ".*::" "" PYTEST_SHORT "${PYTEST_NAME}")
 
     # Add test to CTest
     add_test(NAME ${PYTEST_SHORT}
-             COMMAND pytest -q ${PYTEST_NAME}
-             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+        COMMAND pytest -q ${PYTEST_NAME}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
     # Write to test_list.txt in same format as unit tests
     file(APPEND ${CMAKE_SOURCE_DIR}/Test_results/TEST/test_list.txt
-         "- ${PYTEST_SHORT}\n")
-
+        "- ${PYTEST_SHORT}\n")
 endforeach()

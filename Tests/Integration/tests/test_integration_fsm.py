@@ -18,7 +18,7 @@ def test_press_triggers_fsm(sm):
             sm.app_tick()
 
     # Simulate a button press
-    sm.button_isr_handler(1)
+    sm.fake_button_isr(1)
 
     # Debounce
     ticks()

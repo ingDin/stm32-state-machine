@@ -6,7 +6,7 @@ enable_testing()
 
 add_compile_options(-g)
 
-option(DEVELOP "Enable development mode" ON)
+add_compile_definitions(TEST=1)
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../Unity/Inc
@@ -15,14 +15,14 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../../App/Inc
 )
 
-if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
+if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
     add_compile_options(--coverage)
     add_link_options(--coverage)
 endif()
 
 execute_process(
     COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/extract_tests.py
-            ${CMAKE_CURRENT_SOURCE_DIR}/Src
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src
     OUTPUT_VARIABLE UNITY_TEST_LIST
 )
 
@@ -41,7 +41,6 @@ file(GLOB FAKES_SRC
 )
 
 foreach(EXE_NAME ${UNITY_TEST_LIST})
-
     add_executable(${EXE_NAME}
         ${UNITY_SRC}
         ${UNIT_SRC}
@@ -61,7 +60,6 @@ foreach(EXE_NAME ${UNITY_TEST_LIST})
     )
 
     add_test(NAME ${EXE_NAME} COMMAND ${EXE_NAME})
-
 endforeach()
 
 file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/Test_results/TEST)
@@ -71,12 +69,14 @@ string(REPLACE "\r" "\n" UNITY_TEST_LIST "${UNITY_TEST_LIST}")
 
 file(WRITE ${CMAKE_SOURCE_DIR}/Test_results/TEST/test_list.txt "")
 file(APPEND ${CMAKE_SOURCE_DIR}/Test_results/TEST/test_list.txt
-     "Unit tests found:\n")
+    "Unit tests found:\n")
+
 foreach(TEST_NAME ${UNITY_TEST_LIST})
     file(APPEND ${CMAKE_SOURCE_DIR}/Test_results/TEST/test_list.txt "- ${TEST_NAME}\n")
 endforeach()
 
 find_program(GCOVR gcovr)
+
 if(NOT GCOVR)
     message(WARNING "gcovr not found, coverage targets will be disabled.")
     return()
@@ -94,29 +94,29 @@ add_custom_target(coverage_clean
 add_custom_target(coverage_xml
     DEPENDS coverage_clean
     COMMAND ${GCOVR}
-        -r ${CMAKE_SOURCE_DIR}
-        --object-directory ${CMAKE_BINARY_DIR}
-        --exclude "${CMAKE_BINARY_DIR}/Tests/Integration"
-        --exclude "${CMAKE_BINARY_DIR}/Tests/Integration/*"
-        --exclude "${CMAKE_SOURCE_DIR}/Tests/Integration"
-        --exclude "${CMAKE_SOURCE_DIR}/Tests/Integration/*"
-        --gcov-ignore-errors=no_working_dir_found
-        --xml-pretty
-        -o ${COVERAGE_DIR}/coverage.xml
+    -r ${CMAKE_SOURCE_DIR}
+    --object-directory ${CMAKE_BINARY_DIR}
+    --exclude "${CMAKE_BINARY_DIR}/Tests/Integration"
+    --exclude "${CMAKE_BINARY_DIR}/Tests/Integration/*"
+    --exclude "${CMAKE_SOURCE_DIR}/Tests/Integration"
+    --exclude "${CMAKE_SOURCE_DIR}/Tests/Integration/*"
+    --gcov-ignore-errors=no_working_dir_found
+    --xml-pretty
+    -o ${COVERAGE_DIR}/coverage.xml
 )
 
 add_custom_target(coverage_html
     DEPENDS coverage_clean
     COMMAND ${GCOVR}
-        -r ${CMAKE_SOURCE_DIR}
-        --object-directory ${CMAKE_BINARY_DIR}
-        --exclude "${CMAKE_BINARY_DIR}/Tests/Integration"
-        --exclude "${CMAKE_BINARY_DIR}/Tests/Integration/*"
-        --exclude "${CMAKE_SOURCE_DIR}/Tests/Integration"
-        --exclude "${CMAKE_SOURCE_DIR}/Tests/Integration/*"
-        --gcov-ignore-errors=no_working_dir_found
-        --html --html-details
-        -o ${COVERAGE_HTML}/index.html
+    -r ${CMAKE_SOURCE_DIR}
+    --object-directory ${CMAKE_BINARY_DIR}
+    --exclude "${CMAKE_BINARY_DIR}/Tests/Integration"
+    --exclude "${CMAKE_BINARY_DIR}/Tests/Integration/*"
+    --exclude "${CMAKE_SOURCE_DIR}/Tests/Integration"
+    --exclude "${CMAKE_SOURCE_DIR}/Tests/Integration/*"
+    --gcov-ignore-errors=no_working_dir_found
+    --html --html-details
+    -o ${COVERAGE_HTML}/index.html
 )
 
 add_custom_target(coverage

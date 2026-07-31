@@ -10,6 +10,7 @@
 #include "app.h"
 #include "fake_hal.h"
 #include "fake_fsm.h"
+#include "fake_button_isr.h"
 #include "button.h"
 #include "test_app.h"
 #include "state_machine.h"
@@ -45,7 +46,7 @@ void test_app_tick_press_parameterized(void)
         // ISR + 3 debounce ticks
         for (int t = 0; t < 4; t++)
         {
-            button_isr_handler(tests[i].sequence[t]);
+            fake_button_isr(tests[i].sequence[t]);
             fake_hal_set_tick(t);
             app_tick();
         }
@@ -75,7 +76,7 @@ void test_app_tick_release_parameterized(void)
         sm_init();
 
         // First simulate a PRESS so stable_state becomes 1
-        button_isr_handler(1);
+        fake_button_isr(1);
         fake_hal_set_tick(0);
         app_tick();
         fake_hal_set_tick(1);
@@ -86,7 +87,7 @@ void test_app_tick_release_parameterized(void)
         // Now test RELEASE: ISR + 3 debounce ticks
         for (int t = 0; t < 4; t++)
         {
-            button_isr_handler(tests[i].sequence[t]);
+            fake_button_isr(tests[i].sequence[t]);
             fake_hal_set_tick(3 + t);
             app_tick();
         }
@@ -102,7 +103,7 @@ void test_app_init_parameterized(void)
 {
     // Dirty initial state
     hal_get_tick();        // just to touch HAL, if needed
-    button_isr_handler(1); // raw_level = 1, button "dirty"
+    fake_button_isr(1); // raw_level = 1, button "dirty"
 
     app_init();
 
@@ -133,7 +134,7 @@ void test_app_tick_no_event_parameterized(void)
         // If sequence is stable 1, generate a PRESS first
         if (sequences[i][0] == 1)
         {
-            button_isr_handler(1);
+            fake_button_isr(1);
             fake_hal_set_tick(0);
             app_tick();
             fake_hal_set_tick(1);
@@ -149,7 +150,7 @@ void test_app_tick_no_event_parameterized(void)
         // Now run the stable sequence
         for (int t = 0; t < 5; t++)
         {
-            button_isr_handler(sequences[i][t]);
+            fake_button_isr(sequences[i][t]);
             fake_hal_set_tick(10 + t);
             app_tick();
         }
@@ -176,7 +177,7 @@ void test_app_tick_bounce_parameterized(void)
 
         for (int t = 0; t < 3; t++)
         {
-            button_isr_handler(sequences[i][t]);
+            fake_button_isr(sequences[i][t]);
             fake_hal_set_tick(t);
             app_tick();
         }
@@ -202,7 +203,7 @@ void test_app_tick_stable_no_new_event_parameterized(void)
         app_init();
 
         // First generate a PRESS
-        button_isr_handler(1);
+        fake_button_isr(1);
         fake_hal_set_tick(0);
         app_tick();
         fake_hal_set_tick(1);
@@ -217,7 +218,7 @@ void test_app_tick_stable_no_new_event_parameterized(void)
         // Now stable 1 → no new event
         for (int t = 0; t < 5; t++)
         {
-            button_isr_handler(sequences[i][t]);
+            fake_button_isr(sequences[i][t]);
             fake_hal_set_tick(10 + t);
             app_tick();
         }

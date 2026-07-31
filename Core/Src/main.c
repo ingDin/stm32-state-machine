@@ -45,19 +45,4 @@ int main(void)
     app_init();
     app_run();
 
-//    while (1)
-//    {
-//        if (button_pressed)
-//        {
-//            button_pressed = 0;   // reset flag
-//
-//            // Blink LED once using toggle
-//            led_write();          // ON
-//            delay_ms(200);
-//            led_write();          // OFF
-//            delay_ms(200);
-//
-//            printf("LED blinked!\n");
-//        }
-//    }
 }

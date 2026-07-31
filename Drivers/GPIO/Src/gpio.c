@@ -5,7 +5,7 @@
 
 void gpio_init(void)
 {
-    printf("INFO: LED12 activated\n");
+    printf("INFO: LED12 configured\n");
 
     // Enable clock for GPIOD
     RCC_AHB1ENR |= (1 << 3);
@@ -19,12 +19,10 @@ void gpio_write(int state)
 {
     if (state)
     {
-        printf("INFO: LED12 set HIGH\n");
         GPIOD_ODR |=  (1 << 12);   // LED12 ON
     }
     else
     {
-        printf("INFO: LED12 set LOW\n");
         GPIOD_ODR &= ~(1 << 12);   // LED12 OFF
     }
 }
@@ -32,8 +30,6 @@ void gpio_write(int state)
 
 void gpio_toggle(void)
 {
-    printf("INFO: LED12 activated\n");
-
     // Toggle PD12
     GPIOD_ODR ^= (1 << 12);
 }
