@@ -50,6 +50,7 @@ foreach(EXE_NAME ${UNITY_TEST_LIST})
         ${CMAKE_CURRENT_SOURCE_DIR}/../../App/Src/button.c
         ${CMAKE_CURRENT_SOURCE_DIR}/../../App/Src/led.c
         ${CMAKE_CURRENT_SOURCE_DIR}/../../App/Src/app.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../App/Src/can_loopback.c
     )
 
     target_include_directories(${EXE_NAME} PUBLIC

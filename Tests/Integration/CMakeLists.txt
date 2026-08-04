@@ -18,6 +18,7 @@ add_library(stm32_sm SHARED
     ../../App/Src/button.c
     ../../App/Src/led.c
     ../../App/Src/app.c
+    ../../App/Src/can_loopback.c
 )
 
 # TEST=1 must be applied to the target, not globally

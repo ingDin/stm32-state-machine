@@ -1,20 +1,16 @@
 /**
  * @file hal_wrapper.h
- * @brief Hardware abstraction layer for LED and timing operations.
+ * @brief Minimal hardware abstraction layer for timing and LED control.
  *
- * This module provides a minimal abstraction over STM32 HAL or LL functions,
- * allowing higher‑level modules (FSM, LED driver, button handler) to operate
- * without depending directly on hardware registers or HAL internals.
+ * This module provides a small, stable API that hides STM32‑specific
+ * details behind simple functions. Higher‑level modules (FSM, LED driver,
+ * button handler) interact only with this wrapper, allowing seamless
+ * replacement with fake_hal.c in TEST mode.
  *
- * Benefits:
- *   - decouples application logic from hardware specifics
- *   - simplifies unit testing (fake_hal can override these functions)
- *   - provides a stable API for timing and LED control
- *
- * Functions:
- *   - hal_get_tick()   : retrieve system tick in milliseconds
- *   - hal_toggle_led() : toggle LED GPIO pin
- *   - hal_write_led()  : set LED GPIO pin to ON/OFF
+ * Responsibilities:
+ *   - Provide a unified millisecond tick source
+ *   - Abstract LED GPIO operations (write + toggle)
+ *   - Keep hardware access isolated from application logic
  */
 
 #ifndef HAL_WRAPPER_H
@@ -25,8 +21,8 @@
 /**
  * @brief Retrieve the current system tick in milliseconds.
  *
- * Typically backed by SysTick or LL_GetTick(), depending on the hardware
- * configuration. Used for timing operations in the LED driver and FSM.
+ * Backed by the SysTick counter maintained in time.c. Used by timing‑based
+ * modules such as the LED driver and FSM.
  *
  * @return Current tick count in milliseconds.
  */
@@ -35,19 +31,16 @@ uint32_t hal_get_tick(void);
 /**
  * @brief Toggle the LED GPIO pin.
  *
- * Used by blink logic and LED driver. The implementation is hardware‑specific
- * and may use HAL_GPIO_TogglePin(), LL_GPIO_TogglePin(), or direct register
- * access depending on the platform.
+ * Delegates to gpio_toggle(). Used by blink logic in the LED driver and FSM.
  */
 void hal_toggle_led(void);
 
 /**
  * @brief Write a specific state to the LED GPIO pin.
  *
- * @param state 0 for OFF, non‑zero for ON.
+ * @param state 0 = OFF, non‑zero = ON
  *
- * Used by FSM states such as STATE_ON and STATE_OFF. Abstracts away the
- * underlying GPIO implementation.
+ * Delegates to gpio_write(). Used by FSM states such as STATE_ON and STATE_OFF.
  */
 void hal_write_led(int state);
 

@@ -1,22 +1,19 @@
 /**
  * @file app.h
- * @brief High‑level application interface.
+ * @brief Application control layer: initialization and periodic updates.
  *
- * The application module coordinates system initialization and the main
- * execution loop. It integrates lower‑level modules such as:
+ * The application module coordinates the system’s high‑level behavior by
+ * initializing all components and providing a periodic tick function that
+ * updates button logic and the finite state machine (FSM).
  *
- *   - LED driver (heartbeat LED)
- *   - Finite state machine (LED behavior control)
- *   - User button handler (event generation)
- *   - HAL wrapper (hardware abstraction)
+ * Integrated modules:
+ *   - Button handler (debounce + event generation)
+ *   - FSM (LED behavior control)
+ *   - LED driver (ON/OFF/blink actions)
+ *   - HAL or fake HAL (depending on build mode)
  *
- * The app layer provides a clean separation between hardware setup
- * performed in main.c and the continuous processing performed in app_run().
- *
- * Functions:
- *   - app_init() : Initializes all application modules.
- *   - app_tick() : Optional periodic tick (unused in current design).
- *   - app_run()  : Main application loop.
+ * All hardware access is abstracted through hal_wrapper.c or fake_hal.c
+ * in TEST mode, keeping the app layer platform‑independent.
  */
 
 #ifndef APP_H
@@ -25,28 +22,28 @@
 /**
  * @brief Initialize all application modules.
  *
- * Sets up heartbeat LED, initializes the finite state machine,
- * and prepares input modules such as the user button.
+ * Performs:
+ *   - HAL reset (in TEST mode)
+ *   - CAN driver initialization
+ *   - Button initialization + FSM event callback registration
+ *   - FSM initialization and entry action execution
  */
 void app_init(void);
 
 /**
- * @brief Optional periodic tick for the application.
+ * @brief Single periodic application tick.
  *
- * Currently unused, but reserved for future expansion (e.g., timers,
- * cooperative scheduling, or background tasks).
+ * Executes:
+ *   - button_tick(): debouncing + event dispatch
+ *   - sm_tick(): per‑state FSM actions
+ *   - CAN RX polling via can->receive()
  */
 void app_tick(void);
 
 /**
  * @brief Main application loop.
  *
- * Runs indefinitely. Processes:
- *   - heartbeat LED ticks
- *   - state machine ticks
- *   - user button debouncing and event generation
- *
- * This function does not return.
+ * Repeatedly calls app_tick() to process button events and FSM actions.
  */
 void app_run(void);
 

@@ -1,16 +1,17 @@
 /**
  * @file led.h
- * @brief LED driver with periodic toggle functionality using HAL tick timing.
+ * @brief Periodic LED driver using HAL tick timing.
  *
- * This module provides a configurable LED instance that tracks elapsed time
- * and toggles the LED when its period expires. It is designed to be modular,
- * testable, and compatible with the existing hal_wrapper abstraction.
+ * This module implements a simple, instance‑based LED driver that toggles
+ * the LED when a configurable period has elapsed. Timing is derived from
+ * hal_get_tick(), allowing deterministic behavior in both hardware and
+ * TEST mode (via fake_hal).
  *
  * Features:
- *   - Instance-based LED driver (no global state)
- *   - Configurable toggle period per LED
- *   - Deterministic tick-based behavior
- *   - Compatible with fake_hal for unit testing
+ *   - Instance‑based LED configuration
+ *   - Millisecond‑period toggle timing
+ *   - Deterministic tick‑driven behavior
+ *   - Compatible with hal_wrapper abstraction
  */
 
 #ifndef LED_H
@@ -21,7 +22,7 @@
 /**
  * @brief LED instance structure.
  *
- * Holds timing information for periodic LED toggling.
+ * Stores timing information required for periodic toggling.
  */
 typedef struct
 {
@@ -32,29 +33,28 @@ typedef struct
 /**
  * @brief Initialize an LED instance.
  *
+ * Captures the current tick and configures the toggle period.
+ *
  * @param led        Pointer to LED instance.
  * @param period_ms  Toggle period in milliseconds.
- *
- * Captures the current tick and resets test counters if TEST mode is enabled.
  */
 void led_init(Led *led, uint32_t period_ms);
 
 /**
- * @brief Periodic tick processing for LED.
- *
- * @param led Pointer to LED instance.
+ * @brief Periodic LED processing.
  *
  * Must be called frequently (main loop or timer interrupt). Toggles the LED
- * when the configured period has elapsed.
+ * when the configured period has elapsed since last_tick.
+ *
+ * @param led Pointer to LED instance.
  */
 void led_tick(Led *led);
 
 /**
  * @brief Toggle the LED using HAL abstraction.
  *
- * This function directly calls hal_toggle_led() and does not modify the
- * instance timing. It is used internally by led_tick().
+ * Calls hal_toggle_led(). Used internally by led_tick().
  */
 void led_toggle(void);
 
-#endif // LED_H
+#endif /* LED_H */

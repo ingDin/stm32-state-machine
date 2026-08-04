@@ -1,27 +1,19 @@
 /**
  * @file tguard.c
- * @brief Default transition guard used in the FSM.
+ * @brief Default FSM transition guard implementation.
  *
- * A guard is a boolean condition evaluated during state transitions.
- * The FSM only performs a transition if:
- *
- *   - the current state matches the transition rule
- *   - the triggering event matches
- *   - the guard function returns true
- *
- * In this implementation, tguard() always returns true, meaning all
- * transitions are allowed. This keeps the FSM simple and predictable.
- *
- * In more advanced designs, tguard() could enforce timing constraints,
- * button stability, or other application-specific conditions.
+ * This module provides the simplest possible guard function: an
+ * unconditional check that always returns true. It keeps transitions
+ * unrestricted and allows the FSM to operate deterministically while
+ * preserving the guard mechanism for future extensions.
  */
 
 #include <stdbool.h>
 
 /**
- * @brief Always-true guard function.
+ * @brief Unconditional guard function.
  *
- * @return true for all calls, allowing transitions unconditionally.
+ * Always returns true, allowing all transitions defined in the FSM table.
  */
 bool tguard(void)
 {

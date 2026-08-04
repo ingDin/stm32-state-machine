@@ -1,86 +1,54 @@
 /**
  * @file app.c
- * @brief Core application loop integrating button and FSM updates.
+ * @brief Application layer implementation.
  *
- * The application layer coordinates the interaction between:
- *   - the debounced button module (button.c)
- *   - the finite state machine controlling LED behavior (state_machine.c)
- *   - optional HAL test stubs (fake_hal.c)
+ * This module wires together the system components (button, FSM, CAN) and
+ * drives them through a periodic tick. It initializes all modules, processes
+ * debounced button events, executes FSM actions, and polls the CAN backend.
  *
- * Responsibilities:
- *   - Initialize all modules used by the application
- *   - Provide a periodic tick function that updates button and FSM logic
- *   - Run the main loop in a deterministic and testable manner
- *
- * This layer intentionally contains no hardware-specific code; all hardware
- * access is abstracted through hal_wrapper.c or fake_hal.c (in TEST mode).
+ * The application layer contains no hardware‑specific logic; all low‑level
+ * operations are abstracted through hal_wrapper or fake_hal in TEST mode.
  */
 
 #include "app.h"
 #include "button.h"
 #include "state_machine.h"
+#include "can_if.h"
+#include "can_loopback.h"
 
 #if defined(TEST)
 #include "fake_hal.h"
 #endif
 
-/**
- * @brief Initialize all application modules.
- *
- * Steps:
- *   - Reset fake HAL state (in TEST mode)
- *   - Initialize button module (debounce + ISR integration)
- *   - Register FSM as the button event callback
- *   - Initialize the finite state machine
- *
- * This function must be called once before app_run().
- */
+static const can_driver_t *can = &CAN_LOOPBACK;
+
 void app_init(void)
 {
 #if defined(TEST)
-    fake_hal_reset(); /**< Reset simulated hardware state for unit tests */
+    fake_hal_reset();
 #endif
 
-    button_init(); /**< Prepare button debounce and ISR state */
-
-    /**
-     * Connect button events directly to the FSM.
-     * When the button module detects a press/release event,
-     * it will call sm_handle_event(event).
-     */
+    can->init();
+    button_init();
     button_set_callback(sm_handle_event);
-
-    sm_init(); /**< Initialize FSM and execute entry action for initial state */
+    sm_init();
 }
 
-/**
- * @brief Single application tick.
- *
- * Performs:
- *   - button_tick(): debouncing + event generation
- *   - sm_tick(): per-state periodic FSM actions
- *
- * This function is called repeatedly inside app_run().
- */
 void app_tick(void)
 {
-    button_tick(); /**< Debounce + push events into FSM */
-    sm_tick();     /**< Execute periodic FSM actions */
+    button_tick();
+    sm_tick();
+
+    can_frame_t f;
+    // CRX CAN
+    while (can->receive(&f))
+    {
+        /* CAN RX frame available */
+    }
 }
 
-/**
- * @brief Main application loop.
- *
- * Runs indefinitely. Calls app_tick() continuously to ensure:
- *   - button events are processed
- *   - FSM actions are executed
- *
- * This function does not return.
- */
 void app_run(void)
 {
     while (1)
-    {
         app_tick();
-    }
 }

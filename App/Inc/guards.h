@@ -2,17 +2,14 @@
  * @file guards.h
  * @brief Guard function interface for FSM transitions.
  *
- * Guards are optional boolean conditions evaluated during state machine
- * transitions. A transition is allowed only if:
- *
+ * Guard functions provide optional boolean conditions evaluated during
+ * state machine transitions. A transition is permitted only if:
  *   - the current state matches the transition rule
  *   - the triggering event matches
  *   - the guard function returns true
  *
- * This mechanism enables flexible and testable transition logic.
- *
- * In the current design, tguard() is used to validate button‑driven
- * transitions (e.g., ensuring the button press is legitimate).
+ * This mechanism enables flexible and testable transition logic without
+ * embedding additional conditions directly into the FSM table.
  */
 
 #ifndef GUARDS_H
@@ -23,13 +20,11 @@
 /**
  * @brief Transition guard for button‑driven FSM events.
  *
- * This function determines whether a transition triggered by a button
- * press should be allowed. The exact logic is implemented in guards.c
- * and may include checks such as:
- *
+ * Determines whether a transition triggered by a button press should be
+ * allowed. The implementation in guards.c may validate conditions such as:
  *   - debounced button state
  *   - timing constraints
- *   - additional application‑specific conditions
+ *   - application‑specific rules
  *
  * @return true if the transition is permitted, false otherwise.
  */

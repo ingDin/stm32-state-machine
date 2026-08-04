@@ -1,47 +1,48 @@
 /**
  * @file button.h
- * @brief User button handling with debouncing and event generation.
+ * @brief Debounced user button interface with event callback delivery.
  *
- * This module provides a debounced button interface that integrates with the
- * finite state machine (FSM). It tracks raw input level, stable debounced
- * state, and generates events when transitions occur (press/release).
+ * The button module samples the raw input level, applies debounce filtering,
+ * tracks a stable pressed/released state, and notifies external modules
+ * (typically the FSM) when transitions occur. In TEST mode, the internal
+ * state is exposed for deterministic unit testing.
  *
- * Features:
- *   - Debounce logic using periodic sampling
- *   - Stable state tracking
- *   - Optional callback injection for event delivery
+ * Integrated behavior:
+ *   - Debounce logic based on periodic sampling
+ *   - Stable state tracking (pressed / released)
+ *   - Mandatory event callback for press/release notifications
  *   - TEST mode support via exported button_state_t instance
  *
- * The button module is designed to be called from:
- *   - EXTI interrupt handler (button_isr_handler)
- *   - main loop tick (button_tick)
+ * The module is driven by:
+ *   - button_isr_handler(): captures raw input changes
+ *   - button_tick(): performs debounce and event dispatch
  */
 
 #ifndef BUTTON_H
 #define BUTTON_H
 
 #include <stdbool.h>
-#include "state_machine.h" /**< For event_t */
+#include "state_machine.h"   /**< For event_t */
 
 /**
  * @brief Internal button state structure.
  *
  * Tracks raw input level, debounced stable state, debounce counter,
- * and an event flag used to signal transitions.
+ * and an event flag indicating that a new raw sample is available.
  */
 typedef struct
 {
-    int raw_level;        /**< Last sampled raw GPIO level */
-    int stable_state;     /**< Debounced stable state (0 or 1) */
-    int debounce;         /**< Debounce counter */
-    volatile int event_flag; /**< Flag set when a button event occurs */
+    int raw_level;            /**< Last sampled raw GPIO level */
+    int stable_state;         /**< Debounced stable state (0 or 1) */
+    int debounce;             /**< Debounce counter */
+    volatile int event_flag;  /**< Set when a new raw sample must be processed */
 } button_state_t;
 
-#ifdef TEST
+#if defined(TEST)
 /**
- * @brief Exposed button instance for unit testing.
+ * @brief Exposed button instance for TEST mode.
  *
- * Allows test code to inspect and manipulate internal button state.
+ * Allows unit tests to inspect and manipulate internal button state.
  */
 extern button_state_t btn;
 #endif
@@ -49,46 +50,46 @@ extern button_state_t btn;
 /**
  * @brief Callback type for delivering button events.
  *
- * Allows injection of custom event handlers (e.g., forwarding events
- * directly to the FSM or logging them).
+ * External modules (typically the FSM) must register a callback to receive
+ * EVENT_BTN_PRESS and EVENT_BTN_RELEASE notifications.
  */
 typedef void (*button_event_cb_t)(event_t event);
 
 /**
  * @brief Initialize the button module.
  *
- * Resets internal state, clears debounce counters, and prepares the
- * module for periodic sampling and interrupt handling.
+ * Resets internal state and prepares the module for sampling and event
+ * generation.
  */
 void button_init(void);
 
 /**
- * @brief Interrupt handler for button EXTI line.
+ * @brief Interrupt handler for the button EXTI line.
  *
- * Called from the actual hardware interrupt. Captures raw input level
- * and sets event flags for later processing in button_tick().
+ * Captures raw input changes and sets the event flag for later processing
+ * inside button_tick().
  */
 void button_isr_handler(void);
 
 /**
  * @brief Periodic button processing.
  *
- * Must be called frequently (e.g., from app_run()). Performs debouncing,
- * detects stable transitions, and triggers event callbacks or flags.
+ * Performs debounce filtering, detects stable transitions, and invokes the
+ * registered callback when press/release events occur.
  */
 void button_tick(void);
 
 /**
  * @brief Check whether the button is currently pressed.
  *
- * @return true if stable debounced state is pressed, false otherwise.
+ * @return true if the debounced stable state is pressed, false otherwise.
  */
 bool button_is_pressed(void);
 
 /**
- * @brief Inject a callback for button events.
+ * @brief Register the mandatory callback for button events.
  *
- * Allows external modules (e.g., FSM) to receive events directly.
+ * Without a callback, no events are propagated to external modules.
  *
  * @param cb Callback function receiving event_t values.
  */
