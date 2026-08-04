@@ -22,8 +22,7 @@ void user_button_init(void)
     /* Configure EXTI0 */
     EXTI_IMR  |= (1 << 0);    // Unmask EXTI0
     EXTI_RTSR |= (1 << 0);    // Rising edge trigger
-    //EXTI_FTSR &= ~(1 << 0);   // No falling edge
-    EXTI_FTSR |= (1 << 0);   // falling
+    EXTI_FTSR |= (1 << 0);    // falling
 
     /* Enable EXTI0 interrupt in NVIC */
     NVIC_ISER0 |= (1 << 6);   // IRQ6 = EXTI0

@@ -17,6 +17,7 @@
 #include "state_machine.h"
 #include "hal_wrapper.h"
 #include "guards.h"
+#include "led.h"            /**< LED driver with instance-based timing */
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -24,41 +25,91 @@
 
 extern uint32_t hal_get_tick(void);
 
+/**
+ * @brief Current active FSM state.
+ */
 static state_t current_state;
-static uint32_t last_toggle_time = 0;
+
+/**
+ * @brief Internal per-state timer.
+ *
+ * Incremented on each sm_tick() call and reset on state transitions.
+ */
 static uint32_t state_timer = 0;
+
+/**
+ * @brief LED instance used for blink states.
+ *
+ * Replaces last_toggle_time and blink timing logic with the modular LED driver.
+ */
+static Led fsm_led;
+
+/**
+ * @brief Tracks ON/OFF LED state for non-blink modes.
+ *
+ * BLINK modes use fsm_led + led_tick().
+ */
 static bool led_state = false;
 
-/* COMMON ENTRY HELPERS */
+/* ========================================================================== */
+/*                               ENTRY HELPERS                                */
+/* ========================================================================== */
+
+/**
+ * @brief Common entry logic for all states.
+ *
+ * Resets the state timer and synchronizes the blink timer.
+ */
 static void entry_common(void)
 {
     state_timer = 0;
-    last_toggle_time = hal_get_tick();
+    fsm_led.last_tick = hal_get_tick(); /**< Reset blink timer on state entry */
 }
 
+/**
+ * @brief Entry helper for ON/OFF states.
+ *
+ * @param on true = LED ON, false = LED OFF
+ */
 static void entry_led(bool on)
 {
     led_state = on;
     entry_common();
 }
 
-/* ENTRY ACTIONS */
-static void entry_off(void) {
-	printf("DEBUG: entry_off\n");
-	entry_led(false);
-}
-static void entry_on(void) {
-	entry_led(true);
-	printf("DEBUG: entry_on\n");
-}
-static void entry_blink_slow(void) {
-	entry_common();
-	printf("DEBUG: entry_blink_slow\n");}
-static void entry_blink_fast(void) {
-	entry_common();
-	printf("DEBUG: entry_blink_fast\n");}
+/* ========================================================================== */
+/*                               ENTRY ACTIONS                                */
+/* ========================================================================== */
 
-/* EXIT ACTIONS (all no-op) */
+static void entry_off(void) {
+    printf("DEBUG: entry_off\n");
+    entry_led(false);
+}
+
+static void entry_on(void) {
+    entry_led(true);
+    printf("DEBUG: entry_on\n");
+}
+
+static void entry_blink_slow(void) {
+    entry_common();
+    fsm_led.period_ms = 1000; /**< Slow blink period */
+    printf("DEBUG: entry_blink_slow\n");
+}
+
+static void entry_blink_fast(void) {
+    entry_common();
+    fsm_led.period_ms = 200; /**< Fast blink period */
+    printf("DEBUG: entry_blink_fast\n");
+}
+
+/* ========================================================================== */
+/*                                EXIT ACTIONS                                */
+/* ========================================================================== */
+
+/**
+ * @brief All exit actions are no-op in this FSM.
+ */
 static void exit_noop(void) {}
 
 static action_fn_t exit_actions[STATE_COUNT] = {
@@ -67,8 +118,13 @@ static action_fn_t exit_actions[STATE_COUNT] = {
     [STATE_BLINK_SLOW] = exit_noop,
     [STATE_BLINK_FAST] = exit_noop};
 
-/* STATE ACTIONS */
+/* ========================================================================== */
+/*                               STATE ACTIONS                                */
+/* ========================================================================== */
 
+/**
+ * @brief Write LED state for ON/OFF modes.
+ */
 static void action_set(bool state)
 {
     led_state = state;
@@ -85,23 +141,20 @@ static void action_on(void)
     action_set(true);
 }
 
-
-static bool timer_expired(uint32_t interval)
+/**
+ * @brief Blink action using LED instance.
+ *
+ * Replaces timer_expired() and action_blink() logic.
+ */
+static void action_blink_slow(void)
 {
-    return (hal_get_tick() - last_toggle_time) >= interval;
+    led_tick(&fsm_led);
 }
 
-static void action_blink(uint32_t interval)
+static void action_blink_fast(void)
 {
-    if (timer_expired(interval))
-    {
-        hal_toggle_led();
-        last_toggle_time = hal_get_tick();
-    }
+    led_tick(&fsm_led);
 }
-
-static void action_blink_slow(void) { action_blink(1000); }
-static void action_blink_fast(void) { action_blink(200); }
 
 static action_fn_t entry_actions[STATE_COUNT] = {
     [STATE_OFF] = entry_off,
@@ -115,15 +168,31 @@ static action_fn_t actions[STATE_COUNT] = {
     [STATE_BLINK_SLOW] = action_blink_slow,
     [STATE_BLINK_FAST] = action_blink_fast};
 
+/* ========================================================================== */
+/*                               TRANSITIONS                                  */
+/* ========================================================================== */
+
+/**
+ * @brief Transition table defining all valid FSM transitions.
+ */
 static const transition_t transitions[] = {
-    {STATE_OFF, EVENT_BTN_PRESS, tguard, STATE_ON},
-    {STATE_ON, EVENT_BTN_PRESS, tguard, STATE_BLINK_SLOW},
+    {STATE_OFF,        EVENT_BTN_PRESS, tguard, STATE_ON},
+    {STATE_ON,         EVENT_BTN_PRESS, tguard, STATE_BLINK_SLOW},
     {STATE_BLINK_SLOW, EVENT_BTN_PRESS, tguard, STATE_BLINK_FAST},
-    {STATE_BLINK_FAST, EVENT_BTN_PRESS, tguard, STATE_OFF}};
+    {STATE_BLINK_FAST, EVENT_BTN_PRESS, tguard, STATE_OFF}
+};
 
 static const int transition_count =
     sizeof(transitions) / sizeof(transitions[0]);
 
+/**
+ * @brief Determine next state based on current state and event.
+ *
+ * @param current Current FSM state.
+ * @param event   Incoming event.
+ *
+ * @return Next state if a valid transition exists, otherwise current state.
+ */
 static state_t next_state(state_t current, event_t event)
 {
     for (int i = 0; i < transition_count; i++)
@@ -137,8 +206,15 @@ static state_t next_state(state_t current, event_t event)
     return current;
 }
 
+/* ========================================================================== */
+/*                               PUBLIC API                                   */
+/* ========================================================================== */
+
 void sm_init(void)
 {
+    /* Initialize LED instance for blink states */
+    led_init(&fsm_led, 1000); /**< Default blink period */
+
     current_state = STATE_OFF;
     entry_actions[current_state]();
 }
